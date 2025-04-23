@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_manager.c                                     :+:      :+:    :+:   */
+/*   time_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/24 00:38:51 by nifromon         ###   ########.fr       */
+/*   Created: 2025/04/23 23:43:30 by nifromon          #+#    #+#             */
+/*   Updated: 2025/04/23 23:48:38 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/renderer.h"
 
-// Function to init the rendering
-void	cub_init_rendering(t_render *render, int world[MAP_WIDTH][MAP_HEIGHT], void *mlx, void *win)
+// Function to get the current time in milliseconds
+int	cub_get_time_ms(void)
 {
-	ft_memset((void *)render, 0, sizeof(t_render));
-	render->init_pos.posX = 22;
-	render->init_pos.posY = 12;
-	render->init_gaze.vectorX = -1;
-	render->cam_plane.planeY = 0.66;
-	ft_memcpy((void *)render->world, (const void *)world, sizeof(24 * 24));
-	render->mlx_ptr = mlx;
-	render->win_ptr = win;
-	return ;
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "Failed to get the current time\n", 32);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

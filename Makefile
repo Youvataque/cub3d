@@ -1,0 +1,112 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
+#    Updated: 2025/04/24 00:53:21 by nifromon         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Argument
+NAME =		cub3d
+
+# Compilation
+CC =					@gcc
+CFLAGS =				-Wall -Werror -Wextra -L $(LIBFT_DIR)/
+MFLAGS = 				-L $(MLX_DIR)/ -L /usr/include/X11/ \
+						-L /usr/lib/x86_64-linux-gnu/ \
+						-lmlx -lXext -lX11 -lXrandr -lm -lbsd -lXfixes
+
+INCLUDES = 				-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers/ \
+						-I $(MLX_DIR)/ -I /usr/include/X11/ \
+						-I /usr/include/X11/extensions/ \
+						-I /usr/lib/x86_64-linux-gnu/
+
+# Directories
+SRC_DIR =				renderer/src
+UTILS_DIR =				renderer/utils
+HEADER_DIR =			renderer/include
+
+OBJ_DIR =				obj
+OBJ_SRC_DIR =			$(OBJ_DIR)/src
+OBJ_UTILS_DIR =			$(OBJ_DIR)/utils
+
+MLX_DIR =				mlx
+MLX =					$(MLX_DIR)/libmlx.a
+
+LIBFT_DIR =				libft
+LIBFT =					$(LIBFT_DIR)/libft_inc.a
+
+# Utils
+RM =					@rm -rf
+
+# Colors
+BLACK_ON_GREEN =		\033[30;42m
+BLACK_ON_RED =			\033[30;41m
+YELLOW =				\033[1;33m
+GREEN =					\033[1;32m
+RED =					\033[1;31m
+RESET =					\033[1;0m
+
+# Sources and Objects
+SRC =					\
+						$(SRC_DIR)/main.c \
+						$(SRC_DIR)/init_manager.c \
+						$(SRC_DIR)/pixel_manager.c \
+						$(SRC_DIR)/raycasting_manager.c \
+						$(SRC_DIR)/rendering_manager.c
+						
+OBJ_SRC =				$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
+
+UTILS =					\
+						$(UTILS_DIR)/time_manager.c
+						
+OBJ_UTILS =				$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
+
+# Rules and dependencies
+all:					$(LIBFT) $(MLX) $(NAME)
+
+$(LIBFT):				
+						@make -s -C $(LIBFT_DIR) all
+
+$(MLX):
+						@echo "$(YELLOW)Building $(MLX)...$(RESET)"
+						@make -s -C $(MLX_DIR) all >/dev/null 2>&1
+						@echo "$(BLACK_ON_GREEN)\t\t\t\t\t*/ $(MLX) \*$(RESET)"
+
+$(NAME):				$(LIBFT) $(MLX) $(OBJ_SRC) $(OBJ_UTILS)
+						@echo "$(YELLOW)Building $(NAME)...$(RESET)"
+						$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) -o $(NAME) $(CFLAGS) $(INCLUDES) $(MFLAGS)
+						@echo "$(BLACK_ON_GREEN)\t\t\t\t\t*/ $(NAME) \*$(RESET)"
+						
+$(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
+						@mkdir -p $(OBJ_DIR)
+						@mkdir -p $(OBJ_SRC_DIR)
+						$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
+
+$(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
+						@mkdir -p $(OBJ_DIR)
+						@mkdir -p $(OBJ_UTILS_DIR)
+						$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
+											
+clean:					
+						@make -s -C $(LIBFT_DIR) clean
+						@echo "$(YELLOW)Cleaning $(MLX_DIR)...$(RESET)"
+						@make -s -C $(MLX_DIR) clean >/dev/null 2>&1
+						@echo "$(RED)Cleaned $(MLX_DIR)$(RESET)"
+						@echo "$(YELLOW)Cleaning $(OBJ_DIR)...$(RESET)"
+						$(RM) $(OBJ_DIR)
+						@echo "$(RED)Cleaned $(OBJ_DIR)$(RESET)"
+
+fclean:					clean
+						@make -s -C $(LIBFT_DIR) fclean
+						@echo "$(YELLOW)Forcefully cleaning $(NAME)...$(RESET)"
+						$(RM) $(NAME)
+						@echo "$(BLACK_ON_RED)\t\t\t\t\t*/ $(NAME) \*$(RESET)"
+
+re:						fclean all
+
+.PHONY:					all clean fclean re
