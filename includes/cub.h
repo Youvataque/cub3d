@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:14 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 15:58:52 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:20:36 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 /* libs */
 # include "../libft/libft.h"
+# include "struct.h"
+# include "utils.h"
 # include "printer.h"
 # include "parser.h"
 

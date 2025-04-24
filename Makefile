@@ -3,6 +3,7 @@ CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 
 SRC = $(wildcard src/*.c) \
+ 		$(wildcard src/utils/*.c) \
       $(wildcard src/printer/*.c) \
       $(wildcard src/parser/*.c)
 

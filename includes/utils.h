@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 17:11:41 by yseguin          ###   ########.fr       */
+/*   Created: 2025/04/24 16:37:34 by yseguin           #+#    #+#             */
+/*   Updated: 2025/04/24 17:14:27 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # include "cub.h"
 
-/* structure principale pour les args généraux */
-typedef struct s_cubval
-{
-	int		nfd;
-	int		sfd;
-	int		wfd;
-	int		ofd;
-	char	*f;
-	char	*c;
-	char	**map;
-}	t_cubval;
+/* lib_ext */
+int	contain(char *str, char *to_find);
 
-/* structure des infos en sortie de .cub */
-typedef struct s_predatas
-{
-	char	*path_n;
-	char	*path_s;
-	char	*path_w;
-	char	*path_o;
-	char	*f;
-	char	*c;
-	char	**map;
-}	t_predatas;
+/* tab manager */
+char	**add_to_tab(char **tab, char *new_line);
+void	free_tab(char **tab);
 
-#endif
+# endif
