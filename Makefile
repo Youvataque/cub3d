@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 
 SRC = $(wildcard src/*.c) \
-      $(wildcard src/design/*.c) \
+      $(wildcard src/printer/*.c) \
       $(wildcard src/parser/*.c)
 
 OBJ = $(patsubst src/%,obj/%, $(SRC:.c=.o))
