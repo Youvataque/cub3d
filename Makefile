@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/24 00:53:21 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/24 14:23:33 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME =		cub3d
 
 # Compilation
-CC =					@gcc
+CC =					@gcc -g
 CFLAGS =				-Wall -Werror -Wextra -L $(LIBFT_DIR)/
 MFLAGS = 				-L $(MLX_DIR)/ -L /usr/include/X11/ \
 						-L /usr/lib/x86_64-linux-gnu/ \
@@ -57,7 +57,9 @@ SRC =					\
 						$(SRC_DIR)/init_manager.c \
 						$(SRC_DIR)/pixel_manager.c \
 						$(SRC_DIR)/raycasting_manager.c \
-						$(SRC_DIR)/rendering_manager.c
+						$(SRC_DIR)/rendering_manager.c \
+						$(SRC_DIR)/interaction_manager.c \
+						$(SRC_DIR)/movement_manager.c
 						
 OBJ_SRC =				$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 

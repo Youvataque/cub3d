@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:59:25 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/24 00:58:00 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:16:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ int	main(int argc, char *argv[])
 	void		*mlx_win;
 
 	(void)argv;
-	if (argc != 2)
+	if (argc != 1)
 		return (write(2, RED"Invalid number of Arguments\n"RESET, 28), 1);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Raycasting");
-	cub_init_rendering(&render, world_map, mlx, mlx_win);
-	render.img.ptr_img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	render.img.addr = mlx_get_data_addr(render.img.ptr_img,
-		&render.img.bpp, &render.img.line_len,&render.img.endian);
+	cub_init_manager(&render, world_map, mlx, mlx_win);
+	cub_interaction_manager(&render);
 	mlx_loop_hook(mlx, &cub_rendering_manager, (void *)&render);
 	mlx_loop(mlx);
 	return (0);
