@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/24 14:23:33 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/24 18:32:12 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,8 +103,17 @@ clean:
 						$(RM) $(OBJ_DIR)
 						@echo "$(RED)Cleaned $(OBJ_DIR)$(RESET)"
 
-fclean:					clean
+fclean:					
 						@make -s -C $(LIBFT_DIR) fclean
+						@make -s -C $(LIBFT_DIR) clean >/dev/null 2>&1
+						@echo "$(YELLOW)Cleaning $(MLX_DIR)...$(RESET)"
+						@make -s -C $(MLX_DIR) clean >/dev/null 2>&1
+						@echo "$(RED)Cleaned $(MLX_DIR)$(RESET)"
+						@echo "$(YELLOW)Forcefully cleaning $(MLX)...$(RESET)"
+						@echo "$(BLACK_ON_RED)\t\t\t\t\t*/ $(MLX) \*$(RESET)"
+						@echo "$(YELLOW)Cleaning $(OBJ_DIR)...$(RESET)"
+						$(RM) $(OBJ_DIR)
+						@echo "$(RED)Cleaned $(OBJ_DIR)$(RESET)"
 						@echo "$(YELLOW)Forcefully cleaning $(NAME)...$(RESET)"
 						$(RM) $(NAME)
 						@echo "$(BLACK_ON_RED)\t\t\t\t\t*/ $(NAME) \*$(RESET)"

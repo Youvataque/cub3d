@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/24 17:23:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:15:47 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	cub_setup_dda(t_ray *ray, t_camera *cam)
 	else
 	{
 		ray->step.x = 1;
-		ray->side_dist.x = (cam->pos.x + 1.0 - ray->map.x) * ray->delta_dist.x;
+		ray->side_dist.x = (ray->map.x + 1.0 - cam->pos.x) * ray->delta_dist.x;
 	}
 	if (ray->dir.y < 0)
 	{
@@ -60,7 +60,7 @@ void	cub_setup_dda(t_ray *ray, t_camera *cam)
 	else
 	{
 		ray->step.y = 1;
-		ray->side_dist.y = (cam->pos.y + 1.0 - ray->map.y) * ray->delta_dist.y;
+		ray->side_dist.y = (ray->map.y + 1.0 - cam->pos.y) * ray->delta_dist.y;
 	}
 }
 
@@ -84,7 +84,7 @@ void	cub_exec_dda(t_render *render, t_ray *ray)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (render->world[ray->map.y][ray->map.x] > 0)
+		if (render->world[ray->map.x][ray->map.y] > 0)
 			hit = 1;
 	}
 }
@@ -103,13 +103,13 @@ void	cub_setup_drawing(t_render *render, t_ray *ray)
 	ray->draw_end = ray->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (ray->draw_end >= SCREEN_HEIGHT)
 		ray->draw_end = SCREEN_HEIGHT - 1;
-	if (render->world[ray->map.y][ray->map.x] == 1)
+	if (render->world[ray->map.x][ray->map.y] == 1)
 		ray->color = 0xFF0000; // Red
-	else if (render->world[ray->map.y][ray->map.x] == 2)
+	else if (render->world[ray->map.x][ray->map.y] == 2)
 		ray->color = 0x00FF00; // Green
-	else if (render->world[ray->map.y][ray->map.x] == 3)
+	else if (render->world[ray->map.x][ray->map.y] == 3)
 		ray->color = 0x0000FF; // Blue
-	else if (render->world[ray->map.y][ray->map.x] == 4)
+	else if (render->world[ray->map.x][ray->map.y] == 4)
 		ray->color = 0xFFFFFF; // White
 	else
 		ray->color = 0xFFFF00; // Yellow
