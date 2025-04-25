@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/24 16:51:35 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:33:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define RENDERER_TYPEDEF_H
 
 // Enums
-	// Movement
 typedef enum e_movement
 {
 	MOVE_FORWARD,
@@ -24,76 +23,68 @@ typedef enum e_movement
 }	t_movement;
 
 // Structures
-	// Position on the map (int)
-typedef	struct s_pos_int
-{
-	int	x;
-	int	y;
-}		t_pos_int;
-	// Position on the map (double)
-typedef struct s_pos_double
+typedef struct s_pos
 {
 	double	x;
 	double	y;
-}			t_pos_double;
-	// Vector
-typedef struct s_vector
+}			t_pos;
+
+typedef struct s_player
 {
-	double	x;
-	double	y;
-}			t_vector;
-	// Plane
-typedef struct s_plane
-{
-	double	x;
-	double	y;
-}			t_plane;
-	// Ray
-typedef struct s_ray
-{
-	double		cam_x;
-	t_vector	dir;
-	t_pos_int	map;
-	t_pos_int	step;
-	t_vector	side_dist;
-	t_vector	delta_dist;
-	int			side;
-	int			perp_wall_dist;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	int			color;
-}				t_ray;
-	// Camera
-typedef struct s_camera
-{
-	t_pos_double	pos;
-	t_vector		dir;
-	t_plane			plane;
-}					t_camera;
-	// Image data
+	t_pos	pos; // Player position
+	double	angle; // View angle
+	t_pos	delta; // Delta
+}			t_player;
+
 typedef struct s_img_data
 {
-	void	*ptr_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	void	*ptr; // Pointer to image
+	char	*addr; // Image
+	int		bpp; // Bits per pixel
+	int		line_len; // line lenght
+	int		endian; // endian
 }			t_img_data;
-	// Global rendering
-typedef	struct s_render
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_camera	cam;
-	t_ray		ray;
-	t_img_data	img;
-	double		frame;
-	double		old_frame;
-	double		fps;
-	int			world[MAP_WIDTH][MAP_HEIGHT];
-}				t_render;
 
+typedef struct s_distance
+{
+	double	dist_v;
+	t_pos	pos_v;
+	double	dist_h;
+	t_pos	pos_h;
+	double	dist_t;
+}			t_distance;
+
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+}		t_keys;
+
+typedef struct s_rays
+{
+	int			index;
+	t_pos		map;
+	int			mp;
+	int			dof;
+	t_pos		pos;
+	double		angle;
+	t_pos		offset;
+	double		tangent;
+	int			fish_eye;
+	t_distance	dist;
+}			t_rays;
+
+typedef struct s_game
+{
+	void		*mlx; // Pointer to mlx connection to server
+	void		*win; // Pointer to window connection
+	t_player	player; // player
+	t_img_data	img; // image
+	t_keys		keys; // keys
+	t_rays		rays;
+	char		*map; // Map
+}				t_game;
 
 #endif
-

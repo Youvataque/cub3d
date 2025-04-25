@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:25 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/24 17:57:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:33:37 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 # define RENDERER_DEFINE_H
 
 // Macros
-# define MAP_WIDTH			24
-# define MAP_HEIGHT			24
-# define SCREEN_WIDTH		1920
-# define SCREEN_HEIGHT		1080
-# define INFINITE_DISTANCE	1e30
-# define MOVE_SPEED			0.0125
-# define ROTATE_SPEED		0.015
+# ifndef M_PI
+#  define M_PI				3.14159265358979323846
+# endif
+
+# define DR					0.01745329 // one degree to radian
+# define FOV				60
+
+# define MAP_WIDTH			8
+# define MAP_HEIGHT			8
+# define MAP_BLOCK			64
+
+# define SCREEN_WIDTH		1280
+# define SCREEN_HEIGHT		640
 
 // Colors
 # define BLACK				"\033[0;30m"
@@ -32,6 +38,22 @@
 # define CYAN				"\033[0;36m"
 # define WHITE				"\033[0;37m"
 # define RESET				"\033[0;0m"
+
+// Graphics Colors
+# define RGB_BLACK			0x000000
+# define RGB_WHITE			0xFFFFFF
+# define RGB_RED			0xFF0000
+# define RGB_CRIMSON		0x990000
+# define RGB_GREEN			0x00FF00
+# define RGB_BLUE			0x0000FF
+# define RGB_YELLOW			0xFF0000
+# define RGB_CYAN			0x00FFFF
+# define RGB_MAGENTA		0xFF00FF
+# define RGB_GRAY			0x808080
+# define RGB_ORANGE			0xFFA500
+# define RGB_PINK			0xFFC0CB
+# define RGB_PURPLE			0x800080
+# define RGB_BROWN			0xA52A2A
 
 // Keycodes
 # define KEY_ESC			65307

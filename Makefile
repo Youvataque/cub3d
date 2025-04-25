@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/24 18:32:12 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/25 05:21:47 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRC =					\
 OBJ_SRC =				$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 
 UTILS =					\
-						$(UTILS_DIR)/time_manager.c
+						$(UTILS_DIR)/time_manager.c \
+						$(UTILS_DIR)/calculation_manager.c
 						
 OBJ_UTILS =				$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
 
