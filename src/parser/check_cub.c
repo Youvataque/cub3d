@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:27:25 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 12:12:59 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:58:53 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_map_line(char *line)
 
 ///////////////////////////////////////////////////////////////////////////////
 // check if the line contains only whitespace char
-int	line_is_not_empty(char *line)
+static int	line_is_not_empty(char *line)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ int	line_is_not_empty(char *line)
 
 ///////////////////////////////////////////////////////////////////////////////
 // set the static int for map
-int	check_6pass(char *line, int is_ok[7], int *result)
+static int	check_6pass(char *line, int is_ok[7], int *result)
 {
 	if (is_map_line(line))
 	{
@@ -72,7 +72,7 @@ int	check_6pass(char *line, int is_ok[7], int *result)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Set to PASS or return error form params
-int	set_config_flag(char *line, int is_ok[8])
+static int	set_config_flag(char *line, int is_ok[8])
 {
 	if (contain(line, "NO") && !is_ok[0])
 		is_ok[0] = 1;

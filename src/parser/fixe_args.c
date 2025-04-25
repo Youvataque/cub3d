@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 13:46:59 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:00:11 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // function for fix params format ("NO: 		./ex" to "./ex")
-char	*fix_params(char *param)
+static char	*fix_params(char *param)
 {
 	char	*clean;
 	int		i;

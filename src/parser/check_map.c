@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:43:55 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:56:19 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,34 @@ static int	checkis_closed(t_cubval *cubval, char **t_map)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// check if a string is a valid rgb str.
+static int	is_valid_rgb_format(char *s)
+{
+	int	i;
+	int	nb;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		nb = 0;
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			nb = nb * 10 + (s[i] - '0');
+			if (nb > 255)
+				return (0);
+			i++;
+		}
+		if (++count < 3 && s[i++] != ',')
+			return (0);
+	}
+	return (count == 3);
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // Check the conformity of map before printing
 static int	check_all(t_cubval *cubval)
 {
@@ -72,6 +100,10 @@ static int	check_all(t_cubval *cubval)
 	int		result;
 
 	result = 1;
+	if (!is_valid_rgb_format(cubval->c))
+		return (ft_printf("Error: bad RGB colors.\n"), 0);
+	if (!is_valid_rgb_format(cubval->f))
+		return (ft_printf("Error: bad RGB colors.\n"), 0);
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);

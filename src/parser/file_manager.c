@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 15:03:39 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:57:42 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Check if the path point to .cub file 
-int	is_cub_file(char *path)
+static int	is_cub_file(char *path)
 {
 	int	len;
 
