@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:20:52 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:31:49 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_spawn(t_cubval *cubval)
 
 ///////////////////////////////////////////////////////////////////////////////
 // check if the border of map are corretly closed 
-static int	checkis_closed(t_cubval *cubval,  char **t_map)
+static int	checkis_closed(t_cubval *cubval, char **t_map)
 {
 	int	y;
 	int	x;
@@ -70,7 +70,7 @@ static int	check_all(t_cubval *cubval)
 {
 	char	**temp;
 	int		result;
-	
+
 	result = 1;
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
