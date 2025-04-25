@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:43:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:20:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,7 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 		cub_rays_detect_vertical(rays, player, &rays->dist, game->map);
 		cub_rays_cast_horizontal(rays, player);
 		cub_rays_detect_horizontal(rays, player, &rays->dist, game->map);
-		if (rays->dist.dist_v < rays->dist.dist_h)
-		{
-			rays->dist.dist_t = rays->dist.dist_v;
-			rays->pos.x = rays->dist.pos_v.x;
-			rays->pos.y = rays->dist.pos_v.y;
-			cub_draw_line(&game->img, player->pos, rays->pos, RGB_CRIMSON);
-			cub_render_scene3d(&game->img, rays, player, RGB_CRIMSON);
-		}
-		else if (rays->dist.dist_h < rays->dist.dist_v)
-		{
-			rays->dist.dist_t = rays->dist.dist_h;
-			cub_draw_line(&game->img, player->pos, rays->pos, RGB_RED);
-			cub_render_scene3d(&game->img, rays, player, RGB_RED);
-		}
+		cub_rays_setup_stripes(game, rays, player);
 		rays->angle--;
 	}
 }

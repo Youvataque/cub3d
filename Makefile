@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/25 05:21:47 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/25 18:46:29 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRC =					\
 						$(SRC_DIR)/init_manager.c \
 						$(SRC_DIR)/pixel_manager.c \
 						$(SRC_DIR)/raycasting_manager.c \
+						$(SRC_DIR)/raycasting_manager_2.c \
 						$(SRC_DIR)/rendering_manager.c \
 						$(SRC_DIR)/interaction_manager.c \
 						$(SRC_DIR)/movement_manager.c

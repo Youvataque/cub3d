@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:33:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:03:10 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,14 @@ typedef struct s_rays
 	double		tangent;
 	int			fish_eye;
 	t_distance	dist;
-}			t_rays;
+}				t_rays;
+
+typedef struct s_fps
+{
+	double	frame;
+	double	old_frame;
+	double	fps;
+}			t_fps;
 
 typedef struct s_game
 {
@@ -84,6 +91,7 @@ typedef struct s_game
 	t_img_data	img; // image
 	t_keys		keys; // keys
 	t_rays		rays;
+	t_fps		fps;
 	char		*map; // Map
 }				t_game;
 

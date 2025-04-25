@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:39:19 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:54:46 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ void	cub_interaction_manager(t_game *game)
 }
 
 // Function to update movement of the player
-void	cub_movement_update(t_keys *keys, t_player *player)
+void	cub_movement_update(t_keys *keys, t_player *player, double speed,
+			char *map)
 {
 	if (keys->w == 1)
-		cub_movement_manager(player, MOVE_FORWARD);
+		cub_movement_manager(player, MOVE_FORWARD, speed, map);
 	if (keys->a == 1)
-		cub_movement_manager(player, ROTATE_LEFT);
+		cub_movement_manager(player, ROTATE_LEFT, speed, map);
 	if (keys->s == 1)
-		cub_movement_manager(player, MOVE_BACKWARD);
+		cub_movement_manager(player, MOVE_BACKWARD, speed, map);
 	if (keys->d == 1)
-		cub_movement_manager(player, ROTATE_RIGHT);
+		cub_movement_manager(player, ROTATE_RIGHT, speed, map);
 }
 
 // Function to handle keys

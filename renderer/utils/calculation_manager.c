@@ -6,20 +6,20 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:33:23 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:17:21 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/renderer.h"
 
 // Function to convert degree to radian
-double	cub_degree_to_radian(int degree)
+double	cub_degree_to_radian(double degree)
 {
 	return (degree * (M_PI / 180.0));
 }
 
 // Function to fix the angle
-int	cub_fix_angle(int angle)
+double	cub_fix_angle(double angle)
 {
 	if (angle > 359)
 		angle -= 360;
