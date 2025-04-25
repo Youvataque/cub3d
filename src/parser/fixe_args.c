@@ -6,12 +6,14 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:11 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 13:46:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
+///////////////////////////////////////////////////////////////////////////////
+// function for fix params format ("NO: 		./ex" to "./ex")
 char	*fix_params(char *param)
 {
 	char	*clean;
@@ -33,10 +35,38 @@ char	*fix_params(char *param)
 	return (clean);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// get all args from file (notFixed args)
+void	get_all(char *line, t_cubval *predat)
+{
+	char	*temp;
+
+	temp = fix_params(line);
+	if (contain(line, "NO"))
+		predat->path_n = ft_substr(temp, 2, ft_strlen(temp));
+	else if (contain(line, "SO"))
+		predat->path_s = ft_substr(temp, 2, ft_strlen(temp));
+	else if (contain(line, "WE"))
+		predat->path_w = ft_substr(temp, 2, ft_strlen(temp));
+	else if (contain(line, "EA"))
+		predat->path_o = ft_substr(temp, 2, ft_strlen(temp));
+	else if (contain(line, "F"))
+		predat->f = ft_substr(temp, 1, ft_strlen(temp));
+	else if (contain(line, "C"))
+		predat->c = ft_substr(temp, 1, ft_strlen(temp));
+	else if (is_map_line(line))
+		predat->map = add_to_tab(predat->map, ft_strdup(line));
+	free(line);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// fix all argument and return for printing
 t_cubval	*fix_all(t_cubval *predat)
 {
 	t_cubval	*result;
 
+	if (!predat)
+		return (NULL);
 	result = malloc(sizeof(t_cubval));
 	if (!result)
 		return (NULL);
@@ -44,5 +74,10 @@ t_cubval	*fix_all(t_cubval *predat)
 	result->path_s = predat->path_s;
 	result->path_w = predat->path_w;
 	result->path_o = predat->path_o;
+	result->c = predat->c;
+	result->f = predat->f;
+	result->map = square_map(predat->map);
+	free_tab(predat->map);
+	free(predat);
 	return (result);
 }

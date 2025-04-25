@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 19:09:38 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 14:33:55 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // main of cub3D
 int	main(void)
 {
-	t_cubval *p = open_and_conf("maps/ex1.cub");
+	t_cubval *p = get_map_param("./maps/ex1.cub");
 	
 	int	i;
 
@@ -25,17 +25,17 @@ int	main(void)
 		printf("❌ Structure NULL\n");
 		return 1;
 	}
-	printf("🧭 Textures :\n");
+	printf("Textures :\n");
 	printf("%s\n", p->path_n ? p->path_n : "(null)");
 	printf("%s\n", p->path_s ? p->path_s : "(null)");
 	printf("%s\n", p->path_w ? p->path_w : "(null)");
 	printf("%s\n", p->path_o ? p->path_o : "(null)");
 
-	printf("\n🎨 Couleurs :\n");
+	printf("\nCouleurs :\n");
 	printf("%s\n", p->f ? p->f : "(null)");
 	printf("%s\n", p->c ? p->c : "(null)");
 
-	printf("\n🗺️  Map :\n");
+	printf("\n Map :\n");
 	if (!p->map)
 		printf("  (null)\n");
 	else
@@ -43,7 +43,7 @@ int	main(void)
 		i = 0;
 		while (p->map[i])
 		{
-			printf("  %s\n", p->map[i]);
+			printf("X %s X\n", p->map[i]);
 			i++;
 		}
 	}

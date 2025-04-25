@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:58 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 14:31:48 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,55 @@ char	**add_to_tab(char **tab, char *new_line)
 	new_tab[i + 1] = NULL;
 	free(tab);
 	return (new_tab);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function for edit a line of map and return it
+static char	*fill_line(char *line, int width)
+{
+	char	*new_line;
+	int		i;
+
+	new_line = malloc(sizeof(char) * (width + 1));
+	if (!new_line)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		new_line[i] = line[i];
+		i++;
+	}
+	while (i < width)
+	{
+		new_line[i] = ' ';
+		i++;
+	}
+	new_line[i] = '\0';
+	return (new_line);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function to normalize a map (adds spaces to equalize all line lengths)
+char	**square_map(char **map)
+{
+	char	**new_map;
+	int		x_max;
+	int		y_max;
+	int		i;
+
+	y_max = get_y_max(map);
+	x_max = get_x_max(map);
+	new_map = malloc(sizeof(char *) * (y_max + 1));
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (i < y_max)
+	{
+		new_map[i] = fill_line(map[i], x_max);
+		if (!new_map[i])
+			return (NULL);
+		i++;
+	}
+	new_map[i] = NULL;
+	return (new_map);
 }
