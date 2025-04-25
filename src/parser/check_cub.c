@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:27:25 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 18:48:45 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 12:12:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	line_is_not_empty(char *line)
 
 ///////////////////////////////////////////////////////////////////////////////
 // set the static int for map
-void	check_6pass(char *line, int is_ok[7], int *result)
+int	check_6pass(char *line, int is_ok[7], int *result)
 {
 	if (is_map_line(line))
 	{
@@ -65,27 +65,15 @@ void	check_6pass(char *line, int is_ok[7], int *result)
 			else
 				*result = 0;
 		}
+		return (1);
 	}
+	return (0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// check and set to "PASS" a step (NO, SO, MAP etc) if present in line.
-// if step already set to 1 or if during map parsing return Error
-int	is_valid_cub(char *line)
+// Set to PASS or return error form params
+int	set_config_flag(char *line, int is_ok[8])
 {
-	static int	is_ok[7];
-	int			result;
-
-	result = 1;
-	if (is_map_line(line))
-	{
-		check_6pass(line, is_ok, &result);
-		return (result);
-	}
-	if (!line_is_not_empty(line))
-		return (1);
-	if (is_ok[6])
-		return (0);
 	if (contain(line, "NO") && !is_ok[0])
 		is_ok[0] = 1;
 	else if (contain(line, "SO") && !is_ok[1])
@@ -99,6 +87,35 @@ int	is_valid_cub(char *line)
 	else if (contain(line, "C") && !is_ok[5])
 		is_ok[5] = 1;
 	else
+		return (0);
+	return (1);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// check and set to "PASS" a step (NO, SO, MAP etc) if present in line.
+// if step already set to 1 or if during map parsing return Error
+int	is_valid_cub(char *line)
+{
+	static int	is_ok[8];
+	int			result;
+
+	result = 1;
+	if (check_6pass(line, is_ok, &result))
+	{
+		if (is_ok[7])
+			return (0);
+		else
+			return (result);
+	}
+	if (!line_is_not_empty(line))
+	{
+		if (is_ok[6])
+			is_ok[7] = 1;
+		return (1);
+	}
+	if (is_ok[6])
+		return (0);
+	if (!set_config_flag(line, is_ok))
 		result = 0;
 	return (result);
 }

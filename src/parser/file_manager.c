@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 18:48:07 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/24 19:02:25 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Open map and set predatas (unFixed datas)
-t_predatas	*open_and_conf(char *path)
+t_cubval	*open_and_conf(char *path)
 {
 	char		*line;
 	int			fd;
-	t_predatas	*predat;
+	t_cubval	*predat;
 
-	predat = malloc(sizeof(t_predatas));
+	predat = malloc(sizeof(t_cubval));
 	if (!predat)
 		return (NULL);
 	fd = open(path, O_RDONLY);

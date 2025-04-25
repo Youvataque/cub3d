@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 17:11:41 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/24 19:01:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,8 @@
 
 # include "cub.h"
 
-/* structure principale pour les args généraux */
-typedef struct s_cubval
-{
-	int		nfd;
-	int		sfd;
-	int		wfd;
-	int		ofd;
-	char	*f;
-	char	*c;
-	char	**map;
-}	t_cubval;
-
 /* structure des infos en sortie de .cub */
-typedef struct s_predatas
+typedef struct s_cubval
 {
 	char	*path_n;
 	char	*path_s;
@@ -37,6 +25,6 @@ typedef struct s_predatas
 	char	*f;
 	char	*c;
 	char	**map;
-}	t_predatas;
+}	t_cubval;
 
 #endif

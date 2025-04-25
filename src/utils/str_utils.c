@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_ext.c                                          :+:      :+:    :+:   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 16:36:36 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:31 by yseguin          ###   ########.fr       */
+/*   Created: 2025/04/24 19:12:56 by yseguin           #+#    #+#             */
+/*   Updated: 2025/04/25 12:13:38 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-// function for check if a char * contain an other char *
-int	contain(char *str, char *to_find)
+// count nb a char for newStr of fixParam
+int	count_clean(char *s)
 {
+	int	len;
 	int	i;
-	int	j;
 
-	if (!str || !to_find)
-		return (0);
+	len = 0;
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		j = 0;
-		while (to_find[j] && str[i + j] && str[i + j] == to_find[j])
-			j++;
-		if (!to_find[j])
-			return (1);
+		if (!is_ws(s[i]))
+			len++;
 		i++;
 	}
-	return (0);
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// check if c is a whitespace
-int	is_ws(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n');
+	return (len);
 }
