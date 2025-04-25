@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 15:03:28 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:20:52 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // check if there is not more and lot less than 1 spawn in map
-int	check_spawn(t_cubval *cubval)
+static int	check_spawn(t_cubval *cubval)
 {
 	int	counter;
 	int	x;
@@ -44,30 +44,43 @@ int	check_spawn(t_cubval *cubval)
 
 ///////////////////////////////////////////////////////////////////////////////
 // check if the border of map are corretly closed 
-int	checkis_closed(t_cubval *cubval)
+static int	checkis_closed(t_cubval *cubval,  char **t_map)
 {
-	return (1);
-}
+	int	y;
+	int	x;
 
-///////////////////////////////////////////////////////////////////////////////
-// check if all walkable spaces are accessible
-int	checkis_accessible(t_cubval *cubval)
-{
+	y = 0;
+	while (t_map[y])
+	{
+		x = 0;
+		while (t_map[y][x])
+		{
+			if (cubval->map[y][x] == ' ' && t_map[y][x] == 'X')
+				return (0);
+			x++;
+		}
+		y++;
+	}
 	return (1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Check the conformity of map before printing
-int	check_all(t_cubval *cubval)
+static int	check_all(t_cubval *cubval)
 {
+	char	**temp;
+	int		result;
+	
+	result = 1;
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
-	else if (!checkis_closed(cubval))
-		return (ft_printf("Error: map not properly closed !\n", 0));
-	else if (!checkis_accessible(cubval))
-		return (ft_printf("Error: Not all walkable spaces accessible !\n"), 0);
-	else
-		return (1);
+	temp = square_map(cubval->map);
+	fill(temp, cubval->spawn, cubval->max_xy, "0NSWE ");
+	result = checkis_closed(cubval, temp);
+	free_tab(temp);
+	if (!result)
+		return (ft_printf("Error: the map is not properly closed !\n"), 0);
+	return (1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

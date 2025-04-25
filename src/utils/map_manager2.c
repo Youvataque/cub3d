@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:52:19 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 15:04:02 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 15:28:08 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ int	is_spawn(char c)
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (1);
 	return (0);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// fill function (like flood_fill) for know if all position are accessible
+void	fill(char **map, t_point begin, t_point max, char *charset)
+{
+	if (begin.x >= max.x || begin.y >= max.y || begin.x < 0 || begin.y < 0
+		|| ft_strchr(charset, map[begin.y][begin.x]) == NULL)
+		return ;
+	map[begin.y][begin.x] = 'X';
+	fill(map, (t_point){begin.x - 1, begin.y}, max, charset);
+	fill(map, (t_point){begin.x + 1, begin.y}, max, charset);
+	fill(map, (t_point){begin.x, begin.y - 1}, max, charset);
+	fill(map, (t_point){begin.x, begin.y + 1}, max, charset);
 }

@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:37:34 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 15:04:44 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:02:52 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		is_spawn(char c);
 void	free_tab(char **tab);
 char	**add_to_tab(char **tab, char *new_line);
 char	**square_map(char **map);
+void	fill(char **map, t_point begin, t_point max, char *charset);
+
 
 /* str_utils */
 int		count_clean(char *s);
