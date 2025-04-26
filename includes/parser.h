@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:11 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 17:00:15 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/26 14:54:17 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "cub.h"
 /* check_cub */
+int			is_map_line(char *line);
 int			is_valid_cub(char *line);
 
 /* file_manager */
