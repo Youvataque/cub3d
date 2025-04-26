@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:57:42 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/26 15:32:29 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,26 @@ t_cubval	*open_and_conf(char *path)
 		line = get_next_line(fd);
 	}
 	return (predat);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Clean t_cubVal after usage
+void	clean_tcubval(t_cubval *cubval)
+{
+	if (!cubval)
+		return ;
+	if (cubval->c)
+		free(cubval->c);
+	if (cubval->f)
+		free(cubval->f);
+	if (cubval->path_n)
+		free(cubval->path_n);
+	if (cubval->path_s)
+		free(cubval->path_s);
+	if (cubval->path_o)
+		free(cubval->path_o);
+	if (cubval->path_w)
+		free(cubval->path_w);
+	free_tab(cubval->map);
+	free(cubval);
 }

@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 17:00:11 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/26 15:36:09 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ t_cubval	*fix_all(t_cubval *predat)
 	result = malloc(sizeof(t_cubval));
 	if (!result)
 		return (NULL);
-	result->path_n = predat->path_n;
-	result->path_s = predat->path_s;
-	result->path_w = predat->path_w;
-	result->path_o = predat->path_o;
-	result->c = predat->c;
-	result->f = predat->f;
+	result->path_n = ft_strdup(predat->path_n);
+	result->path_s = ft_strdup(predat->path_s);
+	result->path_w = ft_strdup(predat->path_w);
+	result->path_o = ft_strdup(predat->path_o);
+	result->c = ft_strdup(predat->c);
+	result->f = ft_strdup(predat->f);
 	result->map = square_map(predat->map);
-	free_tab(predat->map);
-	free(predat);
+	clean_tcubval(predat);
 	return (result);
 }

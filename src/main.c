@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 17:01:32 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/26 15:33:35 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int ac, char **av)
 	{
 		cubval = get_map_param(av[1]);
 		bazard_test(cubval);
+		clean_tcubval(cubval);
 		return (0);
 	}
 	return (ft_printf("Error: bad args."), 1);
