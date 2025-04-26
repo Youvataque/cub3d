@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 18:03:10 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:08:17 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,18 @@ typedef struct s_fps
 	double	old_frame;
 	double	fps;
 }			t_fps;
+
+typedef struct s_collision
+{
+	int	xo;
+	int	yo;
+	int	ipx;
+	int	ipy;
+	int	ipx_plus_xo;
+	int	ipy_plus_yo;
+	int	ipx_minus_xo;
+	int	ipy_minus_yo;
+}		t_collision;
 
 typedef struct s_game
 {

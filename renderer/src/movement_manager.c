@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 19:58:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:09:05 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,54 +29,42 @@ void	cub_movement_manager(t_player *player, int move, double speed,
 // Function to move forward
 void	cub_move_forward(t_player *player, double speed, char *map)
 {
-	t_pos	collision_offset;
-	t_pos	i_player_pos;
-	t_pos	i_add_offset;
+	t_collision	sensor;
 
-	collision_offset.x = 0;
-	collision_offset.y = 0;
+	sensor.xo = 20;
+	sensor.yo = 20;
 	if (player->delta.x < 0)
-		collision_offset.x = -20;
-	else
-		collision_offset.x = 20;
+		sensor.xo = -20;
 	if (player->delta.y < 0)
-		collision_offset.y = -20;
-	else
-		collision_offset.y = 20;
-	i_player_pos.x = (int)player->pos.x / 64.0;
-	i_player_pos.y = (int)player->pos.y / 64.0;
-	i_add_offset.x = (int)(player->pos.x + collision_offset.x) / 64.0;
-	i_add_offset.y = (int)(player->pos.y + collision_offset.y) / 64.0;
-	if (map[(int)(i_player_pos.y * MAP_WIDTH + i_add_offset.x)] == '0')
+		sensor.yo = -20;
+	sensor.ipx = (int)player->pos.x >> 6;
+	sensor.ipy = (int)player->pos.y >> 6;
+	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
+	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
+	if (map[sensor.ipy * MAP_WIDTH + sensor.ipx_plus_xo] == '0')
 		player->pos.x += player->delta.x * speed;
-	if (map[(int)(i_add_offset.y * MAP_WIDTH + i_player_pos.x)] == '0')
+	if (map[sensor.ipy_plus_yo * MAP_WIDTH + sensor.ipx] == '0')
 		player->pos.y += player->delta.y * speed;
 }
 
 // Function to move backward
 void	cub_move_backward(t_player *player, double speed, char *map)
 {
-	t_pos	collision_offset;
-	t_pos	i_player_pos;
-	t_pos	i_sub_offset;
+	t_collision	sensor;
 
-	collision_offset.x = 0;
-	collision_offset.y = 0;
+	sensor.xo = 20;
+	sensor.yo = 20;
 	if (player->delta.x < 0)
-		collision_offset.x = -20;
-	else
-		collision_offset.x = 20;
+		sensor.xo = -20;
 	if (player->delta.y < 0)
-		collision_offset.y = -20;
-	else
-		collision_offset.y = 20;
-	i_player_pos.x = (int)player->pos.x / 64.0;
-	i_player_pos.y = (int)player->pos.y / 64.0;
-	i_sub_offset.x = (player->pos.x - collision_offset.x) / 64.0;
-	i_sub_offset.y = (player->pos.y - collision_offset.y) / 64.0;
-	if (map[(int)(i_player_pos.y * MAP_WIDTH + i_sub_offset.x)] == '0')
+		sensor.yo = -20;
+	sensor.ipx = (int)player->pos.x >> 6;
+	sensor.ipy = (int)player->pos.y >> 6;
+	sensor.ipx_minus_xo = ((int)player->pos.x - sensor.xo) >> 6;
+	sensor.ipy_minus_yo = ((int)player->pos.y - sensor.yo) >> 6;
+	if (map[sensor.ipy * MAP_WIDTH + sensor.ipx_minus_xo] == '0')
 		player->pos.x -= player->delta.x * speed;
-	if (map[(int)(i_sub_offset.y * MAP_WIDTH + i_player_pos.x)] == '0')
+	if (map[sensor.ipy_minus_yo * MAP_WIDTH + sensor.ipx] == '0')
 		player->pos.y -= player->delta.y * speed;
 }
 
