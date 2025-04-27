@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 18:54:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 03:06:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	cub_handle_key_press(int key, t_game *game)
 		game->keys.s = 1;
 	else if (key == KEY_D)
 		game->keys.d = 1;
+	else if (key == KEY_E)
+		cub_action_manager(OPEN_DOOR, &game->player, game->map_walls);
 	return (0);
 }
 

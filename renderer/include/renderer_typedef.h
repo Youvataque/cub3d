@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/26 18:08:17 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 07:22:48 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ typedef enum e_movement
 	MOVE_FORWARD,
 	MOVE_BACKWARD,
 	ROTATE_RIGHT,
-	ROTATE_LEFT
+	ROTATE_LEFT,
+	OPEN_DOOR
 }	t_movement;
 
 // Structures
@@ -62,6 +63,25 @@ typedef struct s_keys
 	int	d;
 }		t_keys;
 
+typedef struct s_walls
+{
+	double	ty;
+	double	tx;
+	double	offset;
+	double	step;
+}			t_walls;
+
+typedef struct s_joists
+{
+	double	dy;
+	double	ty;
+	double	tx;
+	double	offset;
+	double	step;
+	double	deg;
+	double	fix;
+}			t_joists;
+
 typedef struct s_rays
 {
 	int			index;
@@ -74,6 +94,15 @@ typedef struct s_rays
 	double		tangent;
 	int			fish_eye;
 	t_distance	dist;
+	t_pos		draw;
+	int			draw_index;
+	int			line_height;
+	int			line_offset;
+	int			tex_index;
+	int			tex_index_v;
+	int			tex_index_h;
+	int			color;
+	double		shade;
 }				t_rays;
 
 typedef struct s_fps
@@ -99,12 +128,18 @@ typedef struct s_game
 {
 	void		*mlx; // Pointer to mlx connection to server
 	void		*win; // Pointer to window connection
+	int			*all_textures;
+	int			**textures;
 	t_player	player; // player
 	t_img_data	img; // image
 	t_keys		keys; // keys
 	t_rays		rays;
 	t_fps		fps;
-	char		*map; // Map
+	t_walls		walls;
+	t_joists	joists;
+	char		*map_walls; // Map of walls
+	char		*map_floors; // Map of floors
+	char		*map_ceilings; // Map of Ceilings
 }				t_game;
 
 #endif

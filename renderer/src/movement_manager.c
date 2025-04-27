@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/26 18:09:05 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 05:25:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ void	cub_move_backward(t_player *player, double speed, char *map)
 void	cub_rotate_right(t_player *player, double speed)
 {
 	player->angle -= speed;
-	player->angle = cub_fix_angle(player->angle);
-	player->delta.x = cos(cub_degree_to_radian(player->angle));
-	player->delta.y = -sin(cub_degree_to_radian(player->angle));
+	player->angle = cub_fixang(player->angle);
+	player->delta.x = cos(cub_degtorad(player->angle));
+	player->delta.y = -sin(cub_degtorad(player->angle));
 }
 
 // Function to rotate left
 void	cub_rotate_left(t_player *player, double speed)
 {
 	player->angle += speed;
-	player->angle = cub_fix_angle(player->angle);
-	player->delta.x = cos(cub_degree_to_radian(player->angle));
-	player->delta.y = -sin(cub_degree_to_radian(player->angle));
+	player->angle = cub_fixang(player->angle);
+	player->delta.x = cos(cub_degtorad(player->angle));
+	player->delta.y = -sin(cub_degtorad(player->angle));
 }

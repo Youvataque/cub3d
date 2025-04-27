@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 19:20:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 05:25:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 // Function to manage the raycasting
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 {
-	rays->angle = cub_fix_angle(player->angle + FOV / 2);
+	rays->angle = cub_fixang(player->angle + FOV / 2);
 	rays->index = -1;
 	while (++rays->index < FOV)
 	{
+		rays->tex_index_v = 0;
+		rays->tex_index_h = 0;
 		cub_rays_cast_vertical(rays, player);
-		cub_rays_detect_vertical(rays, player, &rays->dist, game->map);
+		cub_rays_detect_vertical(rays, player, &rays->dist, game->map_walls);
 		cub_rays_cast_horizontal(rays, player);
-		cub_rays_detect_horizontal(rays, player, &rays->dist, game->map);
-		cub_rays_setup_stripes(game, rays, player);
+		cub_rays_detect_horizontal(rays, player, &rays->dist, game->map_walls);
+		cub_rays_setup_draw(game, rays, player);
+		cub_rays_draw(game, rays, player);
 		rays->angle--;
 	}
 }
@@ -32,8 +35,8 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 void	cub_rays_cast_vertical(t_rays *rays, t_player *player)
 {
 	rays->dof = 0;
-	rays->tangent = tan(cub_degree_to_radian(rays->angle));
-	if (cos(cub_degree_to_radian(rays->angle)) > 0.001)
+	rays->tangent = tan(cub_degtorad(rays->angle));
+	if (cos(cub_degtorad(rays->angle)) > 0.001)
 	{
 		rays->pos.x = (((int)player->pos.x >> 6) << 6) + 64;
 		rays->pos.y = (player->pos.x - rays->pos.x) * rays->tangent
@@ -41,7 +44,7 @@ void	cub_rays_cast_vertical(t_rays *rays, t_player *player)
 		rays->offset.x = 64;
 		rays->offset.y = -rays->offset.x * rays->tangent;
 	}
-	else if (cos(cub_degree_to_radian(rays->angle)) < -0.001)
+	else if (cos(cub_degtorad(rays->angle)) < -0.001)
 	{
 		rays->pos.x = (((int)player->pos.x >> 6) << 6) - 0.0001;
 		rays->pos.y = (player->pos.x - rays->pos.x) * rays->tangent
@@ -70,12 +73,13 @@ void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * MAP_WIDTH + rays->map.x;
 		if (rays->mp > 0 && rays->mp < MAP_WIDTH * MAP_HEIGHT
-			&& map[rays->mp] == '1')
+			&& map[rays->mp] > '0')
 		{
 			dist->pos_v.x = rays->pos.x;
 			dist->pos_v.y = rays->pos.y;
 			dist->dist_v = cub_calc_dist(player->pos, dist->pos_v, rays->angle);
 			rays->dof = 8;
+			rays->tex_index_v = (map[rays->mp] - 48) - 1;
 		}
 		else
 		{
@@ -90,8 +94,8 @@ void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 {
 	rays->dof = 0;
-	rays->tangent = 1.0 / tan(cub_degree_to_radian(rays->angle));
-	if (sin(cub_degree_to_radian(rays->angle)) > 0.001)
+	rays->tangent = 1.0 / tan(cub_degtorad(rays->angle));
+	if (sin(cub_degtorad(rays->angle)) > 0.001)
 	{
 		rays->pos.y = (((int)player->pos.y >> 6) << 6) - 0.0001;
 		rays->pos.x = (player->pos.y - rays->pos.y) * rays->tangent
@@ -99,7 +103,7 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 		rays->offset.y = -64;
 		rays->offset.x = -rays->offset.y * rays->tangent;
 	}
-	else if (sin(cub_degree_to_radian(rays->angle)) < -0.001)
+	else if (sin(cub_degtorad(rays->angle)) < -0.001)
 	{
 		rays->pos.y = (((int)player->pos.y >> 6) << 6) + 64;
 		rays->pos.x = (player->pos.y - rays->pos.y) * rays->tangent
@@ -128,12 +132,13 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * MAP_WIDTH + rays->map.x;
 		if (rays->mp > 0 && rays->mp < MAP_WIDTH * MAP_HEIGHT
-			&& map[rays->mp] == '1')
+			&& map[rays->mp] > '0')
 		{
 			dist->pos_h.x = rays->pos.x;
 			dist->pos_h.y = rays->pos.y;
 			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
 			rays->dof = 8;
+			rays->tex_index_h = (map[rays->mp] - 48) - 1;
 		}
 		else
 		{
