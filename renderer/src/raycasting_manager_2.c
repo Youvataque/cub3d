@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:38:44 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 11:17:33 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:43:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 		cub_rays_setup_draw_h(game, rays);
 	rays->fish_eye = cub_fixang(player->angle - rays->angle);
 	rays->dist.dist_t *= cos(cub_degtorad(rays->fish_eye));
-	rays->line_height = (MAP_BLOCK * 320) / rays->dist.dist_t;
+	rays->line_height = (64 * SCALING) / rays->dist.dist_t;
 	game->walls.offset = 0;
 	game->walls.step = 32.0 / (double)rays->line_height;
-	if (rays->line_height > 320)
+	if (rays->line_height > SCALING)
 	{
-		game->walls.offset = (rays->line_height - 320) / 2.0;
-		rays->line_height = 320;
+		game->walls.offset = (rays->line_height - SCALING) / 2.0;
+		rays->line_height = SCALING;
 	}
-	rays->line_offset = 160 - (rays->line_height >> 1);
-	rays->draw.x = rays->index * 8 + 530;
+	rays->line_offset = (SCALING / 2) - (rays->line_height >> 1);
+	rays->draw.x = rays->index * 8;
 	rays->draw.y = rays->line_offset;
 }
 
@@ -60,9 +60,9 @@ void	cub_rays_setup_draw_h(t_game *game, t_rays *rays)
 	rays->tex_index = rays->tex_index_h;
 }
 // Function to draw the scene
-void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
+void	cub_rays_draw(t_game *game, t_rays *rays)
 {
-	cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
+	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
 	cub_rays_draw_walls(&game->img, rays, &game->walls, game->all_textures);
 	cub_rays_draw_joists(game, rays, &game->joists, game->all_textures);
 }

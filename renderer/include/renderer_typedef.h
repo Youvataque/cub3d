@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 12:19:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:29:31 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_pos
 	double	x;
 	double	y;
 }			t_pos;
+
+typedef struct s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}		t_rgb;
 
 typedef struct s_player
 {
@@ -69,6 +76,8 @@ typedef struct s_walls
 	double	tx;
 	double	offset;
 	double	step;
+	int		pixel;
+	t_rgb	rgb;
 }			t_walls;
 
 typedef struct s_joists
@@ -80,7 +89,18 @@ typedef struct s_joists
 	double	step;
 	double	deg;
 	double	fix;
+	int		pixel;
+	t_rgb	rgb;
 }			t_joists;
+
+typedef struct s_sky
+{
+	int		sx;
+	int		sy;
+	int		offset;
+	int		pixel;
+	t_rgb	rgb;
+}			t_sky;
 
 typedef struct s_rays
 {
@@ -104,13 +124,6 @@ typedef struct s_rays
 	int			color;
 	double		shade;
 }				t_rays;
-
-typedef struct s_rgb
-{
-	int	red;
-	int	green;
-	int	blue;
-}		t_rgb;
 
 typedef struct s_segment
 {
@@ -144,6 +157,7 @@ typedef struct s_game
 	void		*win; // Pointer to window connection
 	int			*all_textures;
 	int			**textures;
+	int			*tex_sky;
 	t_player	player; // player
 	t_img_data	img; // image
 	t_keys		keys; // keys
@@ -151,6 +165,7 @@ typedef struct s_game
 	t_fps		fps;
 	t_walls		walls;
 	t_joists	joists;
+	t_sky		sky;
 	char		*map_walls; // Map of walls
 	char		*map_floors; // Map of floors
 	char		*map_ceilings; // Map of Ceilings

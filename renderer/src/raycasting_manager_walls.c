@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 11:16:44 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:31:38 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture)
 {
 	int		i;
-	int		color;
-	double	c;
 
 	i = -1;
 	while (++i < 8)
@@ -27,10 +25,12 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 		walls->ty = walls->offset * walls->step + (rays->tex_index * 32);
 		while (++rays->draw_index < rays->line_height)
 		{
-			c = texture[(int)walls->ty * 32 + (int)walls->tx] * rays->shade;
-			color = cub_rays_switch_colors_walls(rays, c);
+			walls->pixel = (((int)walls->ty * 32) + (int)walls->tx) * 3;
+			walls->rgb.red = texture[walls->pixel + 0] * rays->shade;
+			walls->rgb.green = texture[walls->pixel + 1] * rays-> shade;
+			walls->rgb.blue = texture[walls->pixel + 2] * rays->shade;
 			cub_draw_pixel(img, rays->draw.x, rays->draw_index + rays->draw.y,
-				color);
+				cub_convert_glrgb(walls->rgb.red, walls->rgb.green, walls->rgb.blue, 1));
 			walls->ty += walls->step;
 		}
 		rays->draw.x++;

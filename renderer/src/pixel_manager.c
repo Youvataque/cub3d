@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 14:47:05 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:30:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	cub_draw_point(t_img_data *img, t_pos pos, int size, int color)
 	int	i;
 	int	j;
 
-	pos.x *= size;
-	pos.y *= size;
 	half_size = size / 2;
 	j = -half_size - 1;
 	while (++j <= half_size)

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:52:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 14:45:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:48:22 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 	// init_manager.c
 void	cub_init_manager(t_game *game);
 void	cub_extract_map(const char *file, char *map);
-int		*cub_join_textures(int **textures, int size);
+int		*cub_join_textures(int **textures, int size, int nbr);
 int		*cub_create_textures(const char *file, int size);
 void	cub_extract_texture(int fd, int **texture);
 	// pixel_manager.c
@@ -62,7 +62,7 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player);
 void	cub_rays_setup_draw_v(t_game *game, t_rays *rays);
 void	cub_rays_setup_draw_h(t_game *game, t_rays *rays);
-void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player);
+void	cub_rays_draw(t_game *game, t_rays *rays);
 	// raycasting_manager_walls.c
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture);
@@ -81,8 +81,9 @@ int		cub_rays_switch_colors_joists(t_rays *rays, double c);
 int		cub_rendering_manager(t_game *game);
 void	cub_render_player2d(t_img_data *img, t_player *player, int size,
 			int color);
-void	cub_render_map2d(t_img_data *img, char *map, int block_size, int color);
+void	cub_render_map2d(t_img_data *img, char *map, int color);
 void	cub_render_texture2d(t_img_data *img, int *texture);
+void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *texture);
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
 void	cub_movement_update(t_keys *keys, t_player *player, double speed,

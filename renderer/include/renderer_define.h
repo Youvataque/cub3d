@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:25 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 11:12:31 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:57:30 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@
 # endif
 
 # define DR						0.01745329 // one degree to radian
-# define FOV					60
+# define FOV					120
 
 # define MAP_WIDTH				8
 # define MAP_HEIGHT				8
-# define MAP_BLOCK				64
+# define MAP_BLOCK				24
 
-# define SCREEN_WIDTH			1280
+# define SCREEN_WIDTH			960
 # define SCREEN_HEIGHT			640
+
+# define SCALING                640
+# define RAYS_SPACING           0.5
 
 // Colors
 # define BLACK					"\033[0;30m"
@@ -86,6 +89,7 @@
 # define DOOR					"./textures/Door.ppm"
 
 # define WALL                   "./textures/Wall.ppm"
+# define SKY                    "./textures/Sky.ppm"
 
 // Maps
 # define WALLS					"./maps/map1/walls"

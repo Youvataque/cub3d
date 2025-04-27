@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 14:48:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 21:30:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ void	cub_init_manager(t_game *game)
 	game->textures = (int **)malloc(5 * sizeof(int *));
 	if (!game->textures)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->textures[0] = cub_create_textures(CHECKERBOARD, 32 * 32);
-	game->textures[1] = cub_create_textures(BRICK, 32 * 32);
-	game->textures[2] = cub_create_textures(WINDOW, 32 * 32);
-	game->textures[3] = cub_create_textures(DOOR, 32 * 32);
+	game->textures[0] = cub_create_textures(CHECKERBOARD, (32 * 32) * 3);
+	game->textures[1] = cub_create_textures(BRICK, (32 * 32) * 3);
+	game->textures[2] = cub_create_textures(WINDOW, (32 * 32) * 3);
+	game->textures[3] = cub_create_textures(DOOR, (32 * 32) * 3);
 	game->textures[4] = cub_create_textures(WALL, (32 * 32) * 3);
-	game->all_textures = cub_join_textures(game->textures, (32 * 32));
+	game->all_textures = cub_join_textures(game->textures, (32 * 32) * 3, 5);
+	game->tex_sky = cub_create_textures(SKY, (120 * 80) * 3);
 	// printf("========== MAP WALLS ==========\n\n");
 	// cub_print_map(game->map_walls);
 	// printf("\n\n========== MAP FLOORS ==========\n\n");
@@ -102,28 +103,25 @@ void	cub_extract_map(const char *file, char *map)
 }
 
 // Function to join all textures in one
-int	*cub_join_textures(int **textures, int size)
+int	*cub_join_textures(int **textures, int size, int nbr)
 {
 	int	*joined;
 	int	i;
 	int	j;
 	int	k;
 	
-	joined = (int *)malloc((size * 4) * sizeof(int));
+	joined = (int *)malloc((size * nbr) * sizeof(int));
 	if (!joined)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), textures[0]);
-	j = 0;
-	k = 0;
-	while (j < 4)
+	j = -1;
+	k = -1;
+	while (++j < nbr)
 	{
-		i = 0;
-		while (i < size)
+		i = -1;
+		while (++i < size)
 		{
-			joined[k] = textures[j][i];
-			i++;
-			k++;
+			joined[++k] = textures[j][i];
 		}
-		j++;
 	}
 	return (joined);
 }
