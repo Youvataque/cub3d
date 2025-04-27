@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 07:22:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 12:19:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,20 @@ typedef struct s_rays
 	int			color;
 	double		shade;
 }				t_rays;
+
+typedef struct s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}		t_rgb;
+
+typedef struct s_segment
+{
+	t_pos	start;
+	t_pos	end;
+}			t_segment;
+
 
 typedef struct s_fps
 {

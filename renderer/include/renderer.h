@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:52:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 07:30:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 14:45:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ void	cub_init_manager(t_game *game);
 void	cub_extract_map(const char *file, char *map);
 int		*cub_join_textures(int **textures, int size);
 int		*cub_create_textures(const char *file, int size);
-void	cub_extract_texture(const char *file, int **texture);
+void	cub_extract_texture(int fd, int **texture);
 	// pixel_manager.c
 void	cub_draw_pixel(t_img_data *img, int x, int y, int color);
+void	cub_draw_point(t_img_data *img, t_pos pos, int size, int color);
 void	cub_draw_line(t_img_data *img, t_pos start, t_pos end, int color);
+void	cub_draw_thick_line(t_img_data *img, t_segment *segment, int size,
+			int color);
 void	cub_draw_square(t_img_data *img, t_pos pos, int size, int color);
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
@@ -79,6 +82,7 @@ int		cub_rendering_manager(t_game *game);
 void	cub_render_player2d(t_img_data *img, t_player *player, int size,
 			int color);
 void	cub_render_map2d(t_img_data *img, char *map, int block_size, int color);
+void	cub_render_texture2d(t_img_data *img, int *texture);
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
 void	cub_movement_update(t_keys *keys, t_player *player, double speed,
@@ -102,6 +106,6 @@ int		cub_get_time_ms(void);
 double	cub_degtorad(double degree);
 double	cub_fixang(double angle);
 double	cub_calc_dist(t_pos a, t_pos b, double angle);
-int		cub_convert_glrgb(double red, double green, double blue);
+int		cub_convert_glrgb(double red, double green, double blue, int mode);
 
 #endif

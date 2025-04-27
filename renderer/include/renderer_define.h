@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:47:25 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 06:03:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:12:31 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@
 # define KEY_E					101
 
 // Textures
-# define CHECKBOARD				"./textures/Checkboard"
-# define BRICK					"./textures/Brick"
-# define WINDOW					"./textures/Window"
-# define DOOR					"./textures/Door"
+# define CHECKERBOARD			"./textures/Checkerboard.ppm"
+# define BRICK					"./textures/Brick.ppm"
+# define WINDOW					"./textures/Window.ppm"
+# define DOOR					"./textures/Door.ppm"
+
+# define WALL                   "./textures/Wall.ppm"
 
 // Maps
 # define WALLS					"./maps/map1/walls"

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:34:43 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 07:35:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:17:07 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	cub_rays_draw_floors(t_game *game, t_rays *rays, t_joists *joists,
 		+ (int)(joists->tx / 32.0)] - 48) * 32 * 32;
 	c = texture[((int)joists->ty & 31) * 32 + ((int)joists->tx & 31) + mp]
 		* 0.7;
-	color = cub_convert_glrgb(c / 1.3, c / 1.3, c);
+	color = cub_convert_glrgb(c / 1.3, c / 1.3, c, 0);
 	cub_draw_pixel(&game->img, rays->draw.x, rays->draw_index, color);
 }
 
@@ -61,7 +61,7 @@ void	cub_rays_draw_ceilings(t_game *game, t_rays *rays, t_joists *joists,
 		+ (int)(joists->tx / 32.0)] - 48) * 32 * 32;
 	c = texture[((int)joists->ty & 31) * 32 + ((int)joists->tx & 31) + mp]
 		* 0.7;
-	color = cub_convert_glrgb(c / 2.0, c / 1.2, c / 2.0);
+	color = cub_convert_glrgb(c / 2.0, c / 1.2, c / 2.0, 0);
 	cub_draw_pixel(&game->img, rays->draw.x, 320 - rays->draw_index, color);
 }
 
@@ -84,12 +84,12 @@ int	cub_rays_switch_colors_joists(t_rays *rays, double c)
 	int	color;
 	
 	if (rays->tex_index == 0)
-		color = cub_convert_glrgb(c, c / 2.0, c / 2.0); // Checkerboard RED
+		color = cub_convert_glrgb(c, c / 2.0, c / 2.0, 0); // Checkerboard RED
 	else if (rays->tex_index == 1)
-		color = cub_convert_glrgb(c, c, c / 2.0); // Brick YELLOW
+		color = cub_convert_glrgb(c, c, c / 2.0, 0); // Brick YELLOW
 	else if (rays->tex_index == 2)
-		color = cub_convert_glrgb(c / 2.0, c / 2.0, c); // Window BLUE
+		color = cub_convert_glrgb(c / 2.0, c / 2.0, c, 0); // Window BLUE
 	else if (rays->tex_index == 3)
-		color = cub_convert_glrgb(c / 2.0, c, c / 2.0);	// Door GREEN
+		color = cub_convert_glrgb(c / 2.0, c, c / 2.0, 0);	// Door GREEN
 	return (color);
 }

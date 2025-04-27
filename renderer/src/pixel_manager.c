@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:43:38 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 14:47:05 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,51 @@ void	cub_draw_pixel(t_img_data *img, int x, int y, int color)
 	img->addr[pixel] = color & 0xFF;
 	img->addr[pixel + 1] = (color >> 8) & 0xFF;
 	img->addr[pixel + 2] = (color >> 16) & 0xFF;
+}
+
+// Function to draw lines with thickness
+void	cub_draw_thick_line(t_img_data *img, t_segment *segment, int size,
+			int color)
+{
+	t_pos	start;
+	t_pos	end;
+	int	i;
+	int	j;
+	int	half_size;
+
+	half_size = size / 2;
+	j = -half_size - 1;
+	while (++j <= half_size)
+	{
+		i = -half_size - 1;
+		while (++i <= half_size)
+		{
+			start.x = segment->start.x + i;
+			start.y = segment->start.y + j;
+			end.x = segment->end.x + i;
+			end.y = segment->end.y + j;
+			cub_draw_line(img, start, end, color);
+		}
+	}
+}
+
+// Function to draw a point of fixed size
+void	cub_draw_point(t_img_data *img, t_pos pos, int size, int color)
+{
+	int	half_size;
+	int	i;
+	int	j;
+
+	pos.x *= size;
+	pos.y *= size;
+	half_size = size / 2;
+	j = -half_size - 1;
+	while (++j <= half_size)
+	{
+		i = -half_size - 1;
+		while (++i <= half_size)
+			cub_draw_pixel(img, pos.x + i, pos.y + j, color);
+	}
 }
 
 // Function to draw a line between two points using bresenham's line algorithm

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 07:03:04 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 14:48:28 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ void	cub_init_manager(t_game *game)
 	if (!game->map_ceilings)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
 	cub_extract_map(CEILINGS, game->map_ceilings);
-	game->textures = (int **)malloc(4 * sizeof(int *));
+	game->textures = (int **)malloc(5 * sizeof(int *));
 	if (!game->textures)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->textures[0] = cub_create_textures("./textures/Checkerboard", 32 * 32);
-	game->textures[1] = cub_create_textures("./textures/Brick", 32 * 32);
-	game->textures[2] = cub_create_textures("./textures/Window", 32 * 32);
-	game->textures[3] = cub_create_textures("./textures/Door", 32 * 32);
+	game->textures[0] = cub_create_textures(CHECKERBOARD, 32 * 32);
+	game->textures[1] = cub_create_textures(BRICK, 32 * 32);
+	game->textures[2] = cub_create_textures(WINDOW, 32 * 32);
+	game->textures[3] = cub_create_textures(DOOR, 32 * 32);
+	game->textures[4] = cub_create_textures(WALL, (32 * 32) * 3);
 	game->all_textures = cub_join_textures(game->textures, (32 * 32));
 	// printf("========== MAP WALLS ==========\n\n");
 	// cub_print_map(game->map_walls);
@@ -131,37 +132,31 @@ int	*cub_join_textures(int **textures, int size)
 int *cub_create_textures(const char *file, int size)
 {
 	int *texture;
+	int	fd;
 	
 	texture = (int *)malloc(size * sizeof(int));
 	if (!texture)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), texture);
-	cub_extract_texture(file, &(texture));
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (write(2, RED"Couldn't open file\n"RESET, 20), texture);
+	cub_extract_texture(fd, &(texture));
+	close(fd);
 	return (texture);		   				   
 }
 
-void	cub_extract_texture(const char *file, int **texture)
+void	cub_extract_texture(int fd, int **texture)
 {
-	char	*line;	
-	int		fd;
-	int		i;
+	char	*line;
 	int		t;
 	
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return ((void)write(2, RED"Couldn't open file\n"RESET, 20));
 	t = -1;
 	while (1)
 	{
-		i = -1;
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (!line)
 			break ;
-		while (line && line[++i] != '\0')
-		{
-			if (line[i] == '0' || line[i] == '1')
-				(*texture)[++t] = line[i] - 48;
-		}
+		(*texture)[++t] = ft_atoi(line);
 		free(line);
 	}
-	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 07:45:07 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:16:44 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	cub_rays_switch_colors_walls(t_rays *rays, double c)
 	int	color;
 	
 	if (rays->tex_index == 0)
-		color = cub_convert_glrgb(c, c, c / 2.0); // Checkerboard YELLOW
+		color = cub_convert_glrgb(c, c, c / 2.0, 0); // Checkerboard YELLOW
 	else if (rays->tex_index == 1)
-		color = cub_convert_glrgb(c, c / 2.0, c / 2.0); // Brick RED
+		color = cub_convert_glrgb(c, c / 2.0, c / 2.0, 0); // Brick RED
 	else if (rays->tex_index == 2)
-		color = cub_convert_glrgb(c / 2.0, c / 2.0, c); // Window BLUE
+		color = cub_convert_glrgb(c / 2.0, c / 2.0, c, 0); // Window BLUE
 	else if (rays->tex_index == 3)
-		color = cub_convert_glrgb(c / 2.0, c, c);	// Door CYAN
+		color = cub_convert_glrgb(c / 2.0, c, c, 0);	// Door CYAN
 	return (color);
 }
