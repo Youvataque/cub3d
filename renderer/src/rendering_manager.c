@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 14:50:50 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/27 14:54:29 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cub_rendering_manager(t_game *game)
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
 	cub_render_map2d(&game->img, game->map_walls, MAP_BLOCK, cub_convert_glrgb(1, 1, 1, 0));
-	cub_render_player2d(&game->img, &game->player, 8, cub_convert_glrgb(1, 1, 0, 0));
+	cub_render_player2d(&game->img, &game->player, 10, cub_convert_glrgb(1, 1, 0, 0));
 	// cub_raycasting_manager(game, &game->rays, &game->player);
 	// cub_render_texture2d(&game->img, game->textures[4]);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.ptr, 0, 0);
@@ -72,7 +72,7 @@ void	cub_render_player2d(t_img_data *img, t_player *player, int size,
 	player->pos.y *= size;
 	segment.start = player->pos;
 	segment.end = vector;
-	cub_draw_thick_line(img, &segment, 4, color);
+	cub_draw_thick_line(img, &segment, 3, color);
 }
 
 // Function to draw the map
