@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:02:38 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/28 16:13:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ static char	*fill_line(char *line, int width)
 		new_line[i] = line[i];
 		i++;
 	}
-	while (i < width)
-	{
-		new_line[i] = ' ';
-		i++;
-	}
+	// while (i < width)
+	// {
+	// 	new_line[i] = ' ';
+	// 	i++;
+	// }
 	new_line[i] = '\0';
 	return (new_line);
 }
