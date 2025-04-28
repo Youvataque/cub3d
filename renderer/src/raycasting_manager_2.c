@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:38:44 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:43:34 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:35:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ void	cub_rays_setup_draw_h(t_game *game, t_rays *rays)
 	rays->tex_index = rays->tex_index_h;
 }
 // Function to draw the scene
-void	cub_rays_draw(t_game *game, t_rays *rays)
+void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
 {
+	(void)player;
 	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
 	cub_rays_draw_walls(&game->img, rays, &game->walls, game->all_textures);
 	cub_rays_draw_joists(game, rays, &game->joists, game->all_textures);

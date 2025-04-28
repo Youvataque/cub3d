@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:31:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:34:25 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 		cub_rays_cast_horizontal(rays, player);
 		cub_rays_detect_horizontal(rays, player, &rays->dist, game->map_walls);
 		cub_rays_setup_draw(game, rays, player);
-		cub_rays_draw(game, rays);
+		cub_rays_draw(game, rays, player);
 		rays->angle = cub_fixang(rays->angle - RAYS_SPACING);
 	}
 }

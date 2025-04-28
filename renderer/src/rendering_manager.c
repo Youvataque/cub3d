@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 22:36:56 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:36:45 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	cub_render_texture2d(t_img_data *img, int *texture)
 			rgb.blue = texture[pixel + 2];
 			draw.x *= 8;
 			draw.y *= 8;
-			cub_draw_point(img, draw, 8, cub_convert_glrgb(rgb.red, rgb.green, 
+			cub_draw_point(img, draw, 8, cub_convert_glrgb(rgb.red, rgb.green,
 				rgb.blue, 1));
 			draw.x /= 8;
 			draw.y /= 8;

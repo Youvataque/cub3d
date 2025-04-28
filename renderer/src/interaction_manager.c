@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interaction_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 03:06:12 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:16:04 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	cub_handle_key_press(int key, t_game *game)
 		exit(0);
 	else if (key == KEY_W)
 		game->keys.w = 1;
-	else if (key == KEY_A)
+	else if (key == KEY_ARROW_LEFT)
 		game->keys.a = 1;
 	else if (key == KEY_S)
 		game->keys.s = 1;
-	else if (key == KEY_D)
+	else if (key == KEY_ARROW_RIGHT)
 		game->keys.d = 1;
 	else if (key == KEY_E)
 		cub_action_manager(OPEN_DOOR, &game->player, game->map_walls);
@@ -58,11 +58,11 @@ int	cub_handle_key_release(int key, t_game *game)
 		exit(0);
 	else if (key == KEY_W)
 		game->keys.w = 0;
-	else if (key == KEY_A)
+	else if (key == KEY_ARROW_LEFT)
 		game->keys.a = 0;
 	else if (key == KEY_S)
 		game->keys.s = 0;
-	else if (key == KEY_D)
+	else if (key == KEY_ARROW_RIGHT)
 		game->keys.d = 0;
 	return (0);
 }

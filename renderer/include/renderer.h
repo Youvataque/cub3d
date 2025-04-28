@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:52:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:48:22 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:34:00 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player);
 void	cub_rays_setup_draw_v(t_game *game, t_rays *rays);
 void	cub_rays_setup_draw_h(t_game *game, t_rays *rays);
-void	cub_rays_draw(t_game *game, t_rays *rays);
+void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player);
 	// raycasting_manager_walls.c
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture);
