@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:56:19 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:49:56 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ t_cubval	*get_map_param(char *path)
 		return (NULL);
 	map = result->map;
 	result->max_xy = (t_point){get_x_max(map), get_y_max(map)};
+	result->map_str = inline_map(map);
 	if (check_all(result))
 		return (result);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/26 15:32:29 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:55:24 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	clean_tcubval(t_cubval *cubval)
 		free(cubval->path_o);
 	if (cubval->path_w)
 		free(cubval->path_w);
+	if (cubval->map_str)
+		free(cubval->map_str);
 	free_tab(cubval->map);
 	free(cubval);
 }

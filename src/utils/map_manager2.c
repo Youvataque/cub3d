@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:52:19 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:31:17 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:48:50 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,33 @@ void	fill(char **map, t_point begin, t_point max, char *charset)
 	fill(map, (t_point){begin.x + 1, begin.y}, max, charset);
 	fill(map, (t_point){begin.x, begin.y - 1}, max, charset);
 	fill(map, (t_point){begin.x, begin.y + 1}, max, charset);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// convert from char ** to char *
+char	*inline_map(char **map)
+{
+	char	*result;
+	int		i;
+	int		y;
+	int		x;
+
+	result = malloc(sizeof(char) * (get_x_max(map) * get_y_max(map) + 1));
+	if (!result)
+		return (NULL);
+	y = 0;
+	i = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			result[i] = map[y][x];
+			x++;
+			i++;
+		}
+		y++;
+	}
+	result[i] = '\0';
+	return (result);
 }

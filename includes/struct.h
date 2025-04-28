@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 14:26:13 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/28 15:01:53 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "cub.h"
 
+/* structure des coordonées */
 typedef struct s_point
 {
 	int	x;
@@ -31,6 +32,7 @@ typedef struct s_cubval
 	char	*f;
 	char	*c;
 	char	**map;
+	char	*map_str;
 	t_point	spawn;
 	t_point	max_xy;
 }	t_cubval;
