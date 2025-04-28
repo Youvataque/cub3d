@@ -1,19 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer_typedef.h                                 :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:47:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:29:31 by nifromon         ###   ########.fr       */
+/*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
+/*   Updated: 2025/04/28 15:37:19 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDERER_TYPEDEF_H
-# define RENDERER_TYPEDEF_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-// Enums
+# include "cub.h"
+
+/* structure des coordonées */
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+/* structure des infos en sortie de .cub */
+typedef struct s_cubval
+{
+	char	*path_n;
+	char	*path_s;
+	char	*path_w;
+	char	*path_o;
+	char	*f;
+	char	*c;
+	char	**map;
+	char	*map_str;
+	t_point	spawn;
+	t_point	max_xy;
+}	t_cubval;
+
+/* -------------------- renderer.h ------------------------------------------*/
+
 typedef enum e_movement
 {
 	MOVE_FORWARD,

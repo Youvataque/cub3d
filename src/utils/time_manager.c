@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   time_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:43:30 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/25 17:32:41 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:46:41 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to get the current time in milliseconds
 int	cub_get_time_ms(void)

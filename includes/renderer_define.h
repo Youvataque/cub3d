@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:47:25 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:55:05 by nifromon         ###   ########.fr       */
+/*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
+/*   Updated: 2025/04/28 15:32:28 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define MAP_BLOCK				24
 
 # define SCREEN_WIDTH			960
+
+
 # define SCREEN_HEIGHT			640
 
 # define SCALING                640
@@ -47,6 +49,8 @@
 
 # define RGB_WHITE				0xFFFFFF
 # define RGB_GHOST_WHITE		0xF8F8FF
+
+
 
 # define RGB_RED				0xFF0000
 # define RGB_CRIMSON			0x990000
@@ -72,7 +76,6 @@
 
 # define RGB_PURPLE				0x800080
 
-# define RGB_BROWN				0xA52A2A
 
 // Keycodes
 # define KEY_ESC				65307

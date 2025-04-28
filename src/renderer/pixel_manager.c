@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:30:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:08 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to draw a pixel on the image
 void	cub_draw_pixel(t_img_data *img, int x, int y, int color)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 05:37:45 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/24 18:21:57 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/28 15:45:49 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ LIBFT_SRCS = 		\
 					$(LIBFT_SRC)/ft_lstadd_back.c $(LIBFT_SRC)/ft_lstdelone.c \
 					$(LIBFT_SRC)/ft_lstclear.c $(LIBFT_SRC)/ft_lstiter.c \
 					$(LIBFT_SRC)/ft_lstmap.c $(LIBFT_SRC)/ft_ptrlen.c \
-					$(LIBFT_SRC)/ft_ulltoa.c
+					$(LIBFT_SRC)/ft_ulltoa.c $(LIBFT_SRC)/ft_strcmp.c
 
 LIBFT_OBJS = 		$(LIBFT_SRCS:$(LIBFT_SRC)/%.c=$(OBJS_DIR)/$(LIBFT_SRC)/%.o)
 

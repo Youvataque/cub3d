@@ -5,40 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:52:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:34:00 by nifromon         ###   ########.fr       */
+/*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
+/*   Updated: 2025/04/28 15:57:14 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERER_H
 # define RENDERER_H
 
-// Libraries
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <errno.h>
-# include <sys/time.h>
-# include <fcntl.h>
-# include <math.h>
+# include "cub.h"
 
-// Includes
-	// MLX
-# include "../../mlx/mlx.h"
-# include "../../mlx/mlx_int.h"
-	// LIBFT
-# include "../../libft/headers/get_next_line_H/get_next_line.h"
-# include "../../libft/headers/libft_H/libft.h"
-	// OTHERS
-# include "renderer_define.h"
-# include "renderer_typedef.h"
-
-// Functions
-	// main.c
-
-	// init_manager.c
-void	cub_init_manager(t_game *game);
+void	cub_init_manager(t_game *game, t_cubval *cubval);
 void	cub_extract_map(const char *file, char *map);
 int		*cub_join_textures(int **textures, int size, int nbr);
 int		*cub_create_textures(const char *file, int size);

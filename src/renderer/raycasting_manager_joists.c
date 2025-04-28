@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_joists.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:34:43 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:31:26 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to render the floors and ceilins
 void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists,
@@ -87,7 +87,7 @@ void	cub_rays_setup_joists(t_rays *rays, t_player *player,
 int	cub_rays_switch_colors_joists(t_rays *rays, double c)
 {
 	int	color;
-	
+
 	if (rays->tex_index == 0)
 		color = cub_convert_glrgb(c, c / 2.0, c / 2.0, 0); // Checkerboard RED
 	else if (rays->tex_index == 1)

@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:38:44 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:35:03 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to set the scene in 3d
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)

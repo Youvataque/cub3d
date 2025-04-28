@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   movement_manager.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 05:25:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:05 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to handle movements
 void	cub_movement_manager(t_player *player, int move, double speed,

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calculation_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 11:15:10 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:46:37 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to convert degree to radian
 double	cub_degtorad(double degree)
@@ -43,7 +43,7 @@ int	cub_convert_glrgb(double red, double green, double blue, int mode)
 	int	r;
 	int	g;
 	int	b;
-	
+
 	if (mode == 0)
 	{
 	r = (int)(red * 255.0);

@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:16:04 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:33:56 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to handle interactions with the user
 void	cub_interaction_manager(t_game *game)

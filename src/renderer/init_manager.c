@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   init_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:30:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:54:31 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to print a map
 void	cub_print_map(const char *map)
 {
 	int	i;
 	int	div;
-	
+
 	i = -1;
 	div = 1;
 	while (++i < MAP_WIDTH * MAP_HEIGHT)
@@ -28,12 +28,12 @@ void	cub_print_map(const char *map)
 			div++;
 		}
 		printf("%c", map[i]);
-	}	
+	}
 }
 
 
 // Function to init all
-void	cub_init_manager(t_game *game)
+void	cub_init_manager(t_game *game, t_cubval *cubval)
 {
 	ft_memset((void *)game, 0, sizeof(t_game));
 	game->mlx = mlx_init();
@@ -42,26 +42,17 @@ void	cub_init_manager(t_game *game)
 	game->player.pos.y = 300;
 	game->player.delta.x = cos(game->player.angle) * 5;
 	game->player.delta.y = sin(game->player.angle) * 5;
-	game->map_walls = (char *)malloc(((MAP_WIDTH * MAP_HEIGHT) + 1) * sizeof(char));
-	if (!game->map_walls)
-		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	cub_extract_map(WALLS, game->map_walls);
-	game->map_floors = (char *)malloc(((MAP_WIDTH * MAP_HEIGHT) + 1) * sizeof(char));
-	if (!game->map_floors)
-		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	cub_extract_map(FLOORS, game->map_floors);
-	game->map_ceilings = (char *)malloc(((MAP_WIDTH * MAP_HEIGHT) + 1) * sizeof(char));
-	if (!game->map_ceilings)
-		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	cub_extract_map(CEILINGS, game->map_ceilings);
+	game->map_walls = cubval->map_str;
+	game->map_ceilings = cubval->map_str;
+	game->map_floors = cubval->map_str;
 	game->textures = (int **)malloc(5 * sizeof(int *));
 	if (!game->textures)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->textures[0] = cub_create_textures(CHECKERBOARD, (32 * 32) * 3);
-	game->textures[1] = cub_create_textures(BRICK, (32 * 32) * 3);
-	game->textures[2] = cub_create_textures(WINDOW, (32 * 32) * 3);
+	game->textures[0] = cub_create_textures(cubval->path_n, (32 * 32) * 3);
+	game->textures[1] = cub_create_textures(cubval->path_o, (32 * 32) * 3);
+	game->textures[2] = cub_create_textures(cubval->path_s, (32 * 32) * 3);
 	game->textures[3] = cub_create_textures(DOOR, (32 * 32) * 3);
-	game->textures[4] = cub_create_textures(WALL, (32 * 32) * 3);
+	game->textures[4] = cub_create_textures(cubval->path_w, (32 * 32) * 3);
 	game->all_textures = cub_join_textures(game->textures, (32 * 32) * 3, 5);
 	game->tex_sky = cub_create_textures(SKY, (120 * 80) * 3);
 	// printf("========== MAP WALLS ==========\n\n");
@@ -109,7 +100,7 @@ int	*cub_join_textures(int **textures, int size, int nbr)
 	int	i;
 	int	j;
 	int	k;
-	
+
 	joined = (int *)malloc((size * nbr) * sizeof(int));
 	if (!joined)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), textures[0]);
@@ -131,7 +122,7 @@ int *cub_create_textures(const char *file, int size)
 {
 	int *texture;
 	int	fd;
-	
+
 	texture = (int *)malloc(size * sizeof(int));
 	if (!texture)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), texture);
@@ -140,14 +131,14 @@ int *cub_create_textures(const char *file, int size)
 		return (write(2, RED"Couldn't open file\n"RESET, 20), texture);
 	cub_extract_texture(fd, &(texture));
 	close(fd);
-	return (texture);		   				   
+	return (texture);
 }
 
 void	cub_extract_texture(int fd, int **texture)
 {
 	char	*line;
 	int		t;
-	
+
 	t = -1;
 	while (1)
 	{

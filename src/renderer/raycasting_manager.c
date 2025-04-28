@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:34:25 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:23 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to manage the raycasting
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)

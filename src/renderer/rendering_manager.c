@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 14:36:45 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to loop and render
 int	cub_rendering_manager(t_game *game)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_walls.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 21:31:38 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:34:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to render the walls
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
@@ -41,7 +41,7 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 int	cub_rays_switch_colors_walls(t_rays *rays, double c)
 {
 	int	color;
-	
+
 	if (rays->tex_index == 0)
 		color = cub_convert_glrgb(c, c, c / 2.0, 0); // Checkerboard YELLOW
 	else if (rays->tex_index == 1)

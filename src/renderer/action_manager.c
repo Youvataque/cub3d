@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   action_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 02:38:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/27 03:18:01 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:31:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/renderer.h"
+#include "../../includes/cub.h"
 
 // Function to manage actions
 void	cub_action_manager(int action, t_player *player, char *map)
