@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:34:43 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:47:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 07:19:45 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 		{
 			cub_rays_setup_joists(rays, &game->player, joists);
 			cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
-			cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
+			//cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
 			joists->ty += joists->step;
 		}
 		rays->draw.x++;

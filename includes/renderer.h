@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 03:20:25 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 07:48:36 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_rgb	cub_init_colors(char *source);
 int		*cub_create_textures(const char *file, int size);
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player);
+int		*cub_join_textures(int **textures, int size, int nbr);
 	// pixel_manager.c
 void	cub_draw_pixel(t_img_data *img, int x, int y, int color);
 void	cub_draw_point(t_img_data *img, t_pos pos, int size, int color);
@@ -60,6 +61,7 @@ void	cub_render_player2d(t_game *game, int size, int color);
 void	cub_render_map2d(t_img_data *img, t_map *map, int color);
 void	cub_render_texture2d(t_img_data *img, int *texture);
 void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *texture);
+void	cub_render_sky2d_layers(t_img_data *img, t_sky *sky, t_pos pos, int *texture);
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
 void	cub_movement_update(t_keys *keys, t_player *player, float speed,

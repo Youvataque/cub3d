@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:51:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 07:38:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@
 # define RGB_WHITE				0xFFFFFF
 # define RGB_GHOST_WHITE		0xF8F8FF
 
-
-
 # define RGB_RED				0xFF0000
 # define RGB_CRIMSON			0x990000
 
@@ -78,8 +76,6 @@
 // Keycodes
 # define KEY_ESC				65307
 # define KEY_W					122
-    // 42
-// # define KEY_W					119
 # define KEY_ARROW_LEFT			65361
 # define KEY_S					115
 # define KEY_ARROW_RIGHT		65363
@@ -88,17 +84,16 @@
 # define KEY_D                  100
 
 // Textures
-# define CHECKERBOARD			"./textures/Checkerboard.ppm"
-# define BRICK					"./textures/Brick.ppm"
-# define WINDOW					"./textures/Window.ppm"
 # define DOOR					"./textures/Door.ppm"
 
 # define WALL                   "./textures/Wall.ppm"
-# define SKY                    "./textures/Sky.ppm"
 
-// Maps
-# define WALLS					"./maps/map1/walls"
-# define FLOORS					"./maps/map1/floors"
-# define CEILINGS				"./maps/map1/ceilings"
+# define SKY                    "./textures/Sky/Sky.ppm"
+# define SKY_MOON				"./textures/Sky/Sky_Moon.ppm"
+# define SKY_CLOUDS				"./textures/Sky/Sky_Clouds.ppm"
+# define SKY_BACKGROUND			"./textures/Sky/Sky_Background.ppm"
+# define SKY_LAYERS				3
+# define SKY_WIDTH              576
+# define SKY_HEIGHT             324
 
 #endif

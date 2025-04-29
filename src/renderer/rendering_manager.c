@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:46:26 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 07:57:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	cub_rendering_manager(t_game *game)
 	game->img.ptr = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
-	//cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
+	cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
 	cub_raycasting_manager(game, &game->rays, &game->player);
 	//cub_render_map2d(&game->img, &game->map, cub_convert_glrgb(0, 1, 0, 0));
 	//cub_render_player2d(game, 6, cub_convert_glrgb(1, 0.843, 0, 0));
@@ -38,26 +38,38 @@ void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *textur
 	t_pos	pos;
 
 	pos.y = -1;
-	while (++pos.y < 40)
+	while (++pos.y < SKY_HEIGHT)
 	{
 		pos.x = -1;
-		while (++pos.x < 120)
+		while (++pos.x < SKY_WIDTH)
 		{
-			sky->offset = (int)player->angle * 2 - pos.x;
+			sky->offset = (int)player->angle - pos.x;
 			if (sky->offset < 0)
-				sky->offset += 120;
-			sky->offset %= 120;
-			sky->pixel = (pos.y * 120 + sky->offset) * 3;
-			sky->rgb.red = texture[sky->pixel + 0];
-			sky->rgb.green = texture[sky->pixel + 1];
-			sky->rgb.blue = texture[sky->pixel + 2];
-			pos.x = (pos.x * 8) + 4;
-			pos.y *= 8;
-			cub_draw_point(img, pos, 8, cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1));
-			pos.x = (pos.x - 4) / 8;
-			pos.y /= 8;
+				sky->offset += SKY_WIDTH;
+			sky->offset %= SKY_WIDTH;
+			sky->pixel = (pos.y * SKY_WIDTH + sky->offset) * 3 + (0 * SKY_WIDTH * SKY_HEIGHT * 3);
+			cub_render_sky2d_layers(img, sky, pos, texture);
+			sky->pixel = (pos.y * SKY_WIDTH + pos.x) * 3 + (1 * SKY_WIDTH * SKY_HEIGHT * 3);
+			cub_render_sky2d_layers(img, sky, pos, texture);
+			sky->pixel = (pos.y * SKY_WIDTH + sky->offset) * 3 + (2 * SKY_WIDTH * SKY_HEIGHT * 3);
+			cub_render_sky2d_layers(img, sky, pos, texture);
 		}
 	}
+}
+
+// Function to render different layers of the sky
+void	cub_render_sky2d_layers(t_img_data *img, t_sky *sky, t_pos pos, int *texture)
+{
+	sky->rgb.red = texture[sky->pixel + 0];
+	sky->rgb.green = texture[sky->pixel + 1];
+	sky->rgb.blue = texture[sky->pixel + 2];
+	pos.x = (pos.x * 4) + 2;
+	pos.y = (pos.y * 4) - SCREEN_HEIGHT / 4;
+	if (cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1)
+		!= cub_convert_glrgb(255, 0, 255, 1))
+		cub_draw_point(img, pos, 4, cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1));
+	pos.x = (pos.x - 2) / 4;
+	pos.y = (pos.y + SCREEN_HEIGHT / 4) / 4;
 }
 
 // Function to render textures in 2D

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:05:06 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 07:39:19 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,39 @@ void	cub_init_manager(t_game *game, t_cubval *cubval)
 	game->tex_wall_east = cub_create_textures(cubval->path_e, (32 * 32) * 3);
 	game->tex_wall_west = cub_create_textures(cubval->path_w, (32 * 32) * 3);
 	game->tex_door = cub_create_textures(DOOR, (32 * 32) * 3);
-	game->tex_sky = cub_create_textures(SKY, (120 * 80) * 3);
+	game->tex_sky_layers[0] = cub_create_textures(SKY_BACKGROUND, (576 * 324) * 3);
+	game->tex_sky_layers[1] = cub_create_textures(SKY_MOON, (576 * 324) * 3);
+	game->tex_sky_layers[2] = cub_create_textures(SKY_CLOUDS, (576 * 324) * 3);
+	game->tex_sky = cub_join_textures(game->tex_sky_layers, (576 * 324) * 3, SKY_LAYERS);
 	game->color_floor = cub_init_colors(cubval->f);
 	game->color_ceiling = cub_init_colors(cubval->c);
+}
+
+// Function to join all textures in one
+int	*cub_join_textures(int **textures, int size, int nbr)
+{
+	int	*joined;
+	int	i;
+	int	j;
+	int	k;
+	
+	joined = (int *)malloc((size * nbr) * sizeof(int));
+	if (!joined)
+		return (write(2, RED"Failed to allocate memory\n"RESET, 27), textures[0]);
+	j = 0;
+	k = 0;
+	while (j < nbr)
+	{
+		i = 0;
+		while (i < size)
+		{
+			joined[k] = textures[j][i];
+			i++;
+			k++;
+		}
+		j++;
+	}
+	return (joined);
 }
 
 // Function to init colors
