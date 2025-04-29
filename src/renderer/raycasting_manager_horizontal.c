@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:08:15 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:25:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:53:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
 			rays->dof = 20;
 			rays->tex_index_h = map->map[rays->mp];
-			if (map->map[(int)(rays->map.y + rays->exit_dir * map->width + rays->map.x)] == 'L')
+			if (map->map[(int)((rays->map.y + rays->exit_dir) * map->width + rays->map.x)] == 'L')
 				rays->exit = 1;
 		}
 		else

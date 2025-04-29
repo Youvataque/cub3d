@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:07:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:25:34 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:52:48 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 			dist->dist_v = cub_calc_dist(player->pos, dist->pos_v, rays->angle);
 			rays->dof = 20;
 			rays->tex_index_v = map->map[rays->mp];
-			if (map->map[(int)(rays->map.y * map->width + rays->map.x + rays->exit_dir)] == 'L')
+			if (map->map[(int)(rays->map.y * map->width + (rays->map.x + rays->exit_dir))] == 'L')
 				rays->exit = 1;
 		}
 		else

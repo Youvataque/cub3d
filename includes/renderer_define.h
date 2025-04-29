@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:22 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:48:58 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define FOV					120
 # define MAP_BLOCK				24
 # define SCALING				640
+
+# define RAYS_STARTING_ANGLE	30
 # define RAYS_SPACING			0.5
 
 # define SPEED					0.15

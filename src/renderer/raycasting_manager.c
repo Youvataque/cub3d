@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:27:34 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:48:32 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Function to manage the raycasting
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 {
-	rays->angle = cub_fixang(player->angle + 30);
+	rays->angle = cub_fixang(player->angle + RAYS_STARTING_ANGLE);
 	rays->index = -1;
 	while (++rays->index < FOV)
 	{
