@@ -5,12 +5,13 @@ CFLAGS = -g -Wall -Werror -Wextra
 SRC = $(wildcard src/*.c) \
  	  $(wildcard src/utils/*.c) \
       $(wildcard src/printer/*.c) \
-      $(wildcard src/parser/*.c)
+      $(wildcard src/parser/*.c) \
+	  $(wildcard src/renderer/*.c)
 
 OBJ = $(patsubst src/%,obj/%, $(SRC:.c=.o))
 
 LIBFT_PATH = libft
-LIBFT_FILE = $(LIBFT_PATH)/libft.a
+LIBFT_FILE = $(LIBFT_PATH)/libft_inc.a
 
 MLX_PATH = minilibx-linux
 MLX_FILE = $(MLX_PATH)/libmlx.a

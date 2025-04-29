@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:14 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 17:20:36 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:33:01 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 # include <math.h>
 # ifdef __linux__
 #  include <X11/keysym.h>
@@ -26,13 +27,16 @@
 #  include <ApplicationServices/ApplicationServices.h>
 # endif
 
-# include "../minilibx-linux/mlx.h"
+# include "../mlx/mlx.h"
 
 /* libs */
-# include "../libft/libft.h"
+# include "../libft/headers/get_next_line_H/get_next_line.h"
+# include "../libft/headers/ft_printf_H/ft_printf.h"
+# include "../libft/headers/libft_H/libft.h"
 # include "struct.h"
 # include "utils.h"
-# include "printer.h"
+# include "renderer_define.h"
+# include "renderer.h"
 # include "parser.h"
 
 #endif

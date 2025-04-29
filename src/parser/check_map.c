@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 13:40:20 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:06:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	check_spawn(t_cubval *cubval)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// check if the border of map are corretly closed 
+// check if the border of map are corretly closed
 static int	checkis_closed(t_cubval *cubval, char **t_map)
 {
 	int	y;
@@ -94,6 +94,8 @@ static int	is_valid_rgb_format(char *s)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Check the conformity of map before printing
+///////////////////////////////////////////////////////////////////////////////
+// Check the conformity of map before printing
 static int	check_all(t_cubval *cubval)
 {
 	char	**temp;
@@ -108,8 +110,10 @@ static int	check_all(t_cubval *cubval)
 		return (ft_printf("Error: with textures.\n"), 0);
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
+	if (!check_exit(cubval))
+		return (ft_printf("Error: nbExit < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
-	fill(temp, cubval->spawn, cubval->max_xy, "0NSWE ");
+	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWE ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)

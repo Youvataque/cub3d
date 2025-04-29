@@ -6,13 +6,13 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 13:43:20 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:34:18 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void	bazard_test(t_cubval *p)
+void bazard_test(t_cubval *p)
 {
 	int	i;
 
@@ -21,7 +21,17 @@ void	bazard_test(t_cubval *p)
 		printf("❌ Structure NULL\n");
 		return ;
 	}
-	printf("\n Map :\n");
+	printf("Textures :\n");
+	printf("%s\n", p->path_n ? p->path_n : "(null)");
+	printf("%s\n", p->path_s ? p->path_s : "(null)");
+	printf("%s\n", p->path_w ? p->path_w : "(null)");
+	printf("%s\n", p->path_e ? p->path_e : "(null)");
+
+	printf("\nCouleurs :\n");
+	printf("%s\n", p->f ? p->f : "(null)");
+	printf("%s\n", p->c ? p->c : "(null)");
+
+	printf("\nMap :\n");
 	if (!p->map)
 		printf("  (null)\n");
 	else
@@ -29,7 +39,7 @@ void	bazard_test(t_cubval *p)
 		i = 0;
 		while (p->map[i])
 		{
-			printf("X%sX\n", p->map[i]);
+			printf("X %s X\n", p->map[i]);
 			i++;
 		}
 	}
@@ -40,13 +50,18 @@ void	bazard_test(t_cubval *p)
 int	main(int ac, char **av)
 {
 	t_cubval	*cubval;
+	t_game		game;
 
+	(void)game;
 	if (ac == 2)
 	{
 		cubval = get_map_param(av[1]);
 		bazard_test(cubval);
-		clean_tcubval(cubval);
+		cub_init_manager(&game, cubval);
+		mlx_loop_hook(game.mlx, &cub_rendering_manager, &game);
+		cub_interaction_manager(&game);
+		mlx_loop(game.mlx);
 		return (0);
 	}
-	return (ft_printf("Error: bad args."), 1);
+	return (printf("Error: bad args."), 1);
 }
