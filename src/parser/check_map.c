@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 12:22:40 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:06:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static int	is_valid_rgb_format(char *s)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Check the conformity of map before printing
+///////////////////////////////////////////////////////////////////////////////
+// Check the conformity of map before printing
 static int	check_all(t_cubval *cubval)
 {
 	char	**temp;
@@ -101,17 +103,21 @@ static int	check_all(t_cubval *cubval)
 
 	result = 1;
 	if (!is_valid_rgb_format(cubval->c))
-		return (printf("Error: bad RGB colors.\n"), 0);
+		return (ft_printf("Error: bad RGB colors.\n"), 0);
 	if (!is_valid_rgb_format(cubval->f))
-		return (printf("Error: bad RGB colors.\n"), 0);
+		return (ft_printf("Error: bad RGB colors.\n"), 0);
+	if (!are_all_ppm(cubval))
+		return (ft_printf("Error: with textures.\n"), 0);
 	if (!check_spawn(cubval))
-		return (printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
+		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
+	if (!check_exit(cubval))
+		return (ft_printf("Error: nbExit < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
 	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWE ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)
-		return (printf("Error: the map is not properly closed !\n"), 0);
+		return (ft_printf("Error: the map is not properly closed !\n"), 0);
 	return (1);
 }
 
