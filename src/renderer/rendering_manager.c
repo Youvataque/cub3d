@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 13:45:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:51:47 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,11 @@ void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status
 			screen->rgb.red = texture[screen->pixel + 0] * screen->fade;
 			screen->rgb.green = texture[screen->pixel + 1] * screen->fade;
 			screen->rgb.blue = texture[screen->pixel + 2] * screen->fade;
-			cub_draw_point(&game->img, pos, 2, cub_convert_glrgb(screen->rgb.red, screen->rgb.green, screen->rgb.blue, 1));
+			// pos.x *= 4;
+			// pos.y *= 4;
+			cub_draw_point(&game->img, pos, 1, cub_convert_glrgb(screen->rgb.red, screen->rgb.green, screen->rgb.blue, 1));
+			// pos.x /= 4;
+			// pos.y /= 4;
 		}
 	}
 	if (screen->fade < 1)
