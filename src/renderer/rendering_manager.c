@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 13:09:47 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:45:36 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ int	cub_rendering_manager(t_game *game)
 // Function to render the screens
 void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status)
 {
-	int	tex_index;
-	int	x;
-	int	y;
+	int		tex_index;
+	t_pos	pos;
 	
 	tex_index = 0;
 	if (status == 0)
@@ -61,17 +60,17 @@ void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status
 		tex_index = SCREEN_TEX_SIZE;
 	else if (status == 3)
 		tex_index = SCREEN_TEX_SIZE * 2;
-	y = -1;
-	while (++y < SCREEN_TEX_WIDTH)
+	pos.y = -1;
+	while (++pos.y < SCREEN_TEX_WIDTH)
 	{
-		x = -1;
-		while (++x < SCREEN_TEX_HEIGHT)
+		pos.x = -1;
+		while (++pos.x < SCREEN_TEX_HEIGHT)
 		{
-			screen->pixel = (y * SCREEN_TEX_WIDTH + x) * 3 + tex_index;
+			screen->pixel = (pos.y * SCREEN_TEX_WIDTH + pos.x) * 3 + tex_index;
 			screen->rgb.red = texture[screen->pixel + 0] * screen->fade;
 			screen->rgb.green = texture[screen->pixel + 1] * screen->fade;
 			screen->rgb.blue = texture[screen->pixel + 2] * screen->fade;
-			cub_draw_pixel(&game->img, x, y, cub_convert_glrgb(screen->rgb.red, screen->rgb.green, screen->rgb.blue, 1));
+			cub_draw_point(&game->img, pos, 2, cub_convert_glrgb(screen->rgb.red, screen->rgb.green, screen->rgb.blue, 1));
 		}
 	}
 	if (screen->fade < 1)
