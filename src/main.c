@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:34:18 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 15:06:32 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int ac, char **av)
 		mlx_loop_hook(game.mlx, &cub_rendering_manager, &game);
 		cub_interaction_manager(&game);
 		mlx_loop(game.mlx);
+		clean_tcubval(cubval);
 		return (0);
 	}
 	return (printf("Error: bad args."), 1);
