@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:14 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:27:38 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:33:01 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 #  include <ApplicationServices/ApplicationServices.h>
 # endif
 
-# include "../../mlx/mlx.h"
+# include "../mlx/mlx.h"
 
 /* libs */
-# include "../../libft/headers/get_next_line_H/get_next_line.h"
-# include "../../libft/headers/ft_printf_H/ft_printf.h"
-# include "../../libft/headers/libft_H/libft.h"
+# include "../libft/headers/get_next_line_H/get_next_line.h"
+# include "../libft/headers/ft_printf_H/ft_printf.h"
+# include "../libft/headers/libft_H/libft.h"
 # include "struct.h"
 # include "utils.h"
 # include "renderer_define.h"
