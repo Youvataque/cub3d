@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 07:38:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 09:09:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@
 # define RGB_PINK				0xFFC0CB
 
 # define RGB_PURPLE				0x800080
-
 
 // Keycodes
 # define KEY_ESC				65307

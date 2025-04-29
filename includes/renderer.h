@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 08:41:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 09:09:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int		cub_rendering_manager(t_game *game);
 void	cub_render_player2d(t_game *game, int size, int color);
 void	cub_render_map2d(t_img_data *img, t_map *map, int color);
 void	cub_render_texture2d(t_img_data *img, int *texture);
-void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *texture);
-void	cub_render_sky2d_layers(t_img_data *img, t_sky *sky, t_pos pos, int *texture);
+void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player,
+			int *texture);
+void	cub_render_sky2d_layers(t_img_data *img, t_sky *sky, t_pos pos,
+			int *texture);
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
 void	cub_movement_update(t_keys *keys, t_player *player, float speed,
