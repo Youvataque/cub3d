@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 18:12:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:56:42 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	cub_movement_manager(t_player *player, int move, double speed,
 		cub_move_forward(player, speed, map);
 	else if (move == MOVE_BACKWARD)
 		cub_move_backward(player, speed, map);
+	else if (move == MOVE_LEFT)
+		cub_move_left(player, speed, map);
+	else if (move == MOVE_RIGHT)
+		cub_move_right(player, speed, map);
 	else if (move == ROTATE_RIGHT)
 		cub_rotate_right(player, speed);
 	else if (move == ROTATE_LEFT)

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 23:54:19 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:38:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	cub_move_forward(t_player *player, double speed, t_map *map);
 void	cub_move_backward(t_player *player, double speed, t_map *map);
 void	cub_rotate_right(t_player *player, double speed);
 void	cub_rotate_left(t_player *player, double speed);
+	// movement_manager_2.c
+void	cub_move_right(t_player *player, double speed, t_map *map);
+void	cub_move_left(t_player *player, double speed, t_map *map);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
 void	cub_action_open_door(t_player *player, t_map *map);

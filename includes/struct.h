@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 20:14:55 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:40:39 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef enum e_movement
 {
 	MOVE_FORWARD,
 	MOVE_BACKWARD,
+	MOVE_RIGHT,
+	MOVE_LEFT,
 	ROTATE_RIGHT,
 	ROTATE_LEFT,
 	OPEN_DOOR
@@ -93,6 +95,8 @@ typedef struct s_keys
 	int	a;
 	int	s;
 	int	d;
+	int	arrow_left;
+	int	arrow_right;
 }		t_keys;
 
 typedef struct s_walls

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 19:29:55 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:48:15 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,14 @@ void	cub_movement_update(t_keys *keys, t_player *player, double speed,
 	if (keys->w == 1)
 		cub_movement_manager(player, MOVE_FORWARD, speed, map);
 	if (keys->a == 1)
-		cub_movement_manager(player, ROTATE_LEFT, speed, map);
+		cub_movement_manager(player, MOVE_LEFT, speed, map);
 	if (keys->s == 1)
 		cub_movement_manager(player, MOVE_BACKWARD, speed, map);
 	if (keys->d == 1)
+		cub_movement_manager(player, MOVE_RIGHT, speed, map);
+	if (keys->arrow_left == 1)
+		cub_movement_manager(player, ROTATE_LEFT, speed, map);
+	if (keys->arrow_right == 1)
 		cub_movement_manager(player, ROTATE_RIGHT, speed, map);
 }
 
@@ -42,10 +46,14 @@ int	cub_handle_key_press(int key, t_game *game)
 	else if (key == KEY_W)
 		game->keys.w = 1;
 	else if (key == KEY_ARROW_LEFT)
-		game->keys.a = 1;
+		game->keys.arrow_left = 1;
 	else if (key == KEY_S)
 		game->keys.s = 1;
 	else if (key == KEY_ARROW_RIGHT)
+		game->keys.arrow_right = 1;
+	else if (key == KEY_A)
+		game->keys.a = 1;
+	else if (key == KEY_D)
 		game->keys.d = 1;
 	else if (key == KEY_E)
 		cub_action_manager(OPEN_DOOR, &game->player, &game->map);
@@ -59,10 +67,14 @@ int	cub_handle_key_release(int key, t_game *game)
 	else if (key == KEY_W)
 		game->keys.w = 0;
 	else if (key == KEY_ARROW_LEFT)
-		game->keys.a = 0;
+		game->keys.arrow_left = 0;
 	else if (key == KEY_S)
 		game->keys.s = 0;
 	else if (key == KEY_ARROW_RIGHT)
+		game->keys.arrow_right = 0;
+	else if (key == KEY_A)
+		game->keys.a = 0;
+	else if (key == KEY_D)
 		game->keys.d = 0;
 	return (0);
 }
