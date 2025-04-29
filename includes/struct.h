@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 11:39:38 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:28:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ typedef struct s_rays
 	int			tex_index_h;
 	int			color;
 	float		shade;
+	int			exit;
+	int			exit_dir;
 }				t_rays;
 
 typedef struct s_segment
@@ -212,6 +214,8 @@ typedef struct s_game
 	int			*twe;
 	int			*tww;
 	int			*tex_door;
+	int			*tex_leave;
+	int			*tex_leave_wall;
 	t_rgb		color_floor;
 	t_rgb		color_ceiling;
 	t_player	player; // player

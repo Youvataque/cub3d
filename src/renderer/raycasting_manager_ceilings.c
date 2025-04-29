@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:11:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:30:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:47:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Function to draw the ceilings
 void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 {
-	cub_draw_pixel(img, rays->draw.x - 8, SCALING - rays->draw_index,
+	cub_draw_pixel(img, rays->draw.x, SCALING - rays->draw_index,
 		cub_convert_glrgb(color.red, color.green, color.blue, 1));
 }
 

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 13:38:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:13:47 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@
 # define TEX_SIZE				3072 // 32 * 32 * 3
 	// DOORS
 # define DOOR					"./textures/Doors/Door.ppm"
+	// LEAVE
+# define LEAVE					"./textures/Leave/Leave_1.ppm"
+# define LEAVE_WALL				"./textures/Leave/Leave_wall.ppm"
 	// SKY
 # define SKY					"./textures/Sky/Sky.ppm"
 # define SKY_MOON				"./textures/Sky/Sky_Moon.ppm"

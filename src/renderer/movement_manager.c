@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:58:54 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:04:33 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ void	cub_move_forward(t_player *player, float speed, t_map *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
 	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
-	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0'
+		|| map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == 'L')
 		player->pos.x += player->delta.x * speed;
-	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0'
+		|| map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == 'L')
 		player->pos.y += player->delta.y * speed;
 }
 
@@ -66,9 +68,11 @@ void	cub_move_backward(t_player *player, float speed, t_map *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_minus_xo = ((int)player->pos.x - sensor.xo) >> 6;
 	sensor.ipy_minus_yo = ((int)player->pos.y - sensor.yo) >> 6;
-	if (map->map[sensor.ipy * map->width + sensor.ipx_minus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_minus_xo] == '0'
+		|| map->map[sensor.ipy * map->width + sensor.ipx_minus_xo] == 'L')
 		player->pos.x -= player->delta.x * speed;
-	if (map->map[sensor.ipy_minus_yo * map->width + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_minus_yo * map->width + sensor.ipx] == '0'
+		|| map->map[sensor.ipy_minus_yo * map->width + sensor.ipx] == 'L')
 		player->pos.y -= player->delta.y * speed;
 }
 
@@ -91,9 +95,11 @@ void	cub_move_left(t_player *player, float speed, t_map *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
 	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
-	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0'
+		|| map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == 'L')
 		player->pos.x += player->delta.y * speed;
-	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0'
+		|| map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == 'L')
 		player->pos.y -= player->delta.x * speed;
 }
 
@@ -116,8 +122,10 @@ void	cub_move_right(t_player *player, float speed, t_map *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
 	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
-	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0'
+		|| map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == 'L')
 		player->pos.x -= player->delta.y * speed;
-	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0'
+		|| map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == 'L')
 		player->pos.y += player->delta.x * speed;
 }

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 11:44:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:39:44 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // Functions
 	// init_manager.c
 void	cub_init_manager(t_game *game, t_cubval *cubval);
+void	cub_print_map(t_map *map);
 	// init_manager_graphics.c
 int		*cub_create_textures(const char *file, int size);
 int		*cub_join_textures(int **textures, int size, int nbr);
