@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 14:55:24 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 13:42:25 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Check if the path point to .cub file 
-static int	is_cub_file(char *path)
+static int	is_ext_file(char *path, char *ext)
 {
-	int	len;
+	size_t	len;
 
 	if (!path)
 		return (0);
 	len = ft_strlen(path);
-	if (len < 4)
+	if (len < ft_strlen(ext))
 		return (0);
-	return (ft_strcmp(path + len - 4, ".cub") == 0);
+	return (ft_strcmp(path + len - ft_strlen(ext), ext) == 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -34,23 +34,50 @@ t_cubval	*open_and_conf(char *path)
 	int			fd;
 	t_cubval	*predat;
 
-	if (!is_cub_file(path))
-		return (ft_printf("Error: file is not .cub\n"), NULL);
+	if (!is_ext_file(path, ".cub"))
+		return (printf("Error: file is not .cub\n"), NULL);
 	predat = malloc(sizeof(t_cubval));
 	if (!predat)
 		return (NULL);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("Error: file can't be open.\n"), NULL);
+		return (printf("Error: file can't be open.\n"), NULL);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (!is_valid_cub(line))
-			return (ft_printf("Error: format is not valid !\n"), NULL);
+			return (printf("Error: format is not valid !\n"), NULL);
 		get_all(line, predat);
 		line = get_next_line(fd);
 	}
 	return (predat);
+}
+
+static int	is_one_ppm(char *path)
+{
+	int	fd;
+
+	if (!is_ext_file(path, ".ppm"))
+		return (printf("Error: textures need to be .ppm !\n"), 0);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (printf("Error: there is no .ppm at : %s\n", path), 0);
+	return (1);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Function for check if all texture is RGB .ppm file
+int	are_all_ppm(t_cubval *cubval)
+{
+	if (!is_one_ppm(cubval->path_n))
+		return (0);
+	if (!is_one_ppm(cubval->path_s))
+		return (0);
+	if (!is_one_ppm(cubval->path_o))
+		return (0);
+	if (!is_one_ppm(cubval->path_w))
+		return (0);
+	return (1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

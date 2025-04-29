@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 15:01:53 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 13:16:48 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,11 @@ typedef struct s_cubval
 	t_point	max_xy;
 }	t_cubval;
 
+/* structure pour rgb */
+typedef struct s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}		t_rgb;
 #endif

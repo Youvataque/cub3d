@@ -1,7 +1,7 @@
-NO ./textures/no.xmp
-SO ./textures/so.xmp
-WE ./textures/we.xmp
-EA ./textures/ea.xmp
+NO ./textures/no.ppm
+SO ./textures/so.ppm
+WE ./textures/we.ppm
+EA ./textures/ea.ppm
 
 F 220,100,0
 C 225,30,0

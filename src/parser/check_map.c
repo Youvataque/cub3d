@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 14:49:56 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 13:40:20 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ static int	check_all(t_cubval *cubval)
 		return (ft_printf("Error: bad RGB colors.\n"), 0);
 	if (!is_valid_rgb_format(cubval->f))
 		return (ft_printf("Error: bad RGB colors.\n"), 0);
+	if (!are_all_ppm(cubval))
+		return (ft_printf("Error: with textures.\n"), 0);
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);

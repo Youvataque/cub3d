@@ -6,14 +6,14 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 13:04:05 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 13:43:20 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void bazard_test(t_cubval *p)
-{	
+void	bazard_test(t_cubval *p)
+{
 	int	i;
 
 	if (!p)
@@ -37,10 +37,10 @@ void bazard_test(t_cubval *p)
 
 ///////////////////////////////////////////////////////////////////////////////
 // main of cub3D
-int	main(int ac, char **av)	
+int	main(int ac, char **av)
 {
 	t_cubval	*cubval;
-	
+
 	if (ac == 2)
 	{
 		cubval = get_map_param(av[1]);
