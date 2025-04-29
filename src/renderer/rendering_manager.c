@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 20:56:40 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:15:10 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Function to loop and render
 int	cub_rendering_manager(t_game *game)
 {
-	cub_movement_update(&game->keys, &game->player, 0.2 * game->fps.fps,
+	cub_movement_update(&game->keys, &game->player, SPEED * game->fps.fps,
 		&game->map);
 	game->img.ptr = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,

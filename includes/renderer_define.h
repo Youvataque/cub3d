@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:42:01 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:15:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # endif
 
 # define DR						0.01745329 // one degree to radian
-# define FOV					120
+# define FOV					240
 
 # define MAP_BLOCK				24
 
-# define SCREEN_WIDTH			960
+# define SCREEN_WIDTH			1920
+# define SCREEN_HEIGHT			1080
 
+# define SCALING                1080
+# define RAYS_SPACING           0.25
 
-# define SCREEN_HEIGHT			640
-
-# define SCALING                640
-# define RAYS_SPACING           0.5
+# define SPEED                  0.15
 
 // Colors
 # define BLACK					"\033[0;30m"
