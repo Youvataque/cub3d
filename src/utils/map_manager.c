@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 16:02:38 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 13:06:51 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static char	*fill_line(char *line, int width)
 	if (!new_line)
 		return (NULL);
 	i = 0;
-	while (line[i] && line[i] != '\n')
+	while (line[i] && line[i] != '\n' && i < width)
 	{
 		new_line[i] = line[i];
 		i++;
 	}
-	while (i < width)
+	while (i < width - 1)
 	{
 		new_line[i] = ' ';
 		i++;
