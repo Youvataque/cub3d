@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:07 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:45:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 // Function to loop and render
 int	cub_rendering_manager(t_game *game)
 {
+	cub_movement_update(&game->keys, &game->player, SPEED * game->fps.fps,
+		&game->map);
 	game->img.ptr = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
+	if (game->map.map[(int)(((int)(game->player.pos.y / 64) * game->map.width + (int)(game->player.pos.x / 64)))] == 'L')
+		game->status = 2;
 	if (game->status == 1)
 	{
 		cub_render_screens(game, &game->screen, game->tex_screens, game->status);
@@ -30,8 +34,6 @@ int	cub_rendering_manager(t_game *game)
 	}
 	else if (game->status == 0)
 	{
-		cub_movement_update(&game->keys, &game->player, SPEED * game->fps.fps,
-			&game->map);
 		//cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
 		cub_raycasting_manager(game, &game->rays, &game->player);
 		//cub_render_map2d(&game->img, &game->map, cub_convert_glrgb(0, 1, 0, 0));
@@ -56,9 +58,9 @@ void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status
 	tex_index = 0;
 	if (status == 0)
 		return ;
-	else if (status == 2)
-		tex_index = SCREEN_TEX_SIZE;
 	else if (status == 3)
+		tex_index = SCREEN_TEX_SIZE;
+	else if (status == 2)
 		tex_index = SCREEN_TEX_SIZE * 2;
 	pos.y = -1;
 	while (++pos.y < SCREEN_TEX_HEIGHT)
@@ -77,8 +79,8 @@ void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status
 			pos.y /= 1.9;
 		}
 	}
-	if (screen->fade < 1)
-		screen->fade += 0.1 * game->fps.fps;
-	if (screen->fade > 1)
-		screen->fade = 1;
+	// if (screen->fade < 1)
+	// 	screen->fade += 0.1 * game->fps.fps;
+	// if (screen->fade > 1)
+	// 	screen->fade = 1;
 }

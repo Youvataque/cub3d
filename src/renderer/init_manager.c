@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:33:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	cub_init_manager(t_game *game, t_cubval *cubval)
 	game->status = 1;
 	game->timer = 0;
 	game->fps.fps = 0;
-	game->screen.fade = 0;
+	game->screen.fade = 1;
 	game->fps.frame = cub_get_time_ms();
 	game->color_floor = cub_init_colors(cubval->f);
 	game->color_ceiling = cub_init_colors(cubval->c);

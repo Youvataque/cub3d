@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:27:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:35:42 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_map	cub_init_map(char *source, t_point max, t_player *player)
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player)
 {
-	player->pos.x = ((pos % width) * 64) + 0.1;
-	player->pos.y = ((pos / width) * 64) + 0.1;
+	player->pos.x = ((pos % width) * 64);
+	player->pos.y = ((pos / width) * 64);
 	if (orientation == 'N')
 		player->angle = 0 + 90;
 	else if (orientation == 'S')
