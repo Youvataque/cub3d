@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 14:46:14 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/24 17:20:36 by yseguin          ###   ########.fr       */
+/*   Created: 2024/11/04 13:57:52 by yseguin           #+#    #+#             */
+/*   Updated: 2024/12/04 14:53:49 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
+# include "../libft.h"
 # include <stdlib.h>
-# include <string.h>
-# include <math.h>
-# ifdef __linux__
-#  include <X11/keysym.h>
-#  include <X11/X.h>
-# elif __APPLE__
-#  include <ApplicationServices/ApplicationServices.h>
-# endif
 
-# include "../minilibx-linux/mlx.h"
-
-/* libs */
-# include "../libft/libft.h"
-# include "struct.h"
-# include "utils.h"
-# include "printer.h"
-# include "parser.h"
+char	*ft_itoa_plus(unsigned long n, char *base);
+int		ft_printf(const char *str, ...);
+int		ft_count_digits(int n, int base);
+int		ft_count_digits_plus(unsigned int n);
+int		ft_put_add(void	*pointer, int fd);
+int		ft_putstr_fd_count(char *s, int fd);
+int		ft_puthex_fd(unsigned int number, char *base);
+void	ft_putnbr_unsi(unsigned int n, int fd);
 
 #endif

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 16:14:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/26 15:33:35 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 void bazard_test(t_cubval *p)
-{
+{	
 	int	i;
 
 	if (!p)
@@ -47,22 +47,16 @@ void bazard_test(t_cubval *p)
 
 ///////////////////////////////////////////////////////////////////////////////
 // main of cub3D
-int	main(int ac, char **av)
+int	main(int ac, char **av)	
 {
 	t_cubval	*cubval;
-	t_game		game;
-
-	(void)game;
+	
 	if (ac == 2)
 	{
 		cubval = get_map_param(av[1]);
 		bazard_test(cubval);
-		cub_init_manager(&game, cubval);
-		mlx_loop_hook(game.mlx, &cub_rendering_manager, &game);
-		cub_interaction_manager(&game);
-		mlx_loop(game.mlx);
 		clean_tcubval(cubval);
 		return (0);
 	}
-	return (printf("Error: bad args."), 1);
+	return (ft_printf("Error: bad args."), 1);
 }

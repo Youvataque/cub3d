@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 15:01:53 by yseguin          ###   ########.fr       */
+/*   Created: 2024/11/15 11:49:10 by yseguin           #+#    #+#             */
+/*   Updated: 2024/11/19 16:27:28 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "ft_printf.h"
 
-# include "cub.h"
-
-/* structure des coordonées */
-typedef struct s_point
+/////////////////////////////////////////////////////////////////////////////
+// print unsigned int into hex
+int	ft_puthex_fd(unsigned int number, char *base)
 {
-	int	x;
-	int	y;
-}	t_point;
+	char	*temp;
+	int		i;
 
-/* structure des infos en sortie de .cub */
-typedef struct s_cubval
-{
-	char	*path_n;
-	char	*path_s;
-	char	*path_w;
-	char	*path_o;
-	char	*f;
-	char	*c;
-	char	**map;
-	char	*map_str;
-	t_point	spawn;
-	t_point	max_xy;
-}	t_cubval;
-
-#endif
+	temp = ft_itoa_plus(number, base);
+	i = ft_putstr_fd_count(temp, 1);
+	free(temp);
+	return (i);
+}
