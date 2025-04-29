@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 13:06:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:26:22 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@
 # define TEX_SIZE				3072 // 32 * 32 * 3
 	// DOORS
 # define DOOR					"./textures/Doors/Door.ppm"
+	// LEAVE
+# define LEAVE					"./textures/Leave/Leave_1.ppm"
+# define LEAVE_WALL				"./textures/Leave/Leave_wall.ppm"
 	// SKY
 # define SKY					"./textures/Sky/Sky.ppm"
 # define SKY_MOON				"./textures/Sky/Sky_Moon.ppm"
@@ -71,9 +74,9 @@
 # define SCREEN_START			"./textures/Screens/Start.ppm"
 # define SCREEN_LOSE			"./textures/Screens/Lose.ppm"
 # define SCREEN_WIN				"./textures/Screens/Win.ppm"
-# define SCREEN_TEX_WIDTH		1920
-# define SCREEN_TEX_HEIGHT		1080
-# define SCREEN_TEX_SIZE		6220800 // SCREEN_TEX_WIDTH * SCREEN_TEX_HEIGHT * 3
+# define SCREEN_TEX_WIDTH		576
+# define SCREEN_TEX_HEIGHT		324
+# define SCREEN_TEX_SIZE		559872 // SCREEN_TEX_WIDTH * SCREEN_TEX_HEIGHT * 3
 	// FOE
 
 

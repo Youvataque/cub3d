@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:57:35 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:27:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 	rays->index = -1;
 	while (++rays->index < FOV)
 	{
+		rays->exit_dir = 0;
+		rays->exit = 0;
 		rays->tex_index_v = 0;
 		rays->tex_index_h = 0;
 		cub_rays_cast_vertical(rays, player);
@@ -58,26 +60,30 @@ void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
 {
 	(void)player;
 	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
+	cub_rays_draw_joists(game, rays, &game->joists);
 	if (rays->tex_index == '1')
 	{
 		if (rays->dist.dist_h < rays->dist.dist_v)
 		{
-			if (sin(cub_degtorad(rays->angle)) > 0.001)
-				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tws);
-			else if (sin(cub_degtorad(rays->angle)) < -0.001)
+			if (rays->exit == 1)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_leave_wall);
+			else if (sin(cub_degtorad(cub_fixang(rays->angle))) > 0.001)
 				cub_rays_draw_walls(&game->img, rays, &game->walls, game->twn);
+			else if (sin(cub_degtorad(cub_fixang(rays->angle))) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tws);
 		}
 		else if (rays->dist.dist_v < rays->dist.dist_h)
 		{
-			if (cos(cub_degtorad(rays->angle)) > 0.001)
-				cub_rays_draw_walls(&game->img, rays, &game->walls, game->twe);
-			else if (cos(cub_degtorad(rays->angle)) < -0.001)
+			if (rays->exit == 1)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_leave_wall);
+			if (cos(cub_degtorad(cub_fixang(rays->angle))) > 0.001)
 				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tww);
+			else if (cos(cub_degtorad(cub_fixang(rays->angle))) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->twe);
 		}
 	}
 	else if (rays->tex_index == 'D')
 		cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_door);
-	cub_rays_draw_joists(game, rays, &game->joists);
 }
 
 // Function to render the floors and ceilins
@@ -92,8 +98,12 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 		while (++rays->draw_index < SCALING)
 		{
 			cub_rays_setup_joists(rays, &game->player, joists);
-			cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
-			//cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
+			if (game->map.map[(int)(joists->ty / 32.0) * game->map.width
+					+ (int)(joists->tx / 32.0)] == 'L')
+				cub_rays_draw_floors_tex(game, rays, joists, game->tex_leave);
+			else 
+				cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
+			cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
 			joists->ty += joists->step;
 		}
 		rays->draw.x++;
@@ -103,7 +113,7 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 // Function to setup the drawing of floors and ceilins
 void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists)
 {
-	joists->dy = rays->draw_index - (640 / 2.0);
+	joists->dy = rays->draw_index - (SCALING / 2.0);
 	joists->deg = cub_degtorad(rays->angle);
 	joists->fix = cos(cub_degtorad(cub_fixang(player->angle - rays->angle)));
 	joists->tx = player->pos.x / 2 + cos(joists->deg) * 158 * 2 * 32

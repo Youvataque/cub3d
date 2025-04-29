@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:07:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:19:00 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:25:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	cub_rays_cast_vertical(t_rays *rays, t_player *player)
 			+ player->pos.y;
 		rays->offset.x = 64;
 		rays->offset.y = -rays->offset.x * rays->tangent;
+		rays->exit_dir = -1;
 	}
 	else if (cos(cub_degtorad(rays->angle)) < -0.001)
 	{
@@ -32,6 +33,7 @@ void	cub_rays_cast_vertical(t_rays *rays, t_player *player)
 			+ player->pos.y;
 		rays->offset.x = -64;
 		rays->offset.y = -rays->offset.x * rays->tangent;
+		rays->exit_dir = 1;
 	}
 	else
 	{
@@ -54,13 +56,15 @@ void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * map->width + rays->map.x;
 		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& map->map[rays->mp] > '0')
+			&& (map->map[rays->mp] == '1' || map->map[rays->mp] == 'D'))
 		{
 			dist->pos_v.x = rays->pos.x;
 			dist->pos_v.y = rays->pos.y;
 			dist->dist_v = cub_calc_dist(player->pos, dist->pos_v, rays->angle);
 			rays->dof = 20;
 			rays->tex_index_v = map->map[rays->mp];
+			if (map->map[(int)(rays->map.y * map->width + rays->map.x + rays->exit_dir)] == 'L')
+				rays->exit = 1;
 		}
 		else
 		{

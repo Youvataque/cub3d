@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 12:24:25 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:27:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	cub_init_player_position(int pos, int width, char orientation,
 	player->pos.x = ((pos % width) * 64) + 0.1;
 	player->pos.y = ((pos / width) * 64) + 0.1;
 	if (orientation == 'N')
-		player->angle = 0;
+		player->angle = 0 + 90;
 	else if (orientation == 'S')
-		player->angle = 180;
+		player->angle = 180 + 90;
 	else if (orientation == 'W')
-		player->angle = 270;
+		player->angle = 270 + 90;
 	else if (orientation == 'E')
-		player->angle = 90;
+		player->angle = 90 + 90;
 	player->delta.x = cos(player->angle) * 5;
 	player->delta.y = sin(player->angle) * 5;
 }

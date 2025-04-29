@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:59:29 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:27:28 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 		while (++rays->draw_index < rays->line_height)
 		{
 			walls->pixel = (((int)walls->ty * 32) + (int)walls->tx) * 3;
-			walls->rgb.red = texture[walls->pixel + 0] * rays->shade;
-			walls->rgb.green = texture[walls->pixel + 1] * rays-> shade;
-			walls->rgb.blue = texture[walls->pixel + 2] * rays->shade;
-			cub_draw_pixel(img, rays->draw.x, rays->draw_index + rays->draw.y,
+			walls->rgb.red = texture[walls->pixel + 0];
+			walls->rgb.green = texture[walls->pixel + 1];
+			walls->rgb.blue = texture[walls->pixel + 2];
+			cub_draw_pixel(img, rays->draw.x - 8, rays->draw_index + rays->draw.y,
 				cub_convert_glrgb(walls->rgb.red, walls->rgb.green,
 					walls->rgb.blue, 1));
 			walls->ty += walls->step;

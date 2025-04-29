@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:08:15 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:19:45 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:25:42 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 			+ player->pos.x;
 		rays->offset.y = -64;
 		rays->offset.x = -rays->offset.y * rays->tangent;
+		rays->exit_dir = 1;
 	}
 	else if (sin(cub_degtorad(rays->angle)) < -0.001)
 	{
@@ -32,6 +33,7 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 			+ player->pos.x;
 		rays->offset.y = 64;
 		rays->offset.x = -rays->offset.y * rays->tangent;
+		rays->exit_dir = -1;
 	}
 	else
 	{
@@ -54,13 +56,15 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * map->width + rays->map.x;
 		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& map->map[rays->mp] > '0')
+			&& (map->map[rays->mp] == '1' || map->map[rays->mp] == 'D'))
 		{
 			dist->pos_h.x = rays->pos.x;
 			dist->pos_h.y = rays->pos.y;
 			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
 			rays->dof = 20;
 			rays->tex_index_h = map->map[rays->mp];
+			if (map->map[(int)(rays->map.y + rays->exit_dir * map->width + rays->map.x)] == 'L')
+				rays->exit = 1;
 		}
 		else
 		{

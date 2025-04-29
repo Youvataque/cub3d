@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculation_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 15:07:51 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 19:25:22 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ float	cub_calc_dist(t_pos a, t_pos b, float angle)
 	return (cos(cub_degtorad(angle)) * (b.x - a.x)
 		- sin(cub_degtorad(angle)) * (b.y - a.y));
 }
+
+
 
 // Function to convert gl colors to rgb and rgb into colors
 int	cub_convert_glrgb(float red, float green, float blue, int mode)

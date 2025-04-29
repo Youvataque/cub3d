@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 15:06:32 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 19:26:44 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		cubval = get_map_param(av[1]);
-		bazard_test(cubval);
+		//bazard_test(cubval);
 		cub_init_manager(&game, cubval);
 		mlx_loop_hook(game.mlx, &cub_rendering_manager, &game);
 		cub_interaction_manager(&game);
