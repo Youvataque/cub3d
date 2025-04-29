@@ -1,0 +1,6 @@
+# Fichiers binaires / exécutables
+cub3D
+*.o
+*.out
+*.a
+*.log

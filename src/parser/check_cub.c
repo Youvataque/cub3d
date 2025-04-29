@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:27:25 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 12:23:47 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:07:48 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	is_map_line(char *line)
 	while (line[i])
 	{
 		if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W' || line[i] == 'D')
+			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
+			|| line[i] == 'D' || line[i] == 'F'
+			|| line[i] == 'C' || line[i] == 'L')
 			has_map_char = 1;
 		else if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (0);
