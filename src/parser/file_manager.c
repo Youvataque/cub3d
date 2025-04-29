@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:18:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:04:36 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static int	is_one_ppm(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (printf("Error: there is no .ppm at : %s\n", path), 0);
+	close(fd);
 	return (1);
 }
 
@@ -94,8 +95,8 @@ void	clean_tcubval(t_cubval *cubval)
 		free(cubval->path_n);
 	if (cubval->path_s)
 		free(cubval->path_s);
-	if (cubval->path_w)
-		free(cubval->path_w);
+	if (cubval->path_e)
+		free(cubval->path_e);
 	if (cubval->path_w)
 		free(cubval->path_w);
 	if (cubval->map_str)

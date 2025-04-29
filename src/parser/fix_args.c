@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:34:27 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 15:05:17 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ t_cubval	*fix_all(t_cubval *predat)
 	result->c = ft_strdup(predat->c);
 	result->f = ft_strdup(predat->f);
 	result->map = square_map(predat->map);
+	clean_tcubval(predat);
 	return (result);
 }
