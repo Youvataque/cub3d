@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 02:38:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:20:25 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,30 +62,30 @@ void	cub_render_texture2d(t_img_data *img, int *texture);
 void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *texture);
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
-void	cub_movement_update(t_keys *keys, t_player *player, double speed,
+void	cub_movement_update(t_keys *keys, t_player *player, float speed,
 			t_map *map);
 int		cub_handle_key_press(int key, t_game *game);
 int		cub_handle_key_release(int key, t_game *game);
 int		cub_handle_cross(t_game *game);
 	// movement_manager.c
-void	cub_movement_manager(t_player *player, int move, double speed,
+void	cub_movement_manager(t_player *player, int move, float speed,
 			t_map *map);
-void	cub_move_forward(t_player *player, double speed, t_map *map);
-void	cub_move_backward(t_player *player, double speed, t_map *map);
-void	cub_rotate_right(t_player *player, double speed);
-void	cub_rotate_left(t_player *player, double speed);
+void	cub_move_forward(t_player *player, float speed, t_map *map);
+void	cub_move_backward(t_player *player, float speed, t_map *map);
+void	cub_rotate_right(t_player *player, float speed);
+void	cub_rotate_left(t_player *player, float speed);
 	// movement_manager_2.c
-void	cub_move_right(t_player *player, double speed, t_map *map);
-void	cub_move_left(t_player *player, double speed, t_map *map);
+void	cub_move_right(t_player *player, float speed, t_map *map);
+void	cub_move_left(t_player *player, float speed, t_map *map);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
 void	cub_action_open_door(t_player *player, t_map *map);
 	// time_manager.c
 int		cub_get_time_ms(void);
 	// calculation_manager.c
-double	cub_degtorad(double degree);
-double	cub_fixang(double angle);
-double	cub_calc_dist(t_pos a, t_pos b, double angle);
-int		cub_convert_glrgb(double red, double green, double blue, int mode);
+float	cub_degtorad(float degree);
+float	cub_fixang(float angle);
+float	cub_calc_dist(t_pos a, t_pos b, float angle);
+int		cub_convert_glrgb(float red, float green, float blue, int mode);
 
 #endif

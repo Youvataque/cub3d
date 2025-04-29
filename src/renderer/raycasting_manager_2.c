@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:38:44 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:25:59 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:46:10 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 	rays->dist.dist_t *= cos(cub_degtorad(rays->fish_eye));
 	rays->line_height = (64 * SCALING) / rays->dist.dist_t;
 	game->walls.offset = 0;
-	game->walls.step = 32.0 / (double)rays->line_height;
+	game->walls.step = 32.0 / (float)rays->line_height;
 	if (rays->line_height > SCALING)
 	{
 		game->walls.offset = (rays->line_height - SCALING) / 2.0;

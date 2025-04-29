@@ -6,14 +6,14 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:56:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:22:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
 // Function to handle movements
-void	cub_movement_manager(t_player *player, int move, double speed,
+void	cub_movement_manager(t_player *player, int move, float speed,
 			t_map *map)
 {
 	if (move == MOVE_FORWARD)
@@ -31,7 +31,7 @@ void	cub_movement_manager(t_player *player, int move, double speed,
 }
 
 // Function to move forward
-void	cub_move_forward(t_player *player, double speed, t_map *map)
+void	cub_move_forward(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
@@ -52,7 +52,7 @@ void	cub_move_forward(t_player *player, double speed, t_map *map)
 }
 
 // Function to move backward
-void	cub_move_backward(t_player *player, double speed, t_map *map)
+void	cub_move_backward(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
@@ -73,18 +73,18 @@ void	cub_move_backward(t_player *player, double speed, t_map *map)
 }
 
 // Function to rotate right
-void	cub_rotate_right(t_player *player, double speed)
+void	cub_rotate_right(t_player *player, float speed)
 {
-	player->angle -= speed;
+	player->angle -= speed / 1.5;
 	player->angle = cub_fixang(player->angle);
 	player->delta.x = cos(cub_degtorad(player->angle));
 	player->delta.y = -sin(cub_degtorad(player->angle));
 }
 
 // Function to rotate left
-void	cub_rotate_left(t_player *player, double speed)
+void	cub_rotate_left(t_player *player, float speed)
 {
-	player->angle += speed;
+	player->angle += speed / 1.5;
 	player->angle = cub_fixang(player->angle);
 	player->delta.x = cos(cub_degtorad(player->angle));
 	player->delta.y = -sin(cub_degtorad(player->angle));

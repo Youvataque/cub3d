@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 02:38:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 01:51:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:54:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	cub_action_open_door(t_player *player, t_map *map)
 	t_collision	sensor;
 
 	(void)map;
-	sensor.xo = 25;
-	sensor.yo = 25;
+	sensor.xo = 30;
+	sensor.yo = 30;
 	if (player->delta.x < 0)
-		sensor.xo = -25;
+		sensor.xo = -30;
 	if (player->delta.y < 0)
-		sensor.yo = -25;
+		sensor.yo = -30;
 	sensor.ipx = (int)player->pos.x >> 6;
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;

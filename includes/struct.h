@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 02:40:39 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:20:28 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef enum e_movement
 // Structures
 typedef struct s_pos
 {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 }			t_pos;
 
 typedef struct s_rgb
@@ -67,7 +67,7 @@ typedef struct s_rgb
 typedef struct s_player
 {
 	t_pos	pos; // Player position
-	double	angle; // View angle
+	float	angle; // View angle
 	t_pos	delta; // Delta
 }			t_player;
 
@@ -82,11 +82,11 @@ typedef struct s_img_data
 
 typedef struct s_distance
 {
-	double	dist_v;
+	float	dist_v;
 	t_pos	pos_v;
-	double	dist_h;
+	float	dist_h;
 	t_pos	pos_h;
-	double	dist_t;
+	float	dist_t;
 }			t_distance;
 
 typedef struct s_keys
@@ -101,23 +101,23 @@ typedef struct s_keys
 
 typedef struct s_walls
 {
-	double	ty;
-	double	tx;
-	double	offset;
-	double	step;
+	float	ty;
+	float	tx;
+	float	offset;
+	float	step;
 	int		pixel;
 	t_rgb	rgb;
 }			t_walls;
 
 typedef struct s_joists
 {
-	double	dy;
-	double	ty;
-	double	tx;
-	double	offset;
-	double	step;
-	double	deg;
-	double	fix;
+	float	dy;
+	float	ty;
+	float	tx;
+	float	offset;
+	float	step;
+	float	deg;
+	float	fix;
 	int		pixel;
 	t_rgb	rgb;
 }			t_joists;
@@ -138,9 +138,9 @@ typedef struct s_rays
 	int			mp;
 	int			dof;
 	t_pos		pos;
-	double		angle;
+	float		angle;
 	t_pos		offset;
-	double		tangent;
+	float		tangent;
 	int			fish_eye;
 	t_distance	dist;
 	t_pos		draw;
@@ -151,7 +151,7 @@ typedef struct s_rays
 	int			tex_index_v;
 	int			tex_index_h;
 	int			color;
-	double		shade;
+	float		shade;
 }				t_rays;
 
 typedef struct s_segment
@@ -163,9 +163,9 @@ typedef struct s_segment
 
 typedef struct s_fps
 {
-	double	frame;
-	double	old_frame;
-	double	fps;
+	float	frame;
+	float	old_frame;
+	float	fps;
 }			t_fps;
 
 typedef struct s_collision

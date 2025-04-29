@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:34:43 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:15:07 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:47:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 // Function to draw the floors
 void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 {
-	//printf("COLOR FLOOR: R: %d | G: %d | B: %d\n", color.red, color.green, color.blue);
 	cub_draw_pixel(img, rays->draw.x - 8, rays->draw_index,
 		cub_convert_glrgb(color.red, color.green, color.blue, 1));
 }
@@ -43,7 +42,6 @@ void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 // Function to draw the ceilings
 void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 {
-	//printf("COLOR CEILINGS: R: %d | G: %d | B: %d\n", color.red, color.green, color.blue);
 	cub_draw_pixel(img, rays->draw.x - 8, SCALING - rays->draw_index,
 		cub_convert_glrgb(color.red, color.green, color.blue, 1));
 }

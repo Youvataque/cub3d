@@ -6,14 +6,14 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 02:34:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 02:59:04 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:20:43 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
 // Function to move left
-void cub_move_left(t_player *player, double speed, t_map *map)
+void cub_move_left(t_player *player, float speed, t_map *map)
 {
     t_collision sensor;
 
@@ -39,7 +39,7 @@ void cub_move_left(t_player *player, double speed, t_map *map)
 
 
 // Function to move right
-void cub_move_right(t_player *player, double speed, t_map *map)
+void cub_move_right(t_player *player, float speed, t_map *map)
 {
     t_collision sensor;
 

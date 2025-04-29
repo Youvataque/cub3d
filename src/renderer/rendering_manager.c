@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:15:10 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 03:46:26 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player, int *textur
 			sky->rgb.red = texture[sky->pixel + 0];
 			sky->rgb.green = texture[sky->pixel + 1];
 			sky->rgb.blue = texture[sky->pixel + 2];
-			pos.x = (pos.x * 8);
+			pos.x = (pos.x * 8) + 4;
 			pos.y *= 8;
 			cub_draw_point(img, pos, 8, cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1));
-			pos.x = (pos.x) / 8;
+			pos.x = (pos.x - 4) / 8;
 			pos.y /= 8;
 		}
 	}
@@ -111,7 +111,7 @@ void	cub_render_map2d(t_img_data *img, t_map *map, int color)
 {
 	t_pos	pos_map;
 	t_pos	pos_screen;
-	double	mp;
+	float	mp;
 
 	pos_map.y = -1;
 	while (++pos_map.y < map->width)
