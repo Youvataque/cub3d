@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 14:49:56 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:22:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	check_spawn(t_cubval *cubval)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// check if the border of map are corretly closed 
+// check if the border of map are corretly closed
 static int	checkis_closed(t_cubval *cubval, char **t_map)
 {
 	int	y;
@@ -101,17 +101,17 @@ static int	check_all(t_cubval *cubval)
 
 	result = 1;
 	if (!is_valid_rgb_format(cubval->c))
-		return (ft_printf("Error: bad RGB colors.\n"), 0);
+		return (printf("Error: bad RGB colors.\n"), 0);
 	if (!is_valid_rgb_format(cubval->f))
-		return (ft_printf("Error: bad RGB colors.\n"), 0);
+		return (printf("Error: bad RGB colors.\n"), 0);
 	if (!check_spawn(cubval))
-		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
+		return (printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
-	fill(temp, cubval->spawn, cubval->max_xy, "0NSWE ");
+	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWE ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)
-		return (ft_printf("Error: the map is not properly closed !\n"), 0);
+		return (printf("Error: the map is not properly closed !\n"), 0);
 	return (1);
 }
 
