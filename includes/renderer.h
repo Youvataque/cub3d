@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 07:48:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:41:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 
 # include "cub.h"
 
+// Functions
+	// init_manager.c
 void	cub_init_manager(t_game *game, t_cubval *cubval);
-t_map	cub_init_map(char *source, t_point max, t_player *player);
-t_rgb	cub_init_colors(char *source);
+	// init_manager_graphics.c
 int		*cub_create_textures(const char *file, int size);
+int		*cub_join_textures(int **textures, int size, int nbr);
+t_rgb	cub_init_colors(char *source);
+	// init_manager_mapping.c
+t_map	cub_init_map(char *source, t_point max, t_player *player);
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player);
-int		*cub_join_textures(int **textures, int size, int nbr);
 	// pixel_manager.c
 void	cub_draw_pixel(t_img_data *img, int x, int y, int color);
 void	cub_draw_point(t_img_data *img, t_pos pos, int size, int color);
@@ -31,32 +35,34 @@ void	cub_draw_thick_line(t_img_data *img, t_segment *segment, int size,
 void	cub_draw_square(t_img_data *img, t_pos pos, int size, int color);
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
+void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player);
+void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player);
+void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists);
+void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists);
+	// raycasting_manager_vertical.c
 void	cub_rays_cast_vertical(t_rays *rays, t_player *player);
 void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 			t_distance *dist, t_map *map);
+void	cub_rays_setup_draw_v(t_game *game, t_rays *rays);
+	// raycasting_manager_horizontal.c
 void	cub_rays_cast_horizontal(t_rays *rays, t_player *player);
 void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 			t_distance *dist, t_map *map);
-	// raycasting_manager_2.c
-void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player);
-void	cub_rays_setup_draw_v(t_game *game, t_rays *rays);
 void	cub_rays_setup_draw_h(t_game *game, t_rays *rays);
-void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player);
+	// raycasting_manager_floors.c
+void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color);
+void	cub_rays_draw_floors_tex(t_game *game, t_rays *rays, t_joists *joists,
+			int *texture);
+	// raycasting_manager_ceilings.c
+void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color);
+void	cub_rays_draw_ceilings_tex(t_game *game, t_rays *rays, t_joists *joists,
+			int *texture);
 	// raycasting_manager_walls.c
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture);
-	// raycasting_manager_joists.c
-void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists);
-void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color);
-void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color);
-void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists);
-	// raycasting_manager_joists_tex.c
-void	cub_rays_draw_floors_tex(t_game *game, t_rays *rays, t_joists *joists,
-			int *texture);
-void	cub_rays_draw_ceilings_tex(t_game *game, t_rays *rays, t_joists *joists,
-			int *texture);
 	// rendering_manager.c
 int		cub_rendering_manager(t_game *game);
+	// rendering_manager_2d.c
 void	cub_render_player2d(t_game *game, int size, int color);
 void	cub_render_map2d(t_img_data *img, t_map *map, int color);
 void	cub_render_texture2d(t_img_data *img, int *texture);
@@ -74,11 +80,11 @@ void	cub_movement_manager(t_player *player, int move, float speed,
 			t_map *map);
 void	cub_move_forward(t_player *player, float speed, t_map *map);
 void	cub_move_backward(t_player *player, float speed, t_map *map);
-void	cub_rotate_right(t_player *player, float speed);
-void	cub_rotate_left(t_player *player, float speed);
-	// movement_manager_2.c
 void	cub_move_right(t_player *player, float speed, t_map *map);
 void	cub_move_left(t_player *player, float speed, t_map *map);
+	// rotation_manager.c
+void	cub_rotate_right(t_player *player, float speed);
+void	cub_rotate_left(t_player *player, float speed);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
 void	cub_action_open_door(t_player *player, t_map *map);

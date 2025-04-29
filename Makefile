@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/29 02:37:17 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/29 08:41:41 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,16 +55,20 @@ RESET =					\033[1;0m
 SRC =					\
 						$(SRC_DIR)/main.c \
 						$(SRC_DIR)/renderer/init_manager.c \
+						$(SRC_DIR)/renderer/init_manager_graphics.c \
+						$(SRC_DIR)/renderer/init_manager_mapping.c \
 						$(SRC_DIR)/renderer/pixel_manager.c \
 						$(SRC_DIR)/renderer/raycasting_manager.c \
-						$(SRC_DIR)/renderer/raycasting_manager_2.c \
+						$(SRC_DIR)/renderer/raycasting_manager_vertical.c \
+						$(SRC_DIR)/renderer/raycasting_manager_horizontal.c \
+						$(SRC_DIR)/renderer/raycasting_manager_floors.c \
+						$(SRC_DIR)/renderer/raycasting_manager_ceilings.c \
 						$(SRC_DIR)/renderer/raycasting_manager_walls.c \
-						$(SRC_DIR)/renderer/raycasting_manager_joists.c \
-						$(SRC_DIR)/renderer/raycasting_manager_joists_tex.c \
 						$(SRC_DIR)/renderer/rendering_manager.c \
+						$(SRC_DIR)/renderer/rendering_manager_2d.c \
 						$(SRC_DIR)/renderer/interaction_manager.c \
 						$(SRC_DIR)/renderer/movement_manager.c \
-						$(SRC_DIR)/renderer/movement_manager_2.c \
+						$(SRC_DIR)/renderer/rotation_manager.c \
 						$(SRC_DIR)/renderer/action_manager.c \
 						\
 						$(SRC_DIR)/parser/check_cub.c \

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:22:55 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:58:54 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,52 @@ void	cub_move_backward(t_player *player, float speed, t_map *map)
 		player->pos.y -= player->delta.y * speed;
 }
 
-// Function to rotate right
-void	cub_rotate_right(t_player *player, float speed)
+// Function to move left
+void	cub_move_left(t_player *player, float speed, t_map *map)
 {
-	player->angle -= speed / 1.5;
-	player->angle = cub_fixang(player->angle);
-	player->delta.x = cos(cub_degtorad(player->angle));
-	player->delta.y = -sin(cub_degtorad(player->angle));
+	t_collision	sensor;
+
+	sensor.xo = player->delta.y * 20;
+	sensor.yo = -player->delta.x * 20;
+	if (sensor.xo < 0)
+		sensor.xo = -20;
+	else
+		sensor.xo = 20;
+	if (sensor.yo < 0)
+		sensor.yo = -20;
+	else
+		sensor.yo = 20;
+	sensor.ipx = (int)player->pos.x >> 6;
+	sensor.ipy = (int)player->pos.y >> 6;
+	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
+	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
+		player->pos.x += player->delta.y * speed;
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
+		player->pos.y -= player->delta.x * speed;
 }
 
-// Function to rotate left
-void	cub_rotate_left(t_player *player, float speed)
+// Function to move right
+void	cub_move_right(t_player *player, float speed, t_map *map)
 {
-	player->angle += speed / 1.5;
-	player->angle = cub_fixang(player->angle);
-	player->delta.x = cos(cub_degtorad(player->angle));
-	player->delta.y = -sin(cub_degtorad(player->angle));
+	t_collision	sensor;
+
+	sensor.xo = -player->delta.y * 20;
+	sensor.yo = player->delta.x * 20;
+	if (sensor.xo < 0)
+		sensor.xo = -20;
+	else
+		sensor.xo = 20;
+	if (sensor.yo < 0)
+		sensor.yo = -20;
+	else
+		sensor.yo = 20;
+	sensor.ipx = (int)player->pos.x >> 6;
+	sensor.ipy = (int)player->pos.y >> 6;
+	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
+	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
+		player->pos.x -= player->delta.y * speed;
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
+		player->pos.y += player->delta.x * speed;
 }

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 07:46:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:54:13 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,10 +193,10 @@ typedef struct s_game
 	void		*win; // Pointer to window connection
 	int			*tex_sky;
 	int			*tex_sky_layers[3];
-	int			*tex_wall_north;
-	int			*tex_wall_south;
-	int			*tex_wall_east;
-	int			*tex_wall_west;
+	int			*twn;
+	int			*tws;
+	int			*twe;
+	int			*tww;
 	int			*tex_door;
 	t_rgb		color_floor;
 	t_rgb		color_ceiling;

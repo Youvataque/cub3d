@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:12:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 08:57:35 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,120 +31,83 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 	}
 }
 
-// Function to cast rays on vertical lines
-void	cub_rays_cast_vertical(t_rays *rays, t_player *player)
+// Function to set the scene in 3d
+void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 {
-	rays->dof = 0;
-	rays->tangent = tan(cub_degtorad(rays->angle));
-	if (cos(cub_degtorad(rays->angle)) > 0.001)
+	rays->shade = 1;
+	cub_rays_setup_draw_h(game, rays);
+	if (rays->dist.dist_v < rays->dist.dist_h)
+		cub_rays_setup_draw_v(game, rays);
+	rays->fish_eye = cub_fixang(player->angle - rays->angle);
+	rays->dist.dist_t *= cos(cub_degtorad(rays->fish_eye));
+	rays->line_height = (64 * SCALING) / rays->dist.dist_t;
+	game->walls.offset = 0;
+	game->walls.step = 32.0 / (float)rays->line_height;
+	if (rays->line_height > SCALING)
 	{
-		rays->pos.x = (((int)player->pos.x >> 6) << 6) + 64;
-		rays->pos.y = (player->pos.x - rays->pos.x) * rays->tangent
-			+ player->pos.y;
-		rays->offset.x = 64;
-		rays->offset.y = -rays->offset.x * rays->tangent;
+		game->walls.offset = (rays->line_height - SCALING) / 2.0;
+		rays->line_height = SCALING;
 	}
-	else if (cos(cub_degtorad(rays->angle)) < -0.001)
+	rays->line_offset = (SCALING / 2) - (rays->line_height >> 1);
+	rays->draw.x = rays->index * 8;
+	rays->draw.y = rays->line_offset;
+}
+
+// Function to draw the scene
+void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
+{
+	(void)player;
+	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
+	if (rays->tex_index == '1')
 	{
-		rays->pos.x = (((int)player->pos.x >> 6) << 6) - 0.0001;
-		rays->pos.y = (player->pos.x - rays->pos.x) * rays->tangent
-			+ player->pos.y;
-		rays->offset.x = -64;
-		rays->offset.y = -rays->offset.x * rays->tangent;
+		if (rays->dist.dist_h < rays->dist.dist_v)
+		{
+			if (sin(cub_degtorad(rays->angle)) > 0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tws);
+			else if (sin(cub_degtorad(rays->angle)) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->twn);
+		}
+		else if (rays->dist.dist_v < rays->dist.dist_h)
+		{
+			if (cos(cub_degtorad(rays->angle)) > 0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->twe);
+			else if (cos(cub_degtorad(rays->angle)) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tww);
+		}
 	}
-	else
+	else if (rays->tex_index == 'D')
+		cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_door);
+	cub_rays_draw_joists(game, rays, &game->joists);
+}
+
+// Function to render the floors and ceilins
+void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
+{
+	int		i;
+
+	i = -1;
+	while (++i < 8)
 	{
-		rays->pos.x = player->pos.x;
-		rays->pos.y = player->pos.y;
-		rays->dof = 20;
+		rays->draw_index = (rays->line_offset + rays->line_height) - 1;
+		while (++rays->draw_index < SCALING)
+		{
+			cub_rays_setup_joists(rays, &game->player, joists);
+			cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
+			//cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
+			joists->ty += joists->step;
+		}
+		rays->draw.x++;
 	}
 }
 
-// Function to detect if a vertical line was hit
-void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
-			t_distance *dist, t_map *map)
+// Function to setup the drawing of floors and ceilins
+void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists)
 {
-	dist->dist_v = 1000000;
-	dist->pos_v.x = rays->pos.x;
-	dist->pos_v.y = rays->pos.y;
-	while (rays->dof < 20)
-	{
-		rays->map.x = (int)(rays->pos.x) >> 6;
-		rays->map.y = (int)(rays->pos.y) >> 6;
-		rays->mp = rays->map.y * map->width + rays->map.x;
-		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& map->map[rays->mp] > '0')
-		{
-			dist->pos_v.x = rays->pos.x;
-			dist->pos_v.y = rays->pos.y;
-			dist->dist_v = cub_calc_dist(player->pos, dist->pos_v, rays->angle);
-			rays->dof = 20;
-			rays->tex_index_v = map->map[rays->mp];
-		}
-		else
-		{
-			rays->pos.x += rays->offset.x;
-			rays->pos.y += rays->offset.y;
-			rays->dof++;
-		}
-	}
-}
-
-// Function to cast rays on horizontal lines
-void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
-{
-	rays->dof = 0;
-	rays->tangent = 1.0 / tan(cub_degtorad(rays->angle));
-	if (sin(cub_degtorad(rays->angle)) > 0.001)
-	{
-		rays->pos.y = (((int)player->pos.y >> 6) << 6) - 0.0001;
-		rays->pos.x = (player->pos.y - rays->pos.y) * rays->tangent
-			+ player->pos.x;
-		rays->offset.y = -64;
-		rays->offset.x = -rays->offset.y * rays->tangent;
-	}
-	else if (sin(cub_degtorad(rays->angle)) < -0.001)
-	{
-		rays->pos.y = (((int)player->pos.y >> 6) << 6) + 64;
-		rays->pos.x = (player->pos.y - rays->pos.y) * rays->tangent
-			+ player->pos.x;
-		rays->offset.y = 64;
-		rays->offset.x = -rays->offset.y * rays->tangent;
-	}
-	else
-	{
-		rays->pos.x = player->pos.x;
-		rays->pos.y = player->pos.y;
-		rays->dof = 20;
-	}
-}
-
-// Function to detect horizontal lines
-void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
-			t_distance *dist, t_map *map)
-{
-	dist->dist_h = 1000000;
-	dist->pos_h.x = rays->pos.x;
-	dist->pos_h.y = rays->pos.y;
-	while (rays->dof < 20)
-	{
-		rays->map.x = (int)(rays->pos.x) >> 6;
-		rays->map.y = (int)(rays->pos.y) >> 6;
-		rays->mp = rays->map.y * map->width + rays->map.x;
-		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& map->map[rays->mp] > '0')
-		{
-			dist->pos_h.x = rays->pos.x;
-			dist->pos_h.y = rays->pos.y;
-			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
-			rays->dof = 20;
-			rays->tex_index_h = map->map[rays->mp];
-		}
-		else
-		{
-			rays->pos.x += rays->offset.x;
-			rays->pos.y += rays->offset.y;
-			rays->dof++;
-		}
-	}
+	joists->dy = rays->draw_index - (640 / 2.0);
+	joists->deg = cub_degtorad(rays->angle);
+	joists->fix = cos(cub_degtorad(cub_fixang(player->angle - rays->angle)));
+	joists->tx = player->pos.x / 2 + cos(joists->deg) * 158 * 2 * 32
+		/ joists->dy / joists->fix;
+	joists->ty = player->pos.y / 2 - sin(joists->deg) * 158 * 2 * 32
+		/ joists->dy / joists->fix;
 }
