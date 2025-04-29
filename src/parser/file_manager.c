@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:07:57 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:18:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	are_all_ppm(t_cubval *cubval)
 		return (0);
 	if (!is_one_ppm(cubval->path_s))
 		return (0);
-	if (!is_one_ppm(cubval->path_o))
+	if (!is_one_ppm(cubval->path_w))
 		return (0);
 	if (!is_one_ppm(cubval->path_w))
 		return (0);
@@ -94,8 +94,8 @@ void	clean_tcubval(t_cubval *cubval)
 		free(cubval->path_n);
 	if (cubval->path_s)
 		free(cubval->path_s);
-	if (cubval->path_o)
-		free(cubval->path_o);
+	if (cubval->path_w)
+		free(cubval->path_w);
 	if (cubval->path_w)
 		free(cubval->path_w);
 	if (cubval->map_str)
