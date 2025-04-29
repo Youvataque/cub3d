@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:45:27 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:27:43 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	cub_rendering_manager(t_game *game)
 	{
 		//cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
 		cub_raycasting_manager(game, &game->rays, &game->player);
-		//cub_render_map2d(&game->img, &game->map, cub_convert_glrgb(0, 1, 0, 0));
-		//cub_render_player2d(game, 6, cub_convert_glrgb(1, 0.843, 0, 0));
+		cub_render_map2d(game, &game->map, &game->map_const, cub_convert_glrgb(255, 255, 255, 1));
 	}
 	else if (game->status == 2 || game->status == 3)
 		cub_render_screens(game, &game->screen, game->tex_screens, game->status);

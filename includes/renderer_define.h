@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:48:58 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:38:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@
 # endif
 # define DR						0.01745329 // one degree to radian
 # define FOV					120
-# define MAP_BLOCK				24
+	// Minimap
+# define MINI_BLOCK				12
+# define MINI_PLAYER			6
+
+
 # define SCALING				640
 
 # define RAYS_STARTING_ANGLE	30

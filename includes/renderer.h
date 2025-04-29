@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:45:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ void	cub_draw_line(t_img_data *img, t_pos start, t_pos end, int color);
 void	cub_draw_thick_line(t_img_data *img, t_segment *segment, int size,
 			int color);
 void	cub_draw_square(t_img_data *img, t_pos pos, int size, int color);
+void 	cub_draw_filled_square(t_img_data *img, t_pos pos, int size, int color);
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player);
-void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player);
+void	cub_rays_draw(t_game *game, t_rays *rays);
 void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists);
 void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists);
 	// raycasting_manager_vertical.c
@@ -65,8 +66,9 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 int		cub_rendering_manager(t_game *game);
 void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status);
 	// rendering_manager_2d.c
-void	cub_render_player2d(t_game *game, int size, int color);
-void	cub_render_map2d(t_img_data *img, t_map *map, int color);
+void	cub_render_player2d(t_game *game, t_pos center, int radius, int color);
+void	cub_render_map2d(t_game *game, t_map *map, t_map *map_const, int color);
+void	cub_draw_circle_outline(t_img_data *img, t_pos center, int radius, int color);
 void	cub_render_texture2d(t_img_data *img, int *texture);
 void	cub_render_sky2d(t_img_data *img, t_sky *sky, t_player *player,
 			int *texture);

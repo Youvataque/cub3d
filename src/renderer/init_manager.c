@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:33:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:25:53 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	cub_init_manager(t_game *game, t_cubval *cubval)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
 	game->map = cub_init_map(cubval->map_str, cubval->max_xy, &game->player);
+	game->map_const = cub_init_map(cubval->map_str, cubval->max_xy, &game->player);
 	game->twn = cub_create_textures(cubval->path_n, TEX_SIZE);
 	game->tws = cub_create_textures(cubval->path_s, TEX_SIZE);
 	game->twe = cub_create_textures(cubval->path_e, TEX_SIZE);

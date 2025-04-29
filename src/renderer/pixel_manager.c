@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:58:22 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:43:05 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,19 @@ void	cub_draw_square(t_img_data *img, t_pos pos, int size, int color)
 	while (++i < size)
 		cub_draw_pixel(img, pos.x + i, pos.y + size, color);
 }
+
+// Function to draw a filled square
+void cub_draw_filled_square(t_img_data *img, t_pos pos, int size, int color)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (++y < size)
+	{
+		x = -1;
+		while (++x < size)
+			cub_draw_pixel(img, pos.x + x, pos.y + y, color);
+	}
+}
+

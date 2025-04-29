@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:29 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:22:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ typedef struct s_game
 	t_sky		sky;
 	t_screen	screen;
 	t_map		map;
+	t_map		map_const;
 }				t_game;
 
 #endif

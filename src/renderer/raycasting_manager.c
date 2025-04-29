@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 20:36:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:48:32 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:47:18 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player)
 		cub_rays_cast_horizontal(rays, player);
 		cub_rays_detect_horizontal(rays, player, &rays->dist, &game->map);
 		cub_rays_setup_draw(game, rays, player);
-		cub_rays_draw(game, rays, player);
+		cub_rays_draw(game, rays);
 		rays->angle = cub_fixang(rays->angle - RAYS_SPACING);
 	}
 }
@@ -56,10 +56,8 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 }
 
 // Function to draw the scene
-void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
+void	cub_rays_draw(t_game *game, t_rays *rays)
 {
-	(void)player;
-	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
 	cub_rays_draw_joists(game, rays, &game->joists);
 	if (rays->tex_index == '1')
 	{
@@ -103,7 +101,7 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 				cub_rays_draw_floors_tex(game, rays, joists, game->tex_leave);
 			else 
 				cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
-			cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
+			//cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
 			joists->ty += joists->step;
 		}
 		rays->draw.x++;

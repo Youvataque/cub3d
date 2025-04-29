@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:07:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:52:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:33:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	cub_rays_setup_draw_v(t_game *game, t_rays *rays)
 	rays->dist.dist_t = rays->dist.dist_v;
 	rays->pos.x = rays->dist.pos_v.x;
 	rays->pos.y = rays->dist.pos_v.y;
-	rays->color = cub_convert_glrgb(0, 0.6, 0, 0);
+	rays->color = cub_convert_glrgb(0.502, 0, 0.502, 0);
 	game->walls.tx = (int)(rays->pos.y / 2) % 32;
 	if (rays->angle > 90 && rays->angle < 270)
 		game->walls.tx = 31 - game->walls.tx;
