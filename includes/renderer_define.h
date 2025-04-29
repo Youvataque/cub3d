@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 12:04:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:06:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define KEY_D					100
 
 // Textures
+# define TEX_SIZE				3072 // 32 * 32 * 3
 	// DOORS
 # define DOOR					"./textures/Doors/Door.ppm"
 	// SKY
@@ -62,6 +63,7 @@
 # define SKY_LAYERS				3
 # define SKY_WIDTH				576
 # define SKY_HEIGHT				324
+# define SKY_SIZE				559872 // SKY_WIDTH * SKY_HEIGTH * 3
 # define SKY_OFFSET				2 // offset
 # define SKY_OFFSET_PLUS		1 // offset / 2
 # define SKY_OFFSET_SCREEN		8 // offset screen 4 * offset
@@ -69,6 +71,9 @@
 # define SCREEN_START			"./textures/Screens/Start.ppm"
 # define SCREEN_LOSE			"./textures/Screens/Lose.ppm"
 # define SCREEN_WIN				"./textures/Screens/Win.ppm"
+# define SCREEN_TEX_WIDTH		1920
+# define SCREEN_TEX_HEIGHT		1080
+# define SCREEN_TEX_SIZE		6220800 // SCREEN_TEX_WIDTH * SCREEN_TEX_HEIGHT * 3
 	// FOE
 
 
