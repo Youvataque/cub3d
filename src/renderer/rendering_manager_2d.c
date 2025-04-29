@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:03:53 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:57:13 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:05:39 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	cub_render_sky2d_layers(t_img_data *img, t_sky *sky, t_pos pos,
 	sky->rgb.red = texture[sky->pixel + 0];
 	sky->rgb.green = texture[sky->pixel + 1];
 	sky->rgb.blue = texture[sky->pixel + 2];
-	pos.x = (pos.x * 4) + 2;
-	pos.y = (pos.y * 4) - SCREEN_HEIGHT / 4;
+	pos.x = (pos.x * SKY_OFFSET) + SKY_OFFSET_PLUS;
+	pos.y = (pos.y * SKY_OFFSET) - SCREEN_HEIGHT / SKY_OFFSET_SCREEN;
 	if (cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1)
 		!= cub_convert_glrgb(255, 0, 255, 1))
-		cub_draw_point(img, pos, 4,
+		cub_draw_point(img, pos, SKY_OFFSET,
 			cub_convert_glrgb(sky->rgb.red, sky->rgb.green, sky->rgb.blue, 1));
-	pos.x = (pos.x - 2) / 4;
-	pos.y = (pos.y + SCREEN_HEIGHT / 4) / 4;
+	pos.x = (pos.x - SKY_OFFSET_PLUS) / SKY_OFFSET;
+	pos.y = (pos.y + SCREEN_HEIGHT / SKY_OFFSET_SCREEN) / SKY_OFFSET;
 }
 
 // Function to render textures in 2D

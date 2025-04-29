@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 09:09:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:44:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture);
 	// rendering_manager.c
 int		cub_rendering_manager(t_game *game);
+void	cub_render_screens(t_game *game, t_screen *screen, int *texture, int status);
 	// rendering_manager_2d.c
 void	cub_render_player2d(t_game *game, int size, int color);
 void	cub_render_map2d(t_img_data *img, t_map *map, int color);

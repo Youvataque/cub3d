@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 09:09:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:04:18 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 # define RENDERER_DEFINE_H
 
 // Macros
+	// MATH DATA
 # ifndef M_PI
 #  define M_PI					3.14159265358979323846
 # endif
-
 # define DR						0.01745329 // one degree to radian
-# define FOV					240
-
+# define FOV					120
 # define MAP_BLOCK				24
+# define SCALING				640
+# define RAYS_SPACING			0.5
 
-# define SCREEN_WIDTH			1920
-# define SCREEN_HEIGHT			1080
+# define SPEED					0.15
+	// WINDOW DATA
+# define SCREEN_WIDTH			960
+# define SCREEN_HEIGHT			640
 
-# define SCALING                1080
-# define RAYS_SPACING           0.25
-
-# define SPEED                  0.15
-
-// Colors
+// Printf Colors
 # define BLACK					"\033[0;30m"
 # define RED					"\033[0;31m"
 # define GREEN					"\033[0;32m"
@@ -42,36 +40,6 @@
 # define WHITE					"\033[0;37m"
 # define RESET					"\033[0;0m"
 
-// Graphics Colors
-# define RGB_BLACK				0x000000
-
-# define RGB_WHITE				0xFFFFFF
-# define RGB_GHOST_WHITE		0xF8F8FF
-
-# define RGB_RED				0xFF0000
-# define RGB_CRIMSON			0x990000
-
-# define RGB_GREEN				0x00FF00
-
-# define RGB_BLUE				0x0000FF
-
-# define RGB_YELLOW				0xFF0000
-
-# define RGB_CYAN				0x00FFFF
-
-# define RGB_MAGENTA			0xFF00FF
-
-# define RGB_VERY_DARK_GRAY 	0x0A0A0A
-# define RGB_GRAY				0x808080
-# define RGB_VERY_LIGHT_GRAY	0xE5E5E5
-# define RGB_LIGHT_GRAY			0xCCCCCC
-
-# define RGB_ORANGE				0xFFA500
-
-# define RGB_PINK				0xFFC0CB
-
-# define RGB_PURPLE				0x800080
-
 // Keycodes
 # define KEY_ESC				65307
 # define KEY_W					122
@@ -79,20 +47,29 @@
 # define KEY_S					115
 # define KEY_ARROW_RIGHT		65363
 # define KEY_E					101
-# define KEY_A                  113
-# define KEY_D                  100
+# define KEY_A					113
+# define KEY_D					100
 
 // Textures
-# define DOOR					"./textures/Door.ppm"
-
-# define WALL                   "./textures/Wall.ppm"
-
-# define SKY                    "./textures/Sky/Sky.ppm"
+	// DOORS
+# define DOOR					"./textures/Doors/Door.ppm"
+	// SKY
+# define SKY					"./textures/Sky/Sky.ppm"
 # define SKY_MOON				"./textures/Sky/Sky_Moon.ppm"
 # define SKY_CLOUDS				"./textures/Sky/Sky_Clouds.ppm"
 # define SKY_BACKGROUND			"./textures/Sky/Sky_Background.ppm"
+	// SKY MATH
 # define SKY_LAYERS				3
-# define SKY_WIDTH              576
-# define SKY_HEIGHT             324
+# define SKY_WIDTH				576
+# define SKY_HEIGHT				324
+# define SKY_OFFSET				2 // offset
+# define SKY_OFFSET_PLUS		1 // offset / 2
+# define SKY_OFFSET_SCREEN		8 // offset screen 4 * offset
+	// SCREENS
+# define SCREEN_START			"./textures/Screens/Start.ppm"
+# define SCREEN_LOSE			"./textures/Screens/Lose.ppm"
+# define SCREEN_WIN				"./textures/Screens/Win.ppm"
+	// FOE
+
 
 #endif

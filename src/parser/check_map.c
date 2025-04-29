@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 01:59:45 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:22:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static int	check_all(t_cubval *cubval)
 	if (!check_spawn(cubval))
 		return (printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
-	fill(temp, cubval->spawn, cubval->max_xy, "0NSWE ");
+	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWE ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)

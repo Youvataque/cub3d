@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:54:50 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:43:22 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ void	cub_init_manager(t_game *game, t_cubval *cubval)
 	game->tex_sky_layers[2] = cub_create_textures(SKY_CLOUDS, (576 * 324) * 3);
 	game->tex_sky = cub_join_textures(game->tex_sky_layers, (576 * 324) * 3,
 			SKY_LAYERS);
+	game->tex_screens_all[0] = cub_create_textures(SCREEN_START, (1920 * 1080) * 3);
+	game->tex_screens_all[1] = cub_create_textures(SCREEN_LOSE, (1920 * 1080) * 3);
+	game->tex_screens_all[2] = cub_create_textures(SCREEN_WIN, (1920 * 1080) * 3);
+	game->tex_screens = cub_join_textures(game->tex_screens_all, (1920 * 1080) * 3, 3);
+	game->status = 1;
+	game->timer = 0;
+	game->fps.fps = 0;
+	game->screen.fade = 0;
+	game->fps.frame = cub_get_time_ms();
 	game->color_floor = cub_init_colors(cubval->f);
 	game->color_ceiling = cub_init_colors(cubval->c);
 }

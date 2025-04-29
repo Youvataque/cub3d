@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 08:54:13 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:39:38 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,16 @@ typedef struct s_sky
 	t_rgb	rgb;
 }			t_sky;
 
+typedef struct s_screen
+{
+	int		sx;
+	int		sy;
+	int		offset;
+	int		pixel;
+	int		fade;
+	t_rgb	rgb;
+}			t_screen;
+
 typedef struct s_rays
 {
 	int			index;
@@ -193,6 +203,10 @@ typedef struct s_game
 	void		*win; // Pointer to window connection
 	int			*tex_sky;
 	int			*tex_sky_layers[3];
+	int			*tex_screens_all[3];
+	int			*tex_screens;
+	int			status;
+	int			timer;
 	int			*twn;
 	int			*tws;
 	int			*twe;
@@ -208,6 +222,7 @@ typedef struct s_game
 	t_walls		walls;
 	t_joists	joists;
 	t_sky		sky;
+	t_screen	screen;
 	t_map		map;
 }				t_game;
 

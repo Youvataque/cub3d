@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:52:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:24:25 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ t_map	cub_init_map(char *source, t_point max, t_player *player)
 	i = -1;
 	while (++i < (max.x * max.y))
 	{
-		if (source[i] == ' ')
-			dest.map[i] = '1';
-		else if (source[i] == 'N' || source[i] == 'S'
+		if (source[i] == 'N' || source[i] == 'S'
 			|| source[i] == 'W' || source[i] == 'E')
 		{
 			cub_init_player_position(i, max.x, source[i], player);
@@ -36,8 +34,8 @@ t_map	cub_init_map(char *source, t_point max, t_player *player)
 		}
 		else
 			dest.map[i] = source[i];
-		if (i == 5 * max.x + 26)
-			dest.map[i] = 'D';
+		// if (i == 5 * max.x + 26)
+		// 	dest.map[i] = 'D';
 	}
 	dest.map[i] = '\0';
 	return (dest);
