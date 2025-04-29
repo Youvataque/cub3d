@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interaction_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:33:56 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:29:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cub_interaction_manager(t_game *game)
 
 // Function to update movement of the player
 void	cub_movement_update(t_keys *keys, t_player *player, double speed,
-			char *map)
+			t_map *map)
 {
 	if (keys->w == 1)
 		cub_movement_manager(player, MOVE_FORWARD, speed, map);
@@ -48,7 +48,7 @@ int	cub_handle_key_press(int key, t_game *game)
 	else if (key == KEY_ARROW_RIGHT)
 		game->keys.d = 1;
 	else if (key == KEY_E)
-		cub_action_manager(OPEN_DOOR, &game->player, game->map_walls);
+		cub_action_manager(OPEN_DOOR, &game->player, &game->map);
 	return (0);
 }
 

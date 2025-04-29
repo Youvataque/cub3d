@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculation_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:46:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:11:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	cub_convert_glrgb(double red, double green, double blue, int mode)
 
 	if (mode == 0)
 	{
-	r = (int)(red * 255.0);
-	g = (int)(green * 255.0);
-	b = (int)(blue * 255.0);
-	return ((r << 16) | (g << 8) | b);
+		r = (int)(red * 255.0);
+		g = (int)(green * 255.0);
+		b = (int)(blue * 255.0);
+		return ((r << 16) | (g << 8) | b);
 	}
 	return (((int)red << 16) | ((int)green << 8) | (int)blue);
 }

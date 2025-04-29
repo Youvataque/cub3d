@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 15:41:26 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:58:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	clean_tcubval(t_cubval *cubval)
 		free(cubval->path_n);
 	if (cubval->path_s)
 		free(cubval->path_s);
-	if (cubval->path_o)
-		free(cubval->path_o);
+	if (cubval->path_e)
+		free(cubval->path_e);
 	if (cubval->path_w)
 		free(cubval->path_w);
 	if (cubval->map_str)

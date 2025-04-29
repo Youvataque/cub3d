@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 15:37:19 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 20:14:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_cubval
 	char	*path_n;
 	char	*path_s;
 	char	*path_w;
-	char	*path_o;
+	char	*path_e;
 	char	*f;
 	char	*c;
 	char	**map;
@@ -176,13 +176,25 @@ typedef struct s_collision
 	int	ipy_minus_yo;
 }		t_collision;
 
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	char	*map;
+}			t_map;
+
 typedef struct s_game
 {
 	void		*mlx; // Pointer to mlx connection to server
 	void		*win; // Pointer to window connection
-	int			*all_textures;
-	int			**textures;
 	int			*tex_sky;
+	int			*tex_wall_north;
+	int			*tex_wall_south;
+	int			*tex_wall_east;
+	int			*tex_wall_west;
+	int			*tex_door;
+	t_rgb		color_floor;
+	t_rgb		color_ceiling;
 	t_player	player; // player
 	t_img_data	img; // image
 	t_keys		keys; // keys
@@ -191,9 +203,7 @@ typedef struct s_game
 	t_walls		walls;
 	t_joists	joists;
 	t_sky		sky;
-	char		*map_walls; // Map of walls
-	char		*map_floors; // Map of floors
-	char		*map_ceilings; // Map of Ceilings
+	t_map		map;
 }				t_game;
 
 #endif

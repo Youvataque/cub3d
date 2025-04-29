@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:54:31 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:05:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
-
-// Function to print a map
-void	cub_print_map(const char *map)
-{
-	int	i;
-	int	div;
-
-	i = -1;
-	div = 1;
-	while (++i < MAP_WIDTH * MAP_HEIGHT)
-	{
-		if (i / div == MAP_WIDTH)
-		{
-			printf("\n");
-			div++;
-		}
-		printf("%c", map[i]);
-	}
-}
-
 
 // Function to init all
 void	cub_init_manager(t_game *game, t_cubval *cubval)
@@ -38,90 +18,92 @@ void	cub_init_manager(t_game *game, t_cubval *cubval)
 	ft_memset((void *)game, 0, sizeof(t_game));
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
-	game->player.pos.x = 300;
-	game->player.pos.y = 300;
-	game->player.delta.x = cos(game->player.angle) * 5;
-	game->player.delta.y = sin(game->player.angle) * 5;
-	game->map_walls = cubval->map_str;
-	game->map_ceilings = cubval->map_str;
-	game->map_floors = cubval->map_str;
-	game->textures = (int **)malloc(5 * sizeof(int *));
-	if (!game->textures)
-		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->textures[0] = cub_create_textures(cubval->path_n, (32 * 32) * 3);
-	game->textures[1] = cub_create_textures(cubval->path_o, (32 * 32) * 3);
-	game->textures[2] = cub_create_textures(cubval->path_s, (32 * 32) * 3);
-	game->textures[3] = cub_create_textures(DOOR, (32 * 32) * 3);
-	game->textures[4] = cub_create_textures(cubval->path_w, (32 * 32) * 3);
-	game->all_textures = cub_join_textures(game->textures, (32 * 32) * 3, 5);
+	game->map = cub_init_map(cubval->map_str, cubval->max_xy, &game->player);
+	game->tex_wall_north = cub_create_textures(cubval->path_n, (32 * 32) * 3);
+	game->tex_wall_south = cub_create_textures(cubval->path_s, (32 * 32) * 3);
+	game->tex_wall_east = cub_create_textures(cubval->path_e, (32 * 32) * 3);
+	game->tex_wall_west = cub_create_textures(cubval->path_w, (32 * 32) * 3);
+	game->tex_door = cub_create_textures(DOOR, (32 * 32) * 3);
 	game->tex_sky = cub_create_textures(SKY, (120 * 80) * 3);
-	// printf("========== MAP WALLS ==========\n\n");
-	// cub_print_map(game->map_walls);
-	// printf("\n\n========== MAP FLOORS ==========\n\n");
-	// cub_print_map(game->map_floors);
-	// printf("\n\n========== MAP CEILINGS ==========\n\n");
-	// cub_print_map(game->map_ceilings);
-	// exit(0);
+	game->color_floor = cub_init_colors(cubval->f);
+	game->color_ceiling = cub_init_colors(cubval->c);
 }
 
-// Function to extract a map
-void	cub_extract_map(const char *file, char *map)
+// Function to init colors
+t_rgb	cub_init_colors(char *source)
 {
-	char	*line;
-	int		fd;
+	t_rgb	dest;
 	int		i;
-	int		m;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return ((void)write(2, RED"Couldn't open file\n"RESET, 20));
-	m = -1;
-	while (1)
-	{
-		i = -1;
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		while (line && line[++i])
-		{
-			if (line[i] != '\n')
-				map[++m] = line[i];
-		}
-		free(line);
-	}
-	map[++m] = '\0';
-	close(fd);
+	i = -1;
+	dest.red = 0;
+	dest.green = 0;
+	dest.blue = 0;
+	while (source[++i] && source[i] != ',')
+		dest.red = dest.red * 10 + source[i] - '0';
+	while (source[++i] && source[i] != ',')
+		dest.green = dest.green * 10 + source[i] - '0';
+	while (source[++i] && source[i] != ',')
+		dest.blue = dest.blue * 10 + source[i] - '0';
+	return (dest);
 }
 
-// Function to join all textures in one
-int	*cub_join_textures(int **textures, int size, int nbr)
+// Function to init a map
+t_map	cub_init_map(char *source, t_point max, t_player *player)
 {
-	int	*joined;
-	int	i;
-	int	j;
-	int	k;
+	t_map	dest;
+	int		i;
 
-	joined = (int *)malloc((size * nbr) * sizeof(int));
-	if (!joined)
-		return (write(2, RED"Failed to allocate memory\n"RESET, 27), textures[0]);
-	j = -1;
-	k = -1;
-	while (++j < nbr)
+	(void)player;
+	dest.width = max.x;
+	dest.height = max.y;
+	dest.map = (char *)malloc(((max.x * max.y) + 1) * sizeof(char));
+	if (!dest.map)
+		return (write(2, RED"Failed to allocate memory\n"RESET, 27), dest);
+	i = -1;
+	while (++i < (max.x * max.y))
 	{
-		i = -1;
-		while (++i < size)
+		if (source[i] == ' ')
+			dest.map[i] = '1';
+		else if (source[i] == 'N' || source[i] == 'S' 
+			|| source[i] == 'W' || source[i] == 'E')
 		{
-			joined[++k] = textures[j][i];
+			cub_init_player_position(i, max.x, source[i], player);
+			dest.map[i] = '0';
 		}
+		else
+			dest.map[i] = source[i];
+		if (i == 5 * max.x + 26)
+			dest.map[i] = 'D';
 	}
-	return (joined);
+	dest.map[i] = '\0';
+	return (dest);
+}
+
+// Function to init the player position
+void	cub_init_player_position(int pos, int width, char orientation, t_player *player)
+{
+	player->pos.x = ((pos % width) * 64) + 0.1;
+	player->pos.y = ((pos / width) * 64) + 0.1;
+	if (orientation == 'N')
+		player->angle = 0;
+	else if (orientation == 'S')
+		player->angle = 180;
+	else if (orientation == 'W')
+		player->angle = 270;
+	else if (orientation == 'E')
+		player->angle = 90;
+	player->delta.x = cos(player->angle) * 5;
+	player->delta.y = sin(player->angle) * 5;
 }
 
 // Function to create al textures
 int *cub_create_textures(const char *file, int size)
 {
-	int *texture;
-	int	fd;
+	int 	*texture;
+	int		fd;
+	char	*line;
+	int		t;
 
 	texture = (int *)malloc(size * sizeof(int));
 	if (!texture)
@@ -129,23 +111,15 @@ int *cub_create_textures(const char *file, int size)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (write(2, RED"Couldn't open file\n"RESET, 20), texture);
-	cub_extract_texture(fd, &(texture));
-	close(fd);
-	return (texture);
-}
-
-void	cub_extract_texture(int fd, int **texture)
-{
-	char	*line;
-	int		t;
-
 	t = -1;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		(*texture)[++t] = ft_atoi(line);
+		texture[++t] = ft_atoi(line);
 		free(line);
 	}
+	close(fd);
+	return (texture);
 }

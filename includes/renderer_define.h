@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer_define.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:32:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:28:52 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define DR						0.01745329 // one degree to radian
 # define FOV					120
 
-# define MAP_WIDTH				8
-# define MAP_HEIGHT				8
 # define MAP_BLOCK				24
 
 # define SCREEN_WIDTH			960
@@ -79,7 +77,9 @@
 
 // Keycodes
 # define KEY_ESC				65307
-# define KEY_W					119
+# define KEY_W					122
+    // 42
+// # define KEY_W					119
 # define KEY_ARROW_LEFT			65361
 # define KEY_S					115
 # define KEY_ARROW_RIGHT		65363

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 16:14:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:08:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void bazard_test(t_cubval *p)
 	printf("%s\n", p->path_n ? p->path_n : "(null)");
 	printf("%s\n", p->path_s ? p->path_s : "(null)");
 	printf("%s\n", p->path_w ? p->path_w : "(null)");
-	printf("%s\n", p->path_o ? p->path_o : "(null)");
+	printf("%s\n", p->path_e ? p->path_e : "(null)");
 
 	printf("\nCouleurs :\n");
 	printf("%s\n", p->f ? p->f : "(null)");
 	printf("%s\n", p->c ? p->c : "(null)");
 
-	printf("\n Map :\n");
+	printf("\nMap :\n");
 	if (!p->map)
 		printf("  (null)\n");
 	else

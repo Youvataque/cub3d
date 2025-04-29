@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:38:44 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:34:12 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:25:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 {
 	rays->shade = 1;
+	cub_rays_setup_draw_h(game, rays);
 	if (rays->dist.dist_v < rays->dist.dist_h)
 		cub_rays_setup_draw_v(game, rays);
-	else if (rays->dist.dist_h < rays->dist.dist_v)
-		cub_rays_setup_draw_h(game, rays);
 	rays->fish_eye = cub_fixang(player->angle - rays->angle);
 	rays->dist.dist_t *= cos(cub_degtorad(rays->fish_eye));
 	rays->line_height = (64 * SCALING) / rays->dist.dist_t;
@@ -59,11 +58,30 @@ void	cub_rays_setup_draw_h(t_game *game, t_rays *rays)
 		game->walls.tx = 31 - game->walls.tx;
 	rays->tex_index = rays->tex_index_h;
 }
+
 // Function to draw the scene
 void	cub_rays_draw(t_game *game, t_rays *rays, t_player *player)
 {
 	(void)player;
 	//cub_draw_line(&game->img, player->pos, rays->pos, rays->color);
-	cub_rays_draw_walls(&game->img, rays, &game->walls, game->all_textures);
-	cub_rays_draw_joists(game, rays, &game->joists, game->all_textures);
+	if (rays->tex_index == '1')
+	{
+		if (rays->dist.dist_h < rays->dist.dist_v)
+		{
+			if (sin(cub_degtorad(rays->angle)) > 0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_wall_south);
+			else if (sin(cub_degtorad(rays->angle)) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_wall_north);
+		}
+		else if (rays->dist.dist_v < rays->dist.dist_h)
+		{
+			if (cos(cub_degtorad(rays->angle)) > 0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_wall_east);
+			else if (cos(cub_degtorad(rays->angle)) < -0.001)
+				cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_wall_west);
+		}
+	}
+	else if (rays->tex_index == 'D')
+		cub_rays_draw_walls(&game->img, rays, &game->walls, game->tex_door);
+	cub_rays_draw_joists(game, rays, &game->joists);
 }

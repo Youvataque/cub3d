@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/28 15:56:53 by nifromon         ###   ########.fr        #
+#    Updated: 2025/04/28 20:44:26 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRC =					\
 						$(SRC_DIR)/renderer/raycasting_manager_2.c \
 						$(SRC_DIR)/renderer/raycasting_manager_walls.c \
 						$(SRC_DIR)/renderer/raycasting_manager_joists.c \
+						$(SRC_DIR)/renderer/raycasting_manager_joists_tex.c \
 						$(SRC_DIR)/renderer/rendering_manager.c \
 						$(SRC_DIR)/renderer/interaction_manager.c \
 						$(SRC_DIR)/renderer/movement_manager.c \

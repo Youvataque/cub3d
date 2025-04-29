@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_walls.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:34:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:22:22 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 	while (++i < 8)
 	{
 		rays->draw_index = -1;
-		walls->ty = walls->offset * walls->step + (rays->tex_index * 32);
+		walls->ty = walls->offset * walls->step;
 		while (++rays->draw_index < rays->line_height)
 		{
 			walls->pixel = (((int)walls->ty * 32) + (int)walls->tx) * 3;
@@ -35,20 +35,4 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 		}
 		rays->draw.x++;
 	}
-}
-
-// Function to color different walls
-int	cub_rays_switch_colors_walls(t_rays *rays, double c)
-{
-	int	color;
-
-	if (rays->tex_index == 0)
-		color = cub_convert_glrgb(c, c, c / 2.0, 0); // Checkerboard YELLOW
-	else if (rays->tex_index == 1)
-		color = cub_convert_glrgb(c, c / 2.0, c / 2.0, 0); // Brick RED
-	else if (rays->tex_index == 2)
-		color = cub_convert_glrgb(c / 2.0, c / 2.0, c, 0); // Window BLUE
-	else if (rays->tex_index == 3)
-		color = cub_convert_glrgb(c / 2.0, c, c, 0);	// Door CYAN
-	return (color);
 }

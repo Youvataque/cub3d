@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:34:27 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 20:56:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 int	cub_rendering_manager(t_game *game)
 {
 	cub_movement_update(&game->keys, &game->player, 0.2 * game->fps.fps,
-		game->map_walls);
+		&game->map);
 	game->img.ptr = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
-	cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
+	//cub_render_sky2d(&game->img, &game->sky, &game->player, game->tex_sky);
 	cub_raycasting_manager(game, &game->rays, &game->player);
-	cub_render_map2d(&game->img, game->map_walls, cub_convert_glrgb(0, 1, 0, 0));
-	cub_render_player2d(&game->img, &game->player, 6, cub_convert_glrgb(1, 0.843, 0, 0));
+	//cub_render_map2d(&game->img, &game->map, cub_convert_glrgb(0, 1, 0, 0));
+	//cub_render_player2d(game, 6, cub_convert_glrgb(1, 0.843, 0, 0));
 	mlx_put_image_to_window(game->mlx, game->win, game->img.ptr, 0, 0);
 	mlx_destroy_image(game->mlx, game->img.ptr);
 	game->fps.old_frame = game->fps.frame;
@@ -89,39 +89,38 @@ void	cub_render_texture2d(t_img_data *img, int *texture)
 }
 
 // Function to draw the player in 2D
-void	cub_render_player2d(t_img_data *img, t_player *player, int size,
-			int color)
+void	cub_render_player2d(t_game *game, int size, int color)
 {
 	// t_segment	segment;
 	// t_pos		vector;
 
-	player->pos.x = (player->pos.x  / ((MAP_BLOCK) / (MAP_WIDTH))) * 1.12;
-	player->pos.y = (player->pos.y  / ((MAP_BLOCK) / (MAP_HEIGHT))) * 1.12;
-	// vector.x = player->pos.x + player->delta.x * 10;
-	// vector.y = player->pos.y + player->delta.y * 10;
-	cub_draw_point(img, player->pos, size, color);
+	game->player.pos.x = (game->player.pos.x  / ((MAP_BLOCK) / (game->map.width))) * 1.12;
+	game->player.pos.y = (game->player.pos.y  / ((MAP_BLOCK) / (game->map.height))) * 1.12;
+	// vector.x = game->player.pos.x + player->delta.x * 10;
+	// vector.y = game->player.pos.y + player->delta.y * 10;
+	cub_draw_point(&game->img, game->player.pos, size, color);
 	// segment.start = player->pos;
 	// segment.end = vector;
 	// cub_draw_thick_line(img, &segment, 2, color);
-	player->pos.x = (player->pos.x / 1.12) * ((MAP_BLOCK) / (MAP_WIDTH));
-	player->pos.y = (player->pos.y / 1.12) * ((MAP_BLOCK) / (MAP_WIDTH));
+	game->player.pos.x = (game->player.pos.x / 1.12) * ((MAP_BLOCK) / (game->map.width));
+	game->player.pos.y = (game->player.pos.y / 1.12) * ((MAP_BLOCK) / (game->map.height));
 }
 
 // Function to draw the map
-void	cub_render_map2d(t_img_data *img, char *map, int color)
+void	cub_render_map2d(t_img_data *img, t_map *map, int color)
 {
 	t_pos	pos_map;
 	t_pos	pos_screen;
 	double	mp;
 
 	pos_map.y = -1;
-	while (++pos_map.y < MAP_WIDTH)
+	while (++pos_map.y < map->width)
 	{
 		pos_map.x = -1;
-		while (++pos_map.x < MAP_HEIGHT)
+		while (++pos_map.x < map->height)
 		{
-			mp = pos_map.y * MAP_WIDTH + pos_map.x;
-			if (map[(int)mp] > '0')
+			mp = pos_map.y * map->width + pos_map.x;
+			if (map->map[(int)mp] > '0')
 			{
 				pos_screen.x = pos_map.x * MAP_BLOCK;
 				pos_screen.y = pos_map.y * MAP_BLOCK;

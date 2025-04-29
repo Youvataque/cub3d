@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fix_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/28 16:12:39 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:58:18 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	get_all(char *line, t_cubval *predat)
 	else if (contain(line, "WE"))
 		predat->path_w = ft_substr(temp, 2, ft_strlen(temp));
 	else if (contain(line, "EA"))
-		predat->path_o = ft_substr(temp, 2, ft_strlen(temp));
+		predat->path_e = ft_substr(temp, 2, ft_strlen(temp));
 	else if (contain(line, "F"))
 		predat->f = ft_substr(temp, 1, ft_strlen(temp));
 	else if (contain(line, "C"))
@@ -73,7 +73,7 @@ t_cubval	*fix_all(t_cubval *predat)
 	result->path_n = ft_strdup(predat->path_n);
 	result->path_s = ft_strdup(predat->path_s);
 	result->path_w = ft_strdup(predat->path_w);
-	result->path_o = ft_strdup(predat->path_o);
+	result->path_e = ft_strdup(predat->path_e);
 	result->c = ft_strdup(predat->c);
 	result->f = ft_strdup(predat->f);
 	result->map = square_map(predat->map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_manager.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:34:05 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:12:30 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Function to handle movements
 void	cub_movement_manager(t_player *player, int move, double speed,
-			char *map)
+			t_map *map)
 {
 	if (move == MOVE_FORWARD)
 		cub_move_forward(player, speed, map);
@@ -27,7 +27,7 @@ void	cub_movement_manager(t_player *player, int move, double speed,
 }
 
 // Function to move forward
-void	cub_move_forward(t_player *player, double speed, char *map)
+void	cub_move_forward(t_player *player, double speed, t_map *map)
 {
 	t_collision	sensor;
 
@@ -41,14 +41,14 @@ void	cub_move_forward(t_player *player, double speed, char *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
 	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
-	if (map[sensor.ipy * MAP_WIDTH + sensor.ipx_plus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_plus_xo] == '0')
 		player->pos.x += player->delta.x * speed;
-	if (map[sensor.ipy_plus_yo * MAP_WIDTH + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0')
 		player->pos.y += player->delta.y * speed;
 }
 
 // Function to move backward
-void	cub_move_backward(t_player *player, double speed, char *map)
+void	cub_move_backward(t_player *player, double speed, t_map *map)
 {
 	t_collision	sensor;
 
@@ -62,9 +62,9 @@ void	cub_move_backward(t_player *player, double speed, char *map)
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_minus_xo = ((int)player->pos.x - sensor.xo) >> 6;
 	sensor.ipy_minus_yo = ((int)player->pos.y - sensor.yo) >> 6;
-	if (map[sensor.ipy * MAP_WIDTH + sensor.ipx_minus_xo] == '0')
+	if (map->map[sensor.ipy * map->width + sensor.ipx_minus_xo] == '0')
 		player->pos.x -= player->delta.x * speed;
-	if (map[sensor.ipy_minus_yo * MAP_WIDTH + sensor.ipx] == '0')
+	if (map->map[sensor.ipy_minus_yo * map->width + sensor.ipx] == '0')
 		player->pos.y -= player->delta.y * speed;
 }
 

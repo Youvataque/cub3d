@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_manager_joists.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:34:43 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/28 15:34:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/29 02:15:07 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
 // Function to render the floors and ceilins
-void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists,
-			int *texture)
+void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 {
 	int		i;
 
@@ -25,8 +24,8 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists,
 		while (++rays->draw_index < SCALING)
 		{
 			cub_rays_setup_joists(rays, &game->player, joists);
-			cub_rays_draw_floors(game, rays, joists, texture);
-			cub_rays_draw_ceilings(game, rays, joists, texture);
+			cub_rays_draw_floors_rgb(&game->img, rays, game->color_floor);
+			cub_rays_draw_ceilings_rgb(&game->img, rays, game->color_ceiling);
 			joists->ty += joists->step;
 		}
 		rays->draw.x++;
@@ -34,45 +33,23 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists,
 }
 
 // Function to draw the floors
-void	cub_rays_draw_floors(t_game *game, t_rays *rays, t_joists *joists,
-			int *texture)
+void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 {
-	int		mp;
-
-	mp = (game->map_floors[(int)(joists->ty / 32.0) * MAP_WIDTH
-		+ (int)(joists->tx / 32.0)] - 48) * 32 * 32;
-	joists->pixel = (((int)joists->ty & 31) * 32 + ((int)joists->tx & 31)) * 3
-		+ mp * 3;
-	joists->rgb.red = texture[joists->pixel + 0] * 0.7;
-	joists->rgb.green = texture[joists->pixel + 1] * 0.7;
-	joists->rgb.blue = texture[joists->pixel + 2] * 0.7;
-	cub_draw_pixel(&game->img, rays->draw.x, rays->draw_index,
-		cub_convert_glrgb(joists->rgb.red, joists->rgb.green, joists->rgb.blue, 1));
+	//printf("COLOR FLOOR: R: %d | G: %d | B: %d\n", color.red, color.green, color.blue);
+	cub_draw_pixel(img, rays->draw.x - 8, rays->draw_index,
+		cub_convert_glrgb(color.red, color.green, color.blue, 1));
 }
 
 // Function to draw the ceilings
-void	cub_rays_draw_ceilings(t_game *game, t_rays *rays, t_joists *joists,
-			int *texture)
+void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color)
 {
-	int		mp;
-
-	mp = (game->map_ceilings[(int)(joists->ty / 32.0) * MAP_WIDTH
-		+ (int)(joists->tx / 32.0)] - 48) * 32 * 32;
-	if (mp > 0)
-	{
-		joists->pixel = (((int)joists->ty & 31) * 32 + ((int)joists->tx & 31)) * 3
-			+ mp * 3;
-		joists->rgb.red = texture[joists->pixel + 0];
-		joists->rgb.green = texture[joists->pixel + 1];
-		joists->rgb.blue = texture[joists->pixel + 2];
-		cub_draw_pixel(&game->img, rays->draw.x, 640 - rays->draw_index,
-			cub_convert_glrgb(joists->rgb.red, joists->rgb.green, joists->rgb.blue, 1));
-	}
+	//printf("COLOR CEILINGS: R: %d | G: %d | B: %d\n", color.red, color.green, color.blue);
+	cub_draw_pixel(img, rays->draw.x - 8, SCALING - rays->draw_index,
+		cub_convert_glrgb(color.red, color.green, color.blue, 1));
 }
 
 // Function to setup the drawing of floors and ceilins
-void	cub_rays_setup_joists(t_rays *rays, t_player *player,
-			t_joists *joists)
+void	cub_rays_setup_joists(t_rays *rays, t_player *player, t_joists *joists)
 {
 	joists->dy = rays->draw_index - (640 / 2.0);
 	joists->deg = cub_degtorad(rays->angle);
@@ -81,20 +58,4 @@ void	cub_rays_setup_joists(t_rays *rays, t_player *player,
 		/ joists->fix;
 	joists->ty = player->pos.y / 2 - sin(joists->deg) * 158 * 2 * 32 / joists->dy
 		/ joists->fix;
-}
-
-// Function to color different walls
-int	cub_rays_switch_colors_joists(t_rays *rays, double c)
-{
-	int	color;
-
-	if (rays->tex_index == 0)
-		color = cub_convert_glrgb(c, c / 2.0, c / 2.0, 0); // Checkerboard RED
-	else if (rays->tex_index == 1)
-		color = cub_convert_glrgb(c, c, c / 2.0, 0); // Brick YELLOW
-	else if (rays->tex_index == 2)
-		color = cub_convert_glrgb(c / 2.0, c / 2.0, c, 0); // Window BLUE
-	else if (rays->tex_index == 3)
-		color = cub_convert_glrgb(c / 2.0, c, c / 2.0, 0);	// Door GREEN
-	return (color);
 }
