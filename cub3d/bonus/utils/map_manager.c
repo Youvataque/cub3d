@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:01:24 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/30 23:07:23 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../includes/cub.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function for clean a char **

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ext.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:36:36 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:31 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/30 23:07:18 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../includes/cub.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // function for check if a char * contain an other char *

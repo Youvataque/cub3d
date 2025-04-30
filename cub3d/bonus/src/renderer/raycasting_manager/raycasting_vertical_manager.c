@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_manager_vertical.c                      :+:      :+:    :+:   */
+/*   raycasting_vertical_manager.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:07:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 22:33:27 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:18:29 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to cast rays on vertical lines
 void	cub_rays_cast_vertical(t_rays *rays, t_player *player)

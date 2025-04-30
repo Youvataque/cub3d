@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 20:40:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 19:45:46 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../includes/cub.h"
 
 // Function to convert degree to radian
 float	cub_degtorad(float degree)

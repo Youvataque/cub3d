@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_manager_mapping.c                             :+:      :+:    :+:   */
+/*   init_mapping_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 01:41:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:17:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
+
+// Function to init the minimap
+void	cub_init_minimap(t_minimap *minimap, t_map *map)
+{
+	minimap->map = *map;
+	minimap->radius = MINI_RADIUS;
+	minimap->center.x = SCREEN_WIDTH - minimap->radius - 10;
+	minimap->center.y = minimap->radius + 10;
+}
 
 // Function to init a map
 t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite)

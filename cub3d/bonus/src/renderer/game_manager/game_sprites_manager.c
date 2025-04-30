@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering_manager_sprites.c                        :+:      :+:    :+:   */
+/*   game_sprites_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 01:09:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 01:53:56 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:19:19 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to render sprites
 void	cub_render_sprites(t_game *game, t_sprite *sprite, t_player *player)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_manager_ceilings.c                      :+:      :+:    :+:   */
+/*   raycasting_ceilings_manager.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:11:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:27:21 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:17:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to draw the ceilings
 void	cub_rays_draw_ceilings_rgb(t_img_data *img, t_rays *rays, t_rgb color)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:11 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:01:52 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/30 19:27:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSER_H
 
 # include "cub.h"
+
 /* check_cub */
 int			is_map_line(char *line);
 int			is_valid_cub(char *line);

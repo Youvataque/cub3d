@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_manager_walls.c                         :+:      :+:    :+:   */
+/*   raycasting_walls_manager.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:27:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:18:33 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to render the walls
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,

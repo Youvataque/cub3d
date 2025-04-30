@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_manager_floors.c                        :+:      :+:    :+:   */
+/*   raycasting_floors_manager.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:11:19 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:26:15 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:18:15 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to draw the floors
 void	cub_rays_draw_floors_rgb(t_img_data *img, t_rays *rays, t_rgb color)

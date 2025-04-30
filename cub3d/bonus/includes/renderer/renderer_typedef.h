@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 19:00:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 22:25:35 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "renderer_define.h"
 # include "../cub.h"
 
+// Enums
 typedef enum e_movement
 {
 	MOVE_FORWARD,
@@ -28,34 +29,26 @@ typedef enum e_movement
 }	t_movement;
 
 // Structures
+	// Positions
 typedef struct s_pos
 {
 	float	x;
 	float	y;
 }			t_pos;
 
-typedef struct s_rgb
+typedef struct s_point_xyz
 {
-	int	red;
-	int	green;
-	int	blue;
-}		t_rgb;
+	int	x;
+	int	y;
+	int	z;
+}		t_point_xyz;
 
-typedef struct s_player
+typedef struct s_pos_xyz
 {
-	t_pos	pos; // Player position
-	float	angle; // View angle
-	t_pos	delta; // Delta
-}			t_player;
-
-typedef struct s_img_data
-{
-	void	*ptr; // Pointer to image
-	char	*addr; // Image
-	int		bpp; // Bits per pixel
-	int		line_len; // line lenght
-	int		endian; // endian
-}			t_img_data;
+	float	x;
+	float	y;
+	float	z;
+}			t_pos_xyz;
 
 typedef struct s_distance
 {
@@ -65,6 +58,27 @@ typedef struct s_distance
 	t_pos	pos_h;
 	float	dist_t;
 }			t_distance;
+
+typedef struct s_segment
+{
+	t_pos	start;
+	t_pos	end;
+}			t_segment;
+	// Colors
+typedef struct s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}		t_rgb;
+	// Actors
+typedef struct s_player
+{
+	t_pos	pos;
+	float	angle;
+	t_pos	delta;
+	float	speed;
+}			t_player;
 
 typedef struct s_keys
 {
@@ -76,6 +90,32 @@ typedef struct s_keys
 	int	arrow_right;
 }		t_keys;
 
+typedef struct s_collision
+{
+	int	xo;
+	int	yo;
+	int	ipx;
+	int	ipy;
+	int	ipx_plus_xo;
+	int	ipy_plus_yo;
+	int	ipx_minus_xo;
+	int	ipy_minus_yo;
+}		t_collision;
+
+typedef struct s_sprite
+{
+	int			type;
+	int 		status;
+	int			map;
+	t_point_xyz	pos;
+	t_pos_xyz	screen;
+	float		cosinus;
+	float		sinus;
+	float		a;
+	float		b;
+	int			depth[FOV];
+}				t_sprite;
+	// Elements
 typedef struct s_walls
 {
 	float	ty;
@@ -84,6 +124,12 @@ typedef struct s_walls
 	float	step;
 	int		pixel;
 	t_rgb	rgb;
+	int		*tex_north;
+	int		*tex_south;
+	int		*tex_east;
+	int		*tex_west;
+	int		*tex_door;
+	int		*tex_leave;
 }			t_walls;
 
 typedef struct s_joists
@@ -97,6 +143,9 @@ typedef struct s_joists
 	float	fix;
 	int		pixel;
 	t_rgb	rgb;
+	t_rgb	rgb_floor;
+	t_rgb	rgb_ceiling;
+	int		*tex_leave;
 }			t_joists;
 
 typedef struct s_sky
@@ -106,6 +155,8 @@ typedef struct s_sky
 	int		offset;
 	int		pixel;
 	t_rgb	rgb;
+	int		*tex;
+	int		*tex_layers[3];
 }			t_sky;
 
 typedef struct s_screen
@@ -114,10 +165,14 @@ typedef struct s_screen
 	int		sy;
 	int		offset;
 	int		pixel;
-	int		fade;
+	t_pos	pos;
 	t_rgb	rgb;
+	int		tex_index;
+	int		timer;
+	int		*tex;
+	int		*tex_layers[3];
 }			t_screen;
-
+	// Rays
 typedef struct s_rays
 {
 	int			index;
@@ -143,32 +198,14 @@ typedef struct s_rays
 	int			exit_dir;
 }				t_rays;
 
-typedef struct s_segment
-{
-	t_pos	start;
-	t_pos	end;
-}			t_segment;
-
-
+	// Fps
 typedef struct s_fps
 {
 	float	frame;
 	float	old_frame;
 	float	fps;
 }			t_fps;
-
-typedef struct s_collision
-{
-	int	xo;
-	int	yo;
-	int	ipx;
-	int	ipy;
-	int	ipx_plus_xo;
-	int	ipy_plus_yo;
-	int	ipx_minus_xo;
-	int	ipy_minus_yo;
-}		t_collision;
-
+	// Maps
 typedef struct s_map
 {
 	int		width;
@@ -188,56 +225,24 @@ typedef struct s_minimap
 	int		within_radius;
 }			t_minimap;
 
-typedef struct s_point_xyz
+	// Images
+typedef struct s_img_data
 {
-	int	x;
-	int	y;
-	int	z;
-}		t_point_xyz;
-
-typedef struct s_pos_xyz
-{
-	float	x;
-	float	y;
-	float	z;
-}			t_pos_xyz;
-
-typedef struct s_sprite
-{
-	int			type;
-	int 		status;
-	int			map;
-	t_point_xyz	pos;
-	t_pos_xyz	screen;
-	float		cosinus;
-	float		sinus;
-	float		a;
-	float		b;
-	int			depth[FOV];
-}				t_sprite;
-
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}			t_img_data;
+	// Game
 typedef struct s_game
 {
-	void		*mlx; // Pointer to mlx connection to server
-	void		*win; // Pointer to window connection
-	int			*tex_sky;
-	int			*tex_sky_layers[3];
-	int			*tex_screens_all[3];
-	int			*tex_screens;
+	void		*mlx;
+	void		*win;
 	int			status;
-	int			timer;
-	int			*twn;
-	int			*tws;
-	int			*twe;
-	int			*tww;
-	int			*tex_door;
-	int			*tex_leave;
-	int			*tex_leave_wall;
-	t_rgb		color_floor;
-	t_rgb		color_ceiling;
-	t_player	player; // player
-	t_img_data	img; // image
-	t_keys		keys; // keys
+	t_player	player;
+	t_img_data	img;
+	t_keys		keys;
 	t_rays		rays;
 	t_fps		fps;
 	t_walls		walls;
@@ -245,7 +250,7 @@ typedef struct s_game
 	t_sky		sky;
 	t_screen	screen;
 	t_map		map;
-	t_map		map_const;
+	t_minimap	minimap;
 	t_sprite	sprite;
 }				t_game;
 

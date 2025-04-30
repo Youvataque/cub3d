@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_manager_horizontal.c                    :+:      :+:    :+:   */
+/*   raycasting_horizontal_manager.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:08:15 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 22:33:57 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:18:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to cast rays on horizontal lines
 void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)

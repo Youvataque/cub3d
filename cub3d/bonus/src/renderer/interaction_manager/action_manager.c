@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 02:38:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:29:00 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:13:05 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to manage actions
 void	cub_action_manager(int action, t_player *player, t_map *map)

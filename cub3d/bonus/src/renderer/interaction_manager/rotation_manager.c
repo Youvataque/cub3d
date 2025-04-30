@@ -6,11 +6,20 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:24:48 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 08:25:30 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:25:43 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
+
+// Function to manage the rotation of the player
+void	cub_rotate_manager(t_player *player, int move, float speed)
+{
+	if (move == ROTATE_RIGHT)
+		cub_rotate_right(player, speed);
+	else if (move == ROTATE_LEFT)
+		cub_rotate_left(player, speed);	
+}
 
 // Function to rotate right
 void	cub_rotate_right(t_player *player, float speed)

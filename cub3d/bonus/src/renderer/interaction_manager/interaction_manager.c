@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 03:20:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 23:19:31 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to handle interactions with the user
 void	cub_interaction_manager(t_game *game)
@@ -21,21 +21,20 @@ void	cub_interaction_manager(t_game *game)
 }
 
 // Function to update movement of the player
-void	cub_movement_update(t_keys *keys, t_player *player, float speed,
-			t_map *map)
+void	cub_movement_update(t_keys *keys, t_player *player, t_map *map)
 {
 	if (keys->w == 1)
-		cub_movement_manager(player, MOVE_FORWARD, speed, map);
+		cub_movement_manager(player, MOVE_FORWARD, player->speed, map);
 	if (keys->a == 1)
-		cub_movement_manager(player, MOVE_LEFT, speed, map);
+		cub_movement_manager(player, MOVE_LEFT, player->speed, map);
 	if (keys->s == 1)
-		cub_movement_manager(player, MOVE_BACKWARD, speed, map);
+		cub_movement_manager(player, MOVE_BACKWARD, player->speed, map);
 	if (keys->d == 1)
-		cub_movement_manager(player, MOVE_RIGHT, speed, map);
+		cub_movement_manager(player, MOVE_RIGHT, player->speed, map);
 	if (keys->arrow_left == 1)
-		cub_movement_manager(player, ROTATE_LEFT, speed, map);
+		cub_rotate_manager(player, ROTATE_LEFT, player->speed);
 	if (keys->arrow_right == 1)
-		cub_movement_manager(player, ROTATE_RIGHT, speed, map);
+		cub_rotate_manager(player, ROTATE_RIGHT, player->speed);
 }
 
 // Function to handle keys

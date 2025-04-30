@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 23:38:12 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:00:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 	// Minimap
 # define MINI_BLOCK				12
 # define MINI_PLAYER			6
+# define MINI_RADIUS			100
 
 
 # define SCALING				640

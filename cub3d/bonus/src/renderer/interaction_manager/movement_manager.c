@@ -6,11 +6,11 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/29 19:45:07 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:13:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub.h"
+#include "../../../includes/cub.h"
 
 // Function to handle movements
 void	cub_movement_manager(t_player *player, int move, float speed,
@@ -24,10 +24,6 @@ void	cub_movement_manager(t_player *player, int move, float speed,
 		cub_move_left(player, speed, map);
 	else if (move == MOVE_RIGHT)
 		cub_move_right(player, speed, map);
-	else if (move == ROTATE_RIGHT)
-		cub_rotate_right(player, speed);
-	else if (move == ROTATE_LEFT)
-		cub_rotate_left(player, speed);
 }
 
 // Function to move forward

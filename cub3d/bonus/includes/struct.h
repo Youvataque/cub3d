@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 18:58:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/04/30 19:26:56 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCT_H
 
 # include "cub.h"
-# include "renderer_define.h"
 
 /* structure des coordonées */
 typedef struct s_point
