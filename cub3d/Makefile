@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/04/30 23:30:12 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/01 00:41:31 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRC =					\
 						$(RENDERER_GAME_DIR)/game_sprites_manager.c \
 						$(RENDERER_GAME_DIR)/game_sky_manager.c \
 						$(RENDERER_INTERACT_DIR)/interaction_manager.c \
+						$(RENDERER_INTERACT_DIR)/automatics_manager.c \
 						$(RENDERER_INTERACT_DIR)/movement_manager.c \
 						$(RENDERER_INTERACT_DIR)/rotation_manager.c \
 						$(RENDERER_INTERACT_DIR)/action_manager.c \

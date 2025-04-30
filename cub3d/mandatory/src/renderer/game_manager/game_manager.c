@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 00:17:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:59:58 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // Function to loop and render the game
 int	cub_game_manager(t_game *game)
 {
+	cub_automatics_close_door(&game->player, &game->map, &game->minimap.map);
 	cub_game_fps(&game->fps);
 	game->player.speed = SPEED * game->fps.fps;
 	cub_movement_update(&game->keys, &game->player, &game->map);

@@ -6,16 +6,15 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:17:03 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 01:16:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub.h"
 
 // Function to init the minimap
-void	cub_init_minimap(t_minimap *minimap, t_map *map)
+void	cub_init_minimap(t_minimap *minimap)
 {
-	minimap->map = *map;
 	minimap->radius = MINI_RADIUS;
 	minimap->center.x = SCREEN_WIDTH - minimap->radius - 10;
 	minimap->center.y = minimap->radius + 10;
@@ -27,6 +26,7 @@ t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite
 	t_map	dest;
 	int		i;
 
+	dest.door_opened = 0;
 	dest.width = max.x;
 	dest.height = max.y;
 	dest.map = (char *)malloc(((max.x * max.y) + 1) * sizeof(char));

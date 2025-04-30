@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 22:25:35 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:35:17 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ typedef struct s_map
 	int		width;
 	int		height;
 	char	*map;
+	int		door_opened;
 }			t_map;
 
 typedef struct s_minimap

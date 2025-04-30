@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 00:14:52 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 01:16:48 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		*cub_create_textures(const char *file, int size);
 int		*cub_join_textures(int **textures, int size, int nbr);
 t_rgb	cub_init_colors(char *source);
 	// init_mapping_manager.c
-void	cub_init_minimap(t_minimap *minimap, t_map *map);
+void	cub_init_minimap(t_minimap *minimap);
 t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite);
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player);
@@ -106,6 +106,8 @@ void	cub_movement_update(t_keys *keys, t_player *player, t_map *map);
 int		cub_handle_key_press(int key, t_game *game);
 int		cub_handle_key_release(int key, t_game *game);
 int		cub_handle_cross(t_game *game);
+	// automatics_manager.c
+void	cub_automatics_close_door(t_player *player, t_map *map, t_map *minimap);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
 void	cub_action_open_door(t_player *player, t_map *map);

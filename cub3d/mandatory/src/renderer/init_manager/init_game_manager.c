@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:37:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 01:16:31 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	cub_init_game_manager(t_game *game, t_cubval *cubval)
 	ft_memset((void *)game, 0, sizeof(t_game));
 	cub_init_graphics_manager(game, cubval);
 	game->map = cub_init_map(cubval->map_str, cubval->max_xy, &game->player, &game->sprite);
-	cub_init_minimap(&game->minimap, &game->map);
+	game->minimap.map = cub_init_map(cubval->map_str, cubval->max_xy, &game->player, &game->sprite);
+	cub_init_minimap(&game->minimap);
 	game->status = 1;
 	game->fps.fps = 0;
 	game->fps.frame = cub_get_time_ms();

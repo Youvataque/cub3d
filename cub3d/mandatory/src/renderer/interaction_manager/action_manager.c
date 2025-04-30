@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 02:38:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 20:13:05 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:36:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ void	cub_action_open_door(t_player *player, t_map *map)
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
 	sensor.ipy_plus_yo = ((int)player->pos.y + sensor.yo) >> 6;
 	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx_plus_xo] == 'D')
+	{
 		map->map[sensor.ipy_plus_yo * map->width + sensor.ipx_plus_xo] = '0';
+		map->door_opened = 1;
+	}
 }
