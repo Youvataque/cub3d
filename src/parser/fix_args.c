@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 15:05:17 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/01 13:05:27 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ void	get_all(char *line, t_cubval *predat)
 	else if (is_map_line(line))
 		predat->map = add_to_tab(predat->map, ft_strdup(line));
 	free(line);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// counter nb of collectible in a line
+void	count_item(t_cubval *cubval, char colec, char foe)
+{
+	int	y;
+	int	x;
+	
+	y = 0;
+	while (cubval->map[y])
+	{
+		x = 0;
+		while (cubval->map[y][x])
+		{
+			if (cubval->map[y][x] == colec)
+				cubval->nb_col++;
+			if (cubval->map[y][x] == foe)
+				cubval->nb_foe++;
+			x++;
+		}
+		y++;
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 11:39:38 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:56:23 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_cubval
 	char	*map_str;
 	t_point	spawn;
 	t_point	max_xy;
+	int		nb_col;
+	int		nb_foe;
 }	t_cubval;
 
 /* -------------------- renderer.h ------------------------------------------*/

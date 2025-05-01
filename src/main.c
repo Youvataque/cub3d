@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:53:58 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/01 13:08:14 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void bazard_test(t_cubval *p)
 	printf("%s\n", p->path_s ? p->path_s : "(null)");
 	printf("%s\n", p->path_w ? p->path_w : "(null)");
 	printf("%s\n", p->path_e ? p->path_e : "(null)");
-
+	printf("%d - %d", p->nb_col, p->nb_foe);
 	printf("\nCouleurs :\n");
 	printf("%s\n", p->f ? p->f : "(null)");
 	printf("%s\n", p->c ? p->c : "(null)");
@@ -57,6 +57,8 @@ int	main(int ac, char **av)
 	{
 		cubval = get_map_param(av[1]);
 		bazard_test(cubval);
+		if (!cubval)
+			return (1);
 		cub_init_manager(&game, cubval);
 		mlx_loop_hook(game.mlx, &cub_rendering_manager, &game);
 		cub_interaction_manager(&game);

@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/29 14:06:59 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/01 13:08:34 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ static int	check_all(t_cubval *cubval)
 	if (!check_exit(cubval))
 		return (ft_printf("Error: nbExit < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
-	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWE ");
+	count_item(cubval, 'O', 'A');
+	fill(temp, cubval->spawn, cubval->max_xy, "D0NSWEAO");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)
