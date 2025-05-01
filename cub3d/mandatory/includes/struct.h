@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:06 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 19:26:56 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:24:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_cubval
 	char	*map_str;
 	t_point	spawn;
 	t_point	max_xy;
+	int		nb_col;
+	int		nb_foe;
 }	t_cubval;
 
 #endif

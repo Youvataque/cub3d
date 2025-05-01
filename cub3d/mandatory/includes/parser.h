@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:11 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 19:27:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:24:19 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_cubval	*get_map_param(char *path);
 /* fix args */
 void		get_all(char *line, t_cubval *predat);
 t_cubval	*fix_all(t_cubval *predat);
+void		count_item(t_cubval *cubval, char colec, char foe);
 
 #endif

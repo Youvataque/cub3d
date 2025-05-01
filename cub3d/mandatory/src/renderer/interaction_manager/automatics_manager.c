@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:27:47 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 12:21:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:32:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ void	cub_automatics_close_door(t_player *player, t_sprite **sprites,
 			if (minimap->map[(int)(pos_map.y * map->width + pos_map.x)] == 'D' 
 				&& map->map[(int)(pos_map.y * map->width  + pos_map.x)] == '0')
 			{
-				
+				if (cub_automatics_detect_player(player, map, &pos_map) == 1
+					&& cub_automatics_detect_foe(sprites, map, &pos_map) == 1)
+				{
+					map->map[(int)(pos_map.y * map->width + pos_map.x)] = 'D';
+					map->door_opened = 0;
+				}
 			}
 		}
 	}
