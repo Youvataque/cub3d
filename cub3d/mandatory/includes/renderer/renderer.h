@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 01:16:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 02:03:58 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	cub_movement_update(t_keys *keys, t_player *player, t_map *map);
 int		cub_handle_key_press(int key, t_game *game);
 int		cub_handle_key_release(int key, t_game *game);
 int		cub_handle_cross(t_game *game);
+int		cub_handle_mouse(int x, int y, t_game *game);
 	// automatics_manager.c
 void	cub_automatics_close_door(t_player *player, t_map *map, t_map *minimap);
 	// action_manager.c

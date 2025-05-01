@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:19:31 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 02:10:20 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,23 @@ void	cub_interaction_manager(t_game *game)
 	mlx_hook(game->win, 2, (1L << 0), &cub_handle_key_press, game);
 	mlx_hook(game->win, 3, (1L << 1), &cub_handle_key_release, game);
 	mlx_hook(game->win, 17, (1L << 17), &cub_handle_cross, game);
+	mlx_hook(game->win, 6, (1L << 6), &cub_handle_mouse, game);
+}
+
+// Function to handle mouse rotation
+int	cub_handle_mouse(int x, int y, t_game *game)
+{
+	static int	old_x = SCREEN_WIDTH / 2;
+	
+	(void)y;
+	if (x == old_x)
+		return (0);
+	else if (x < old_x)
+		cub_rotate_manager(&game->player, ROTATE_LEFT, game->player.speed / 15);
+	else if (x > old_x)
+		cub_rotate_manager(&game->player, ROTATE_RIGHT, game->player.speed / 15);
+	old_x = x;
+	return (0);
 }
 
 // Function to update movement of the player
