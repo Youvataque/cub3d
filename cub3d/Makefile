@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/05/01 00:41:31 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/01 10:25:47 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRC =					\
 						$(RENDERER_RAY_DIR)/raycasting_ceilings_manager.c \
 						$(RENDERER_RAY_DIR)/raycasting_walls_manager.c \
 						$(RENDERER_GAME_DIR)/game_manager.c \
+						$(RENDERER_GAME_DIR)/game_foe_manager.c \
 						$(RENDERER_GAME_DIR)/game_fullscreens_manager.c \
 						$(RENDERER_GAME_DIR)/game_minimap_manager.c \
 						$(RENDERER_GAME_DIR)/game_sprites_manager.c \

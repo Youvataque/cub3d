@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 07:29:04 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:22:14 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,12 @@ void	cub_render_sky(t_img_data *img, t_sky *sky, t_player *player);
 void	cub_render_sky_layers(t_img_data *img, t_sky *sky, t_pos pos);
 	// game_sprites_manager.c
 void	cub_sprites_manager(t_game *game, t_sprite **sprite, t_player *player);
+void	cub_update_sprites(t_game *game, t_sprite *sprite, t_player *player);
 void	cub_setup_sprites(t_sprite *sprite, t_player *player);
 void	cub_render_sprites(t_game *game, t_sprite *sprite);
+void	cub_render_sprites_loop(t_game *game, t_sprite *sprite);
+	// game_foe_manager.c
+void	cub_foe_pursuit(t_game *game, t_sprite *sprite, t_player *player);
 		// raycasting_manager
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
@@ -110,7 +114,12 @@ int		cub_handle_key_release(int key, t_game *game);
 int		cub_handle_cross(t_game *game);
 int		cub_handle_mouse(int x, int y, t_game *game);
 	// automatics_manager.c
-void	cub_automatics_close_door(t_player *player, t_map *map, t_map *minimap);
+void	cub_automatics_close_door(t_player *player, t_sprite **sprites,
+			t_map *map, t_map *minimap);
+int		cub_automatics_detect_player(t_player *player, t_map *map,
+			t_point *pos_map);
+int		cub_automatics_detect_foe(t_sprite **sprites, t_map *map,
+			t_point *pos_map);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
 void	cub_action_open_door(t_player *player, t_map *map);

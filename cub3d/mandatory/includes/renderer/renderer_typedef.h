@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 07:41:44 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:18:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct s_sprite
 	int			type;
 	int 		status;
 	int			map;
-	t_point_xyz	pos;
+	t_pos_xyz	pos;
 	t_pos_xyz	screen;
 	float		cosinus;
 	float		sinus;
@@ -123,6 +123,8 @@ typedef struct s_sprite
 	t_pos		tex_step;
 	int			pixel;
 	t_rgb		rgb;
+	int			nbr_foes;
+	int			nbr_collectibles;
 }				t_sprite;
 	// Elements
 typedef struct s_walls

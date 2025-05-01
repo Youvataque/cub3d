@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 23:59:23 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:55:32 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	main(int ac, char **av)
 	{
 		cubval = get_map_param(av[1]);
 		//bazard_test(cubval);
+		if (!cubval)
+			return (1);
 		cub_init_game_manager(&game, cubval);
 		mlx_loop_hook(game.mlx, &cub_game_manager, &game);
 		cub_interaction_manager(&game);
