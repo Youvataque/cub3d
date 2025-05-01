@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 02:03:58 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 07:29:04 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int		*cub_join_textures(int **textures, int size, int nbr);
 t_rgb	cub_init_colors(char *source);
 	// init_mapping_manager.c
 void	cub_init_minimap(t_minimap *minimap);
-t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite);
+t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite **sprite);
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player);
-void	cub_init_sprites(int pos, int width, char type, t_sprite *sprite);
+void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite);
 		// game_manager
 	// game_manager.c
 int		cub_game_manager(t_game *game);
@@ -53,7 +53,9 @@ void    cub_render_setup_minimap(t_game *game, t_minimap *minimap, t_map *map);
 void	cub_render_sky(t_img_data *img, t_sky *sky, t_player *player);
 void	cub_render_sky_layers(t_img_data *img, t_sky *sky, t_pos pos);
 	// game_sprites_manager.c
-void	cub_render_sprites(t_game *game, t_sprite *sprite, t_player *player);
+void	cub_sprites_manager(t_game *game, t_sprite **sprite, t_player *player);
+void	cub_setup_sprites(t_sprite *sprite, t_player *player);
+void	cub_render_sprites(t_game *game, t_sprite *sprite);
 		// raycasting_manager
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);

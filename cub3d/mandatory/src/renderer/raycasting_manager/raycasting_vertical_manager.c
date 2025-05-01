@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:07:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:18:29 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 07:03:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	cub_rays_detect_vertical(t_rays *rays, t_player *player,
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * map->width + rays->map.x;
 		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& (map->map[rays->mp] == '1' || map->map[rays->mp] == 'D'))
+			&& (map->map[rays->mp] == '1' || map->map[rays->mp] == 'D'
+			|| map->map[rays->mp] == 'O' || map->map[rays->mp] == 'A'))
 		{
 			dist->pos_v.x = rays->pos.x;
 			dist->pos_v.y = rays->pos.y;

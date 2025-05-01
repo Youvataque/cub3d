@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 02:38:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 00:36:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 06:42:30 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Function to manage actions
 void	cub_action_manager(int action, t_player *player, t_map *map)
 {
-	if (action == OPEN_DOOR)
+	if (action == OPEN_DOOR && player->collected > 0)
 		cub_action_open_door(player, map);
 }
 

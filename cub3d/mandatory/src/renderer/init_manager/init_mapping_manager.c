@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 01:16:12 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 08:30:36 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	cub_init_minimap(t_minimap *minimap)
 }
 
 // Function to init a map
-t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite)
+t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite **sprite)
 {
 	t_map	dest;
 	int		i;
@@ -37,7 +37,7 @@ t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite *sprite
 	{
 		if (source[i] == 'N' || source[i] == 'S'
 			|| source[i] == 'W' || source[i] == 'E'
-			|| source[i] == 'F' || source[i] == 'C')
+			|| source[i] == 'A' || source[i] == 'O')
 		{
 			cub_init_sprites(i, max.x, source[i], sprite);
 			cub_init_player_position(i, max.x, source[i], player);
@@ -71,14 +71,27 @@ void	cub_init_player_position(int pos, int width, char orientation,
 }
 
 // Function to init the sprites position
-void	cub_init_sprites(int pos, int width, char type, t_sprite *sprite)
+void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite)
 {
-	if (type != 'C' || type != 'A')
+	static int	index = 0;
+	
+	if (type != 'O' && type != 'A')
 		return ;
-	sprite->type = type;
-	sprite->status = 1;
-	sprite->map = 0;
-	sprite->pos.x = ((pos % width) * 64);
-	sprite->pos.y = ((pos / width) * 64);
-	sprite->pos.z = 20;
+	else if (index == 0)
+	{
+		*sprite = (t_sprite *)malloc(SPRITES_NBR * sizeof(t_sprite));
+		if (!*sprite)
+			return ;
+	}
+	if (type == 'O')
+		(*sprite)[index].texture = cub_create_textures(KEY, TEX_SIZE);
+	else
+		(*sprite)[index].texture = cub_create_textures(FOE_1, TEX_SIZE);
+	(*sprite)[index].type = type;
+	(*sprite)[index].status = 1;
+	(*sprite)[index].map = 0;
+	(*sprite)[index].pos.x = (((pos % width) + 0.5) * 64);
+	(*sprite)[index].pos.y = (((pos / width) + 0.5) * 64);
+	(*sprite)[index].pos.z = 20;
+	index++;
 }

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 00:35:17 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 07:41:44 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_player
 	float	angle;
 	t_pos	delta;
 	float	speed;
+	int		collected;
 }			t_player;
 
 typedef struct s_keys
@@ -113,7 +114,15 @@ typedef struct s_sprite
 	float		sinus;
 	float		a;
 	float		b;
+	t_point		pos2;
+	t_pos		pos_draw;
+	int			scale;
 	int			depth[FOV];
+	int			*texture;
+	t_pos		tex;
+	t_pos		tex_step;
+	int			pixel;
+	t_rgb		rgb;
 }				t_sprite;
 	// Elements
 typedef struct s_walls
@@ -252,7 +261,7 @@ typedef struct s_game
 	t_screen	screen;
 	t_map		map;
 	t_minimap	minimap;
-	t_sprite	sprite;
+	t_sprite	*sprite;
 }				t_game;
 
 #endif
