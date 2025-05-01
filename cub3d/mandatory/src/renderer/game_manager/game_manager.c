@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 14:29:03 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:28:08 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 // Function to loop and render the game
 int	cub_game_manager(t_game *game)
 {
-	cub_automatics_close_door(&game->player, &game->sprite, &game->map,
-		&game->minimap.map);
 	cub_game_fps(&game->fps);
 	game->player.speed = SPEED * game->fps.fps;
-	cub_movement_update(&game->keys, &game->player, &game->map);
 	game->img.ptr = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.ptr, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
@@ -44,6 +41,8 @@ void	cub_game_running(t_game *game)
 	}
 	else if (game->status == 0)
 	{
+		cub_movement_update(&game->keys, &game->player, &game->map);
+		cub_automatics_close_door(game, &game->map, &game->minimap.map);
 		cub_render_sky(&game->img, &game->sky, &game->player);
 		cub_raycasting_manager(game, &game->rays, &game->player);
 		cub_render_minimap(game, &game->map, &game->minimap, cub_convert_glrgb(255, 255, 255, 1));
