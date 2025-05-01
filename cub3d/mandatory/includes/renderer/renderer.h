@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 12:22:14 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 16:38:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	cub_automatics_close_door(t_player *player, t_sprite **sprites,
 			t_map *map, t_map *minimap);
 int		cub_automatics_detect_player(t_player *player, t_map *map,
 			t_point *pos_map);
-int		cub_automatics_detect_foe(t_sprite **sprites, t_map *map,
+int		cub_automatics_detect_foe(t_sprite *sprite, t_map *map,
 			t_point *pos_map);
 	// action_manager.c
 void	cub_action_manager(int action, t_player *player, t_map *map);
