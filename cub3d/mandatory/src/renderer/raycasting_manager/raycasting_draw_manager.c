@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:26:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 01:27:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:51:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 	rays->line_offset = (SCALING / 2) - (rays->line_height >> 1);
 	rays->draw.x = rays->index * 8;
 	rays->draw.y = rays->line_offset;
-	game->depth_buffer[rays->index] = rays->dist.dist_t;
+	game->depth[rays->index] = rays->dist.dist_t;
 }
 
 // Function to draw the scene
@@ -42,32 +42,39 @@ void	cub_rays_draw(t_game *game, t_rays *rays)
 	if (rays->tex_index == '1')
 	{
 		if (rays->dist.dist_h < rays->dist.dist_v)
-            cub_rays_draw_h(game, rays);
+			cub_rays_draw_h(game, rays);
 		else if (rays->dist.dist_v < rays->dist.dist_h)
-            cub_rays_draw_v(game, rays);
+			cub_rays_draw_v(game, rays);
 	}
 	else if (rays->tex_index == 'D')
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_door);
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_door);
 }
 
 // Function to draw on horizontal tiles
-void    cub_rays_draw_h(t_game *game, t_rays *rays)
+void	cub_rays_draw_h(t_game *game, t_rays *rays)
 {
-    if (rays->exit == 1)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_leave);
+	if (rays->exit == 1)
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_leave);
 	else if (sin(cub_degtorad(cub_fixang(rays->angle))) > 0.001)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_north);
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_north);
 	else if (sin(cub_degtorad(cub_fixang(rays->angle))) < -0.001)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_south);
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_south);
 }
 
 // Function to draw on vertical tiles
-void    cub_rays_draw_v(t_game *game, t_rays *rays)
+void	cub_rays_draw_v(t_game *game, t_rays *rays)
 {
-    if (rays->exit == 1)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_leave);
+	if (rays->exit == 1)
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_leave);
 	if (cos(cub_degtorad(cub_fixang(rays->angle))) > 0.001)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_west);
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_west);
 	else if (cos(cub_degtorad(cub_fixang(rays->angle))) < -0.001)
-		cub_rays_draw_walls(&game->img, rays, &game->walls, game->walls.tex_east);
+		cub_rays_draw_walls(&game->img, rays, &game->walls, \
+			game->walls.tex_east);
 }

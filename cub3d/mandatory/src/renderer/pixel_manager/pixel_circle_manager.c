@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:20:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 22:50:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:24:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,26 @@
 void	cub_draw_empty_circle(t_img_data *img, t_pos center, int radius,
 			int color)
 {
-	int x, y;
-	int dx, dy;
-	int r2 = radius * radius;
-	int thickness = 2;
+	t_point	pos;
+	t_point	dir;
+	int		r2;
+	int		thickness;
+	int		dist2;
 
-	for (y = -radius; y <= radius; y++)
+	r2 = radius * radius;
+	thickness = 2;
+	pos.y = (-radius) - 1;
+	while (++pos.y <= radius)
 	{
-		for (x = -radius; x <= radius; x++)
+		pos.x = (-radius) - 1;
+		while (++pos.x <= radius)
 		{
-			dx = center.x + x;
-			dy = center.y + y;
-			int dist2 = x * x + y * y;
-			if (dist2 >= r2 - thickness * radius && dist2 <= r2 + thickness * radius)
-				cub_draw_pixel(img, dx, dy, color);
+			dir.x = center.x + pos.x;
+			dir.y = center.y + pos.y;
+			dist2 = pos.x * pos.x + pos.y * pos.y;
+			if (dist2 >= r2 - thickness * radius && dist2 <= r2 \
+				+ thickness * radius)
+				cub_draw_pixel(img, dir.x, dir.y, color);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:24:48 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:25:43 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:31:41 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	cub_rotate_manager(t_player *player, int move, float speed)
 	if (move == ROTATE_RIGHT)
 		cub_rotate_right(player, speed);
 	else if (move == ROTATE_LEFT)
-		cub_rotate_left(player, speed);	
+		cub_rotate_left(player, speed);
 }
 
 // Function to rotate right

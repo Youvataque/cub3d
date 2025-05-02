@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/02 01:39:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:56:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 		// init_manager
 	// init_game_manager.c
 void	cub_init_game_manager(t_game *game, t_cubval *cubval);
+void	cub_init_game_values(t_game *game, t_cubval *cubval);
+void	cub_init_game_zero(t_game *game, t_cubval *cubval);
 void	cub_print_map(t_map *map);
 	// init_graphics_manager.c
 void	cub_init_graphics_manager(t_game *game, t_cubval *cubval);
@@ -29,7 +31,8 @@ int		*cub_join_textures(int **textures, int size, int nbr);
 t_rgb	cub_init_colors(char *source);
 	// init_mapping_manager.c
 void	cub_init_minimap(t_minimap *minimap);
-t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite **sprite);
+t_map	cub_init_map(char *source, t_point max, t_player *player,
+			t_sprite **sprite);
 void	cub_init_player_position(int pos, int width, char orientation,
 			t_player *player);
 void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite);
@@ -48,7 +51,7 @@ void	cub_render_minimap(t_game *game, t_map *map, t_minimap *minimap,
 			int color);
 void	cub_render_minimap_loop(t_game *game, t_minimap *minimap, t_map *map,
 			int color);
-void    cub_render_setup_minimap(t_game *game, t_minimap *minimap, t_map *map);
+void	cub_render_setup_minimap(t_game *game, t_minimap *minimap, t_map *map);
 	// game_sky_manager.c
 void	cub_render_sky(t_img_data *img, t_sky *sky, t_player *player);
 void	cub_render_sky_layers(t_img_data *img, t_sky *sky, t_pos pos);
@@ -59,6 +62,8 @@ void	cub_setup_sprites(t_sprite *sprite, t_player *player);
 void	cub_render_sprites(t_game *game, t_sprite *sprite);
 void	cub_render_sprites_loop(t_game *game, t_sprite *sprite);
 	// game_foe_manager.c
+void	cub_foe_setup_pursuit(t_sprite *sprite, t_point *pos,
+			t_point *offset_add, t_point *offset_sub);
 void	cub_foe_pursuit(t_game *game, t_sprite *sprite, t_player *player);
 		// raycasting_manager
 	// raycasting_manager.c
@@ -109,14 +114,16 @@ void	cub_draw_empty_circle(t_img_data *img, t_pos center, int radius,
 	// interaction_manager.c
 void	cub_interaction_manager(t_game *game);
 void	cub_movement_update(t_keys *keys, t_player *player, t_map *map);
+	// key_manager.c
 int		cub_handle_key_press(int key, t_game *game);
 int		cub_handle_key_release(int key, t_game *game);
+	// mouse_manager.c
 int		cub_handle_cross(t_game *game);
 int		cub_handle_mouse(int x, int y, t_game *game);
 	// automatics_manager.c
 void	cub_automatics_close_door(t_game *game, t_map *map, t_map *minimap);
 int		cub_automatics_close_door_loop(t_game *game, t_map *map, t_map *minimap,
-		t_point *pos_map);
+			t_point *pos_map);
 int		cub_automatics_detect_player(t_player *player, t_map *map,
 			t_point *pos_map);
 int		cub_automatics_detect_foe(t_sprite *sprite, t_map *map,
@@ -135,6 +142,12 @@ void	cub_move_right(t_player *player, float speed, t_map *map);
 void	cub_rotate_manager(t_player *player, int move, float speed);
 void	cub_rotate_right(t_player *player, float speed);
 void	cub_rotate_left(t_player *player, float speed);
+		// free_manager
+	// free_manager.c
+void	cub_free_manager(t_game *game);
+void	cub_free_graphics(t_walls *walls, t_sky *sky, t_screen *screen,
+			t_joists *joists);
+void	cub_free_sprites(t_sprite **sprites);
 		// utils
 	// time_manager.c
 int		cub_get_time_ms(void);

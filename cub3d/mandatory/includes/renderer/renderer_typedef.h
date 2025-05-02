@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 19:06:15 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:56:03 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_collision
 typedef struct s_sprite
 {
 	int			type;
-	int 		status;
+	int			status;
 	int			map;
 	t_pos_xyz	pos;
 	t_pos_xyz	screen;
@@ -125,6 +125,7 @@ typedef struct s_sprite
 	t_rgb		rgb;
 	int			nbr_foes;
 	int			nbr_collectibles;
+	int			nbr_sprites;
 }				t_sprite;
 	// Elements
 typedef struct s_walls
@@ -206,7 +207,6 @@ typedef struct s_rays
 	int			color;
 	float		shade;
 	int			exit;
-	int			exit_dir;
 }				t_rays;
 
 	// Fps
@@ -264,7 +264,7 @@ typedef struct s_game
 	t_map		map;
 	t_minimap	minimap;
 	t_sprite	*sprite;
-	int			*depth_buffer;
+	int			*depth;
 }				t_game;
 
 #endif

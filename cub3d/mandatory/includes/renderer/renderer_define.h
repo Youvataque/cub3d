@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 20:00:39 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:55:39 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # define MINI_PLAYER			6
 # define MINI_RADIUS			100
 
-# define FOE_SPEED				0.05
-# define CLOWN_RUN				"./textures/Foe/Clown_run.ppm"
-# define KEY					"./textures/Collect/Key.ppm"
 # define SCALING				640
 
 # define RAYS_STARTING_ANGLE	30
@@ -75,7 +72,7 @@
 # define SKY_LAYERS				3
 # define SKY_WIDTH				576
 # define SKY_HEIGHT				324
-# define SKY_SIZE				559872 // SKY_WIDTH * SKY_HEIGTH * 3
+# define SKY_SIZE				559872 // 576 * 324 * 3
 # define SKY_OFFSET				2 // offset
 # define SKY_OFFSET_PLUS		1 // offset / 2
 # define SKY_OFFSET_SCREEN		8 // offset screen 4 * offset
@@ -85,8 +82,11 @@
 # define SCREEN_WIN				"./textures/Screens/Win.ppm"
 # define SCREEN_TEX_WIDTH		576
 # define SCREEN_TEX_HEIGHT		324
-# define SCREEN_TEX_SIZE		559872 // SCREEN_TEX_WIDTH * SCREEN_TEX_HEIGHT * 3
+# define SCREEN_TEX_SIZE		559872 // 576 * 324 * 3
 	// FOE
-
+# define FOE_SPEED				0.05
+# define CLOWN_RUN				"./textures/Foe/Clown_run.ppm"
+	// COLLECTIBLES
+# define KEY					"./textures/Collect/Key.ppm"
 
 #endif

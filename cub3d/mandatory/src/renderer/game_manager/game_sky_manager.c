@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:03:53 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:24:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:27:25 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void	cub_render_sky_layers(t_img_data *img, t_sky *sky, t_pos pos)
 	pos.x = (pos.x - SKY_OFFSET_PLUS) / SKY_OFFSET;
 	pos.y = (pos.y + SCREEN_HEIGHT / SKY_OFFSET_SCREEN) / SKY_OFFSET;
 }
-

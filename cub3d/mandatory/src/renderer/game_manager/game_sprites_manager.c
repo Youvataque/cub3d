@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 01:09:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 19:32:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:27:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 void	cub_sprites_manager(t_game *game, t_sprite **sprite, t_player *player)
 {
 	int	i;
-	
+
 	i = 0;
-	while (i < ((*sprite)[0].nbr_collectibles + (*sprite)[0].nbr_foes))
+	while (i < (*sprite)[0].nbr_sprites)
 	{
 		if ((*sprite)[i].status == 1)
 		{
@@ -59,12 +59,16 @@ void	cub_setup_sprites(t_sprite *sprite, t_player *player)
 	sprite->screen.z = sprite->pos.z;
 	sprite->cosinus = cos(cub_degtorad(player->angle));
 	sprite->sinus = sin(cub_degtorad(player->angle));
-	sprite->a = sprite->screen.y * sprite->cosinus + sprite->screen.x * sprite->sinus;
-	sprite->b = sprite->screen.x * sprite->cosinus - sprite->screen.y * sprite->sinus;
+	sprite->a = sprite->screen.y * sprite->cosinus
+		+ sprite->screen.x * sprite->sinus;
+	sprite->b = sprite->screen.x * sprite->cosinus
+		- sprite->screen.y * sprite->sinus;
 	sprite->screen.x = sprite->a;
 	sprite->screen.y = sprite->b;
-	sprite->screen.x = (sprite->screen.x * 108.0 / sprite->screen.y) + (FOV / 2);
-	sprite->screen.y = (sprite->screen.z * 108.0 / sprite->screen.y) + (80 / 2);
+	sprite->screen.x = (sprite->screen.x * 108.0 / sprite->screen.y)
+		+ (FOV / 2);
+	sprite->screen.y = (sprite->screen.z * 108.0 / sprite->screen.y)
+		+ (80 / 2);
 	sprite->scale = 32 * 80 / sprite->b;
 	if (sprite->scale < 0)
 		sprite->scale = 0;
@@ -93,18 +97,22 @@ void	cub_render_sprites(t_game *game, t_sprite *sprite)
 // Function to help render the sprites
 void	cub_render_sprites_loop(t_game *game, t_sprite *sprite)
 {
-	if (sprite->pos2.x > 0 && sprite->pos2.x < FOV && sprite->b < game->depth_buffer[sprite->pos2.x])
+	if (sprite->pos2.x > 0 && sprite->pos2.x < FOV \
+		&& sprite->b < game->depth[sprite->pos2.x])
 	{
-		sprite->pixel = ((int)sprite->tex.y * 32 + (int)sprite->tex.x) * 3 + (sprite->tex_index * (TEX_SIZE));
+		sprite->pixel = ((int)sprite->tex.y * 32 + (int)sprite->tex.x) * 3 \
+			+ (sprite->tex_index * (TEX_SIZE));
 		sprite->rgb.red = sprite->texture[sprite->pixel + 0];
 		sprite->rgb.green = sprite->texture[sprite->pixel + 1];
 		sprite->rgb.blue = sprite->texture[sprite->pixel + 2];
 		sprite->pos_draw.x = sprite->pos2.x * 8;
 		sprite->pos_draw.y = (sprite->screen.y * 8) - (sprite->pos2.y * 8);
-		if (!cub_is_transparent(sprite->rgb.red, sprite->rgb.green, sprite->rgb.blue))
+		if (!cub_is_transparent(sprite->rgb.red, sprite->rgb.green, \
+			sprite->rgb.blue))
 		{
 			cub_draw_point(&game->img, sprite->pos_draw, 8, \
-				cub_convert_glrgb(sprite->rgb.red, sprite->rgb.green, sprite->rgb.blue, 1));
+				cub_convert_glrgb(sprite->rgb.red, sprite->rgb.green, \
+					sprite->rgb.blue, 1));
 		}
 		sprite->tex.y -= sprite->tex_step.y;
 		if (sprite->tex.y < 0)

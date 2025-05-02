@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:37:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:02:17 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:31:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,19 @@ void	cub_init_graphics_manager(t_game *game, t_cubval *cubval)
 	game->sky.tex_layers[0] = cub_create_textures(SKY_BACKGROUND, SKY_SIZE);
 	game->sky.tex_layers[1] = cub_create_textures(SKY_MOON, SKY_SIZE);
 	game->sky.tex_layers[2] = cub_create_textures(SKY_CLOUDS, SKY_SIZE);
-	game->sky.tex = cub_join_textures(game->sky.tex_layers, SKY_SIZE, SKY_LAYERS);
-	game->screen.tex_layers[0] = cub_create_textures(SCREEN_START, SCREEN_TEX_SIZE);
-	game->screen.tex_layers[1] = cub_create_textures(SCREEN_LOSE, SCREEN_TEX_SIZE);
-	game->screen.tex_layers[2] = cub_create_textures(SCREEN_WIN, SCREEN_TEX_SIZE);
-	game->screen.tex = cub_join_textures(game->screen.tex_layers, SCREEN_TEX_SIZE, 3);
+	game->sky.tex = cub_join_textures(game->sky.tex_layers, SKY_SIZE, \
+		SKY_LAYERS);
+	game->screen.tex_layers[0] = cub_create_textures(SCREEN_START, \
+		SCREEN_TEX_SIZE);
+	game->screen.tex_layers[1] = cub_create_textures(SCREEN_LOSE, \
+		SCREEN_TEX_SIZE);
+	game->screen.tex_layers[2] = cub_create_textures(SCREEN_WIN, \
+		SCREEN_TEX_SIZE);
+	game->screen.tex = cub_join_textures(game->screen.tex_layers, \
+		SCREEN_TEX_SIZE, 3);
 	game->joists.tex_leave = cub_create_textures(LEAVE, TEX_SIZE);
+	game->joists.rgb_floor = cub_init_colors(cubval->f);
+	game->joists.rgb_ceiling = cub_init_colors(cubval->c);
 }
 
 // Function to create al textures
@@ -42,7 +49,7 @@ int	*cub_create_textures(const char *file, int size)
 	char	*line;
 	int		t;
 
-	texture = (int *)malloc(size * sizeof(int));
+	texture = ft_calloc(size, sizeof(int));
 	if (!texture)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), texture);
 	fd = open(file, O_RDONLY);
@@ -69,9 +76,9 @@ int	*cub_join_textures(int **textures, int size, int nbr)
 	int	j;
 	int	k;
 
-	joined = (int *)malloc((size * nbr) * sizeof(int));
+	joined = ft_calloc(size * nbr, sizeof(int));
 	if (!joined)
-		return (write(2, RED"Failed to allocate memory\n"RESET, 27),
+		return (write(2, RED"Failed to allocate memory\n"RESET, 27), \
 			textures[0]);
 	j = 0;
 	k = 0;
@@ -84,6 +91,7 @@ int	*cub_join_textures(int **textures, int size, int nbr)
 			i++;
 			k++;
 		}
+		free(textures[j]);
 		j++;
 	}
 	return (joined);

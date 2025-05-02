@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:39:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:23:50 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:28:35 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	cub_render_minimap_player(t_game *game, t_pos center, int radius,
 	cub_draw_thick_line(&game->img, &segment, MINI_PLAYER / 3, color);
 }
 
-
 // Function to draw the minimap
 void	cub_render_minimap(t_game *game, t_map *map, t_minimap *minimap,
 			int color)
@@ -51,8 +50,10 @@ void	cub_render_minimap(t_game *game, t_map *map, t_minimap *minimap,
 				cub_render_minimap_loop(game, minimap, map, color);
 		}
 	}
-	cub_render_minimap_player(game, minimap->center, minimap->radius, cub_convert_glrgb(0, 255, 255, 1));
-	cub_draw_empty_circle(&game->img, minimap->center, minimap->radius, cub_convert_glrgb(255, 255, 255, 1));
+	cub_render_minimap_player(game, minimap->center, minimap->radius, \
+		cub_convert_glrgb(0, 255, 255, 1));
+	cub_draw_empty_circle(&game->img, minimap->center, minimap->radius, \
+		cub_convert_glrgb(255, 255, 255, 1));
 }
 
 // Function to help render the minimap
@@ -76,9 +77,9 @@ void	cub_render_minimap_loop(t_game *game, t_minimap *minimap, t_map *map,
 }
 
 // Function to setup the minimap
-void    cub_render_setup_minimap(t_game *game, t_minimap *minimap, t_map *map)
+void	cub_render_setup_minimap(t_game *game, t_minimap *minimap, t_map *map)
 {
-    int	i;
+	int	i;
 	int	j;
 
 	minimap->mp = minimap->pos_map.y * map->width + minimap->pos_map.x;

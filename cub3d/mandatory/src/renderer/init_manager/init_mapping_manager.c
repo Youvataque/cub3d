@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 19:43:21 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:31:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	cub_init_minimap(t_minimap *minimap)
 }
 
 // Function to init a map
-t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite **sprite)
+t_map	cub_init_map(char *source, t_point max, t_player *player,
+			t_sprite **sprite)
 {
 	t_map	dest;
 	int		i;
@@ -29,7 +30,7 @@ t_map	cub_init_map(char *source, t_point max, t_player *player, t_sprite **sprit
 	dest.door_opened = 0;
 	dest.width = max.x;
 	dest.height = max.y;
-	dest.map = (char *)malloc(((max.x * max.y) + 1) * sizeof(char));
+	dest.map = ft_calloc((max.x * max.y) + 1, sizeof(char));
 	if (!dest.map)
 		return (write(2, RED"Failed to allocate memory\n"RESET, 27), dest);
 	i = -1;
@@ -74,9 +75,9 @@ void	cub_init_player_position(int pos, int width, char orientation,
 void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite)
 {
 	static int	index = 0;
-	
+
 	if ((type != 'O' && type != 'A')
-		|| index > ((*sprite)[0].nbr_collectibles + (*sprite)[0].nbr_foes) - 1)
+		|| index > (*sprite)[0].nbr_sprites - 1)
 		return ;
 	if (type == 'O')
 		(*sprite)[index].texture = cub_create_textures(KEY, TEX_SIZE);

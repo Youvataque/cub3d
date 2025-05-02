@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 00:56:25 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:25:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	cub_game_running(t_game *game)
 		cub_automatics_close_door(game, &game->map, &game->minimap.map);
 		cub_render_sky(&game->img, &game->sky, &game->player);
 		cub_raycasting_manager(game, &game->rays, &game->player);
-		cub_render_minimap(game, &game->map, &game->minimap, cub_convert_glrgb(255, 255, 255, 1));
+		cub_render_minimap(game, &game->map, &game->minimap,
+			cub_convert_glrgb(255, 255, 255, 1));
 		cub_sprites_manager(game, &game->sprite, &game->player);
 	}
 	else if (game->status == 2 || game->status == 3)
 		cub_render_fullscreens(game, &game->screen, game->status);
 }
-
 
 // Function to calculate fps
 void	cub_game_fps(t_fps *fps)

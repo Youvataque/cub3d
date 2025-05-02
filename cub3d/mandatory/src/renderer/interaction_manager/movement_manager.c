@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 01:03:29 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:15:32 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,4 @@ void	cub_move_right(t_player *player, float speed, t_map *map)
 	if (map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == '0'
 		|| map->map[sensor.ipy_plus_yo * map->width + sensor.ipx] == 'L')
 		player->pos.y += player->delta.x * speed;
-	
 }

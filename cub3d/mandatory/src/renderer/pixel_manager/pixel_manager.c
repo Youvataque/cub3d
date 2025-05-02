@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:52:02 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 23:17:33 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 23:24:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,3 @@ void	cub_draw_filled_square(t_img_data *img, t_pos pos, int size, int color)
 			cub_draw_pixel(img, pos.x + x, pos.y + y, color);
 	}
 }
-

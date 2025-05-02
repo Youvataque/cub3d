@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/05/01 10:25:47 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/02 23:14:29 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ RENDERER_INTERACT_DIR = $(RENDERER_DIR)/interaction_manager
 RENDERER_PIXEL_DIR = 	$(RENDERER_DIR)/pixel_manager
 RENDERER_RAY_DIR = 		$(RENDERER_DIR)/raycasting_manager
 RENDERER_GAME_DIR = 	$(RENDERER_DIR)/game_manager
+RENDERER_FREE_DIR =		$(RENDERER_DIR)/free_manager
 
 # Utils
 RM =					@rm -rf
@@ -87,10 +88,13 @@ SRC =					\
 						$(RENDERER_GAME_DIR)/game_sprites_manager.c \
 						$(RENDERER_GAME_DIR)/game_sky_manager.c \
 						$(RENDERER_INTERACT_DIR)/interaction_manager.c \
+						$(RENDERER_INTERACT_DIR)/mouse_manager.c \
+						$(RENDERER_INTERACT_DIR)/key_manager.c \
 						$(RENDERER_INTERACT_DIR)/automatics_manager.c \
 						$(RENDERER_INTERACT_DIR)/movement_manager.c \
 						$(RENDERER_INTERACT_DIR)/rotation_manager.c \
 						$(RENDERER_INTERACT_DIR)/action_manager.c \
+						$(RENDERER_FREE_DIR)/free_manager.c \
 						\
 						$(PARSER_DIR)/check_cub.c \
 						$(PARSER_DIR)/check_map.c \
@@ -136,6 +140,7 @@ $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/interaction_manager/
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/pixel_manager/
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/raycasting_manager/
+						@mkdir -p $(OBJ_SRC_DIR)/renderer/free_manager/
 						$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
 
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
