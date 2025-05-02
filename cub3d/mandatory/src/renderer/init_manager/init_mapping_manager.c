@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 22:31:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:02:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	cub_init_player_position(int pos, int width, char orientation,
 		return ;
 	player->pos.x = ((pos % width) * 64);
 	player->pos.y = ((pos / width) * 64);
-	player->delta.x = cos(player->angle) * 5;
-	player->delta.y = sin(player->angle) * 5;
+	player->delta.x = cos(cub_degtorad(player->angle));
+	player->delta.y = -sin(cub_degtorad(player->angle));
 }
 
 // Function to init the sprites position
