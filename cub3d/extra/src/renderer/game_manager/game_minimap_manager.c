@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:39:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 00:59:14 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:06:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	cub_render_minimap_player(t_game *game, t_pos center, int radius,
 	dy = player_screen.y - center.y;
 	if (dx * dx + dy * dy <= radius * radius)
 		cub_draw_point(&game->img, player_screen, MINI_PLAYER, color);
-	printf("delta y : [%f] | delta x : [%f]\n", game->player.delta.y, game->player.delta.x);
 	draw_end.x = center.x + game->player.delta.x * 10;
 	draw_end.y = center.y + game->player.delta.y * 10;
 	segment.start = center;
