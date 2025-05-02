@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:26:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 06:34:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 01:27:53 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 // Function to set the scene in 3d
 void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 {
-	int	i;
-
-	i = 0;
 	rays->shade = 1;
 	cub_rays_setup_draw_h(game, rays);
 	if (rays->dist.dist_v < rays->dist.dist_h)
@@ -35,9 +32,7 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 	rays->line_offset = (SCALING / 2) - (rays->line_height >> 1);
 	rays->draw.x = rays->index * 8;
 	rays->draw.y = rays->line_offset;
-	i = -1;
-	while (++i < SPRITES_NBR)
-		game->sprite[i].depth[rays->index] = rays->dist.dist_t;
+	game->depth_buffer[rays->index] = rays->dist.dist_t;
 }
 
 // Function to draw the scene

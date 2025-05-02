@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 08:30:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:43:21 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,15 @@ void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite)
 {
 	static int	index = 0;
 	
-	if (type != 'O' && type != 'A')
+	if ((type != 'O' && type != 'A')
+		|| index > ((*sprite)[0].nbr_collectibles + (*sprite)[0].nbr_foes) - 1)
 		return ;
-	else if (index == 0)
-	{
-		*sprite = (t_sprite *)malloc(SPRITES_NBR * sizeof(t_sprite));
-		if (!*sprite)
-			return ;
-	}
 	if (type == 'O')
 		(*sprite)[index].texture = cub_create_textures(KEY, TEX_SIZE);
 	else
-		(*sprite)[index].texture = cub_create_textures(FOE_1, TEX_SIZE);
+		(*sprite)[index].texture = cub_create_textures(CLOWN_RUN, TEX_SIZE * 6);
 	(*sprite)[index].type = type;
+	(*sprite)[index].tex_index = 0;
 	(*sprite)[index].status = 1;
 	(*sprite)[index].map = 0;
 	(*sprite)[index].pos.x = (((pos % width) + 0.5) * 64);

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 12:52:17 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:00:39 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@
 # define MINI_PLAYER			6
 # define MINI_RADIUS			100
 
-# define SPRITES_NBR			2
-# define FOE_1					"./textures/Cat/Cat_1.ppm"
+# define FOE_SPEED				0.05
+# define CLOWN_RUN				"./textures/Foe/Clown_run.ppm"
 # define KEY					"./textures/Collect/Key.ppm"
 # define SCALING				640
 
 # define RAYS_STARTING_ANGLE	30
 # define RAYS_SPACING			0.5
 
-# define SPEED					0.15
+# define SPEED					0.125
 	// WINDOW DATA
 # define SCREEN_WIDTH			960
 # define SCREEN_HEIGHT			640

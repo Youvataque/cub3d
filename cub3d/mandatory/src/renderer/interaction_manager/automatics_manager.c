@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:27:47 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 19:29:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/01 23:42:43 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,17 @@ int	cub_automatics_close_door_loop(t_game *game, t_map *map, t_map *minimap,
 {
 	int	i;
 	
+	i = 0;
 	if (minimap->map[(int)(pos_map->y * map->width + pos_map->x)] == 'D' 
 		&& map->map[(int)(pos_map->y * map->width  + pos_map->x)] == '0')
 	{
 		if (cub_automatics_detect_player(&game->player, map, pos_map) == 1)
 		{
-			i = -1;
-			while (++i < game->sprite->nbr_collectibles + game->sprite->nbr_foes)
+			while (i < (game->sprite[i].nbr_collectibles + game->sprite[i].nbr_foes))
 			{
 				if (cub_automatics_detect_foe(&((game->sprite)[i]), map, pos_map) == 0)
 					return (0);
+				i++;
 			}
 		}
 		else
@@ -82,7 +83,7 @@ int	cub_automatics_detect_foe(t_sprite *sprite, t_map *map,
 {
 	int		mp_foe;
 	
-	if (sprite->status == 0)
+	if (sprite->status == 0 || sprite->type == 'O')
 		return (1);
 	mp_foe = ((((int)sprite->pos.y >> 6)) * map->width
 		+ (((int)sprite->pos.x >> 6)));

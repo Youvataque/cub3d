@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 19:27:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 01:39:16 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ float	cub_degtorad(float degree);
 float	cub_fixang(float angle);
 float	cub_calc_dist(t_pos a, t_pos b, float angle);
 int		cub_convert_glrgb(float red, float green, float blue, int mode);
+int		cub_is_transparent(float red, float green, float blue);
 
 #endif

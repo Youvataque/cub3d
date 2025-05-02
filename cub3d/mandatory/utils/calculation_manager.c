@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 03:20:04 by nifromon          #+#    #+#             */
-/*   Updated: 2025/04/30 19:45:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 01:42:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,15 @@ int	cub_convert_glrgb(float red, float green, float blue, int mode)
 		return ((r << 16) | (g << 8) | b);
 	}
 	return (((int)red << 16) | ((int)green << 8) | (int)blue);
+}
+
+// Function to check if background is transparent
+int	cub_is_transparent(float red, float green, float blue)
+{
+	float tolerance;
+	
+	tolerance = 5.0f;
+	return (fabsf(red - 255.0f) < tolerance
+			&& fabsf(green - 0.0f) < tolerance
+			&& fabsf(blue - 255.0f) < tolerance);
 }

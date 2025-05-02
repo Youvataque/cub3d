@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/01 14:38:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:06:15 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ typedef struct s_sprite
 	t_point		pos2;
 	t_pos		pos_draw;
 	int			scale;
-	int			depth[FOV];
 	int			*texture;
 	t_pos		tex;
 	t_pos		tex_step;
+	int			tex_index;
 	int			pixel;
 	t_rgb		rgb;
 	int			nbr_foes;
@@ -264,6 +264,7 @@ typedef struct s_game
 	t_map		map;
 	t_minimap	minimap;
 	t_sprite	*sprite;
+	int			*depth_buffer;
 }				t_game;
 
 #endif
