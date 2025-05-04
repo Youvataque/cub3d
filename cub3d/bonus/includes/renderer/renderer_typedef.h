@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:56:03 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/04 13:55:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,23 @@ typedef struct s_sprite
 	int			nbr_foes;
 	int			nbr_collectibles;
 	int			nbr_sprites;
+	int			in_sight;
+	int			hit;
+	int			hit_time;
+	int			lives;
+	t_point		pos_foe;
+	t_point		offset_add;
+	t_point		offset_sub;
 }				t_sprite;
+
+typedef struct s_weapons
+{
+	int		*texture;
+	int		tex_index;
+	int		pixel;
+	t_rgb	rgb;
+	int		firing;
+}			t_weapons;
 	// Elements
 typedef struct s_walls
 {
@@ -206,6 +222,7 @@ typedef struct s_rays
 	int			tex_index_h;
 	int			color;
 	float		shade;
+	int			exit_dir;
 	int			exit;
 }				t_rays;
 
@@ -264,6 +281,7 @@ typedef struct s_game
 	t_map		map;
 	t_minimap	minimap;
 	t_sprite	*sprite;
+	t_weapons	glock;
 	int			*depth;
 }				t_game;
 

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:55:39 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 09:25:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,8 @@
 # define CLOWN_RUN				"./textures/Foe/Clown_run.ppm"
 	// COLLECTIBLES
 # define KEY					"./textures/Collect/Key.ppm"
+	// WEAPONS
+# define GLOCK					"./textures/Weapons/Glock.ppm"
+# define WEAPON_SIZE			49152 // 128 * 128 * 3
 
 #endif

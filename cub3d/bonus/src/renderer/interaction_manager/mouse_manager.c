@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 23:12:37 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:15:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:53:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ int	cub_handle_mouse(int x, int y, t_game *game)
 		cub_rotate_manager(&game->player, ROTATE_RIGHT, \
 			game->player.speed / 15);
 	old_x = x;
+	return (0);
+}
+
+// Function to handle mouse clicking
+int	cub_handle_mouse_clicking(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		cub_fire(&game->glock, &game->sprite);
 	return (0);
 }
 

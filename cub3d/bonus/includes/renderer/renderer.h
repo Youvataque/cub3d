@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/02 23:56:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:52:32 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,14 @@ void	cub_render_sprites_loop(t_game *game, t_sprite *sprite);
 	// game_foe_manager.c
 void	cub_foe_setup_pursuit(t_sprite *sprite, t_point *pos,
 			t_point *offset_add, t_point *offset_sub);
+void	cub_foe_setup_animations(t_sprite *sprite);
+void	cub_foe_perform_pursuit(t_game *game, t_sprite *sprite, t_player *player);
 void	cub_foe_pursuit(t_game *game, t_sprite *sprite, t_player *player);
+	// game_weapons_manager.c
+void	cub_weapons_manager(t_game *game, t_weapons *glock);
+void	cub_render_weapons(t_game *game, t_weapons *glock);
+void	cub_setup_weapons(t_game *game, t_weapons *glock);
+void	cub_fire(t_weapons *glock, t_sprite **sprites);
 		// raycasting_manager
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
@@ -120,6 +127,7 @@ int		cub_handle_key_release(int key, t_game *game);
 	// mouse_manager.c
 int		cub_handle_cross(t_game *game);
 int		cub_handle_mouse(int x, int y, t_game *game);
+int		cub_handle_mouse_clicking(int button, int x, int y, t_game *game);
 	// automatics_manager.c
 void	cub_automatics_close_door(t_game *game, t_map *map, t_map *minimap);
 int		cub_automatics_close_door_loop(t_game *game, t_map *map, t_map *minimap,
@@ -145,8 +153,7 @@ void	cub_rotate_left(t_player *player, float speed);
 		// free_manager
 	// free_manager.c
 void	cub_free_manager(t_game *game);
-void	cub_free_graphics(t_walls *walls, t_sky *sky, t_screen *screen,
-			t_joists *joists);
+void	cub_free_graphics(t_game *game);
 void	cub_free_sprites(t_sprite **sprites);
 		// utils
 	// time_manager.c

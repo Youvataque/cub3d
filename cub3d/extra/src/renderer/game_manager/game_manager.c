@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 22:25:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 08:38:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	cub_game_running(t_game *game)
 		cub_render_minimap(game, &game->map, &game->minimap,
 			cub_convert_glrgb(255, 255, 255, 1));
 		cub_sprites_manager(game, &game->sprite, &game->player);
+		cub_weapons_manager(game, &game->glock);
 	}
 	else if (game->status == 2 || game->status == 3)
 		cub_render_fullscreens(game, &game->screen, game->status);

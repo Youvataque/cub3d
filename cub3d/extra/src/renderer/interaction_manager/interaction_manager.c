@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:36:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:13:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 12:45:10 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	cub_interaction_manager(t_game *game)
 	mlx_hook(game->win, 3, (1L << 1), &cub_handle_key_release, game);
 	mlx_hook(game->win, 17, (1L << 17), &cub_handle_cross, game);
 	mlx_hook(game->win, 6, (1L << 6), &cub_handle_mouse, game);
+	mlx_mouse_hook(game->win, &cub_handle_mouse_clicking, game);
 }
 
 // Function to update movement of the player

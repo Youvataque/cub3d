@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:37:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 22:31:06 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 09:26:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	cub_init_graphics_manager(t_game *game, t_cubval *cubval)
 	game->joists.tex_leave = cub_create_textures(LEAVE, TEX_SIZE);
 	game->joists.rgb_floor = cub_init_colors(cubval->f);
 	game->joists.rgb_ceiling = cub_init_colors(cubval->c);
+	game->glock.texture = cub_create_textures(GLOCK, WEAPON_SIZE * 7);
 }
 
 // Function to create al textures

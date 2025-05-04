@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 22:29:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:39:42 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	cub_init_game_values(t_game *game, t_cubval *cubval)
 		game->sprite[i].nbr_foes = cubval->nb_foe;
 		game->sprite[i].nbr_sprites = cubval->nb_col + cubval->nb_foe;
 	}
+	game->glock.tex_index = 0;
+	game->glock.firing = 0;
 	game->status = 1;
 	game->fps.fps = 0;
 	game->player.collected = 0;

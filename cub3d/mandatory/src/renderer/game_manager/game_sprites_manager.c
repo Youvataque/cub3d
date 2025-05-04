@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 01:09:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 22:27:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/03 20:12:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	cub_sprites_manager(t_game *game, t_sprite **sprite, t_player *player)
 	i = 0;
 	while (i < (*sprite)[0].nbr_sprites)
 	{
-		if ((*sprite)[i].status == 1)
+		if ((*sprite)[i].status == 1 && (*sprite)[i].lives > 0)
 		{
 			cub_foe_pursuit(game, &((*sprite)[i]), player);
 			cub_update_sprites(game, &((*sprite)[i]), player);
@@ -80,6 +80,7 @@ void	cub_setup_sprites(t_sprite *sprite, t_player *player)
 void	cub_render_sprites(t_game *game, t_sprite *sprite)
 {
 	sprite->tex.x = 0;
+	sprite->in_sight = 0;
 	sprite->tex.y = 31.0;
 	sprite->tex_step.x = 31.5 / (float)sprite->scale;
 	sprite->tex_step.y = 32.0 / (float)sprite->scale;
@@ -117,5 +118,7 @@ void	cub_render_sprites_loop(t_game *game, t_sprite *sprite)
 		sprite->tex.y -= sprite->tex_step.y;
 		if (sprite->tex.y < 0)
 			sprite->tex.y = 0;
+		if (sprite->pos2.x == 60)
+			sprite->in_sight++;
 	}
 }

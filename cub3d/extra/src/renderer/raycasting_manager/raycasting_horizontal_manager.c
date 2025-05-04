@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:08:15 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:47:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/04 14:00:19 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 			+ player->pos.x;
 		rays->offset.y = -64;
 		rays->offset.x = -rays->offset.y * rays->tangent;
+		rays->exit_dir = 1;
 	}
 	else if (sin(cub_degtorad(rays->angle)) < -0.001)
 	{
@@ -32,11 +33,11 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 			+ player->pos.x;
 		rays->offset.y = 64;
 		rays->offset.x = -rays->offset.y * rays->tangent;
+		rays->exit_dir = -1;
 	}
 	else
 	{
-		rays->pos.x = player->pos.x;
-		rays->pos.y = player->pos.y;
+		rays->pos = player->pos;
 		rays->dof = 20;
 	}
 }
@@ -58,7 +59,7 @@ void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
 			rays->dof = 20;
 			rays->tex_index_h = map->map[rays->mp];
-			if (map->map[(int)((rays->map.y + (rays->offset.y / 64)) \
+			if (map->map[(int)((rays->map.y + rays->exit_dir) \
 				* map->width + rays->map.x)] == 'L')
 				rays->exit = 1;
 		}
