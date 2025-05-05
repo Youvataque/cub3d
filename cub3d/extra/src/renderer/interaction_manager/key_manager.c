@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 23:12:17 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 12:36:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:27:08 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	cub_handle_key_press(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 	{
+		clean_tcubval(game->cubval);
 		cub_free_manager(game);
 		exit(0);
 	}
@@ -39,9 +40,7 @@ int	cub_handle_key_press(int key, t_game *game)
 
 int	cub_handle_key_release(int key, t_game *game)
 {
-	if (key == KEY_ESC)
-		exit(0);
-	else if (key == KEY_W)
+	if (key == KEY_W)
 		game->keys.w = 0;
 	else if (key == KEY_ARROW_LEFT)
 		game->keys.arrow_left = 0;

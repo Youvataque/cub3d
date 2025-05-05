@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 20:23:12 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 08:26:28 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:54:07 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	cub_free_manager(t_game *game)
 	free(game->minimap.map.map);
 	cub_free_graphics(game);
 	cub_free_sprites(&game->sprite);
+	mlx_clear_window(game->mlx, game->win);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 }
 
 // Function to free all graphics

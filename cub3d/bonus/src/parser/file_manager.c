@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 23:08:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:01:45 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-// Check if the path point to .cub file 
+// Check if the path point to .cub file
 static int	is_ext_file(char *path, char *ext)
 {
 	size_t	len;
@@ -39,6 +39,7 @@ t_cubval	*open_and_conf(char *path)
 	predat = malloc(sizeof(t_cubval));
 	if (!predat)
 		return (NULL);
+	*predat = (t_cubval){};
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (printf("Error: file can't be open.\n"), NULL);
@@ -50,6 +51,7 @@ t_cubval	*open_and_conf(char *path)
 		get_all(line, predat);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return (predat);
 }
 

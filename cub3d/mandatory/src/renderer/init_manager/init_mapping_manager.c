@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mapping_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 19:33:07 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:21:47 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	cub_init_sprites(int pos, int width, int type, t_sprite **sprite)
 	if (type == 'O')
 		(*sprite)[index].texture = cub_create_textures(KEY, TEX_SIZE);
 	else
-		(*sprite)[index].texture = cub_create_textures(CLOWN_RUN, TEX_SIZE * 14);
+		(*sprite)[index].texture = cub_create_textures(CLOWN_RUN, \
+			TEX_SIZE * 14);
 	(*sprite)[index].type = type;
 	(*sprite)[index].hit = 0;
 	(*sprite)[index].hit_time = 0;

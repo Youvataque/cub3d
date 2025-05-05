@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 23:07:23 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:45:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**add_to_tab(char **tab, char *new_line)
 	i = 0;
 	while (tab && tab[i])
 		i++;
-	new_tab = malloc(sizeof(char *) * (i + 2));
+	new_tab = (char **)malloc(sizeof(char *) * (i + 2));
 	if (!new_tab)
 		return (NULL);
 	i = 0;

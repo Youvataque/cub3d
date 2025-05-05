@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_foe_manager.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:22:38 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 20:10:08 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:19:30 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	cub_foe_setup_pursuit(t_sprite *sprite, t_point *pos,
 }
 
 // Function to perform the pursuit
-void	cub_foe_perform_pursuit(t_game *game, t_sprite *sprite, t_player *player)
+void	cub_foe_perform_pursuit(t_game *game, t_sprite *sprite,
+			t_player *player)
 {
 	if (game->map.map[sprite->pos_foe.y * game->map.width \
 		+ sprite->offset_sub.x] == '0' && sprite->pos.x > player->pos.x)

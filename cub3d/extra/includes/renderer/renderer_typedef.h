@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer_typedef.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:57:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/04 13:55:12 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:16:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,6 +283,7 @@ typedef struct s_game
 	t_sprite	*sprite;
 	t_weapons	glock;
 	int			*depth;
+	t_cubval	*cubval;
 }				t_game;
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/05/04 14:05:58 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/05 16:16:41 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

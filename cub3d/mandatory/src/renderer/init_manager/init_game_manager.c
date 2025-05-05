@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 18:39:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:09:13 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cub_init_game_manager(t_game *game, t_cubval *cubval)
 	cub_init_minimap(&game->minimap);
 }
 
-// Function to set game initial values 
+// Function to set game initial values
 void	cub_init_game_values(t_game *game, t_cubval *cubval)
 {
 	int	i;
@@ -43,6 +43,7 @@ void	cub_init_game_values(t_game *game, t_cubval *cubval)
 	game->fps.fps = 0;
 	game->player.collected = 0;
 	game->fps.frame = cub_get_time_ms();
+	game->cubval = cubval;
 }
 
 // Function to init game to zero

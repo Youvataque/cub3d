@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/03 19:52:32 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:18:42 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	cub_render_sprites_loop(t_game *game, t_sprite *sprite);
 void	cub_foe_setup_pursuit(t_sprite *sprite, t_point *pos,
 			t_point *offset_add, t_point *offset_sub);
 void	cub_foe_setup_animations(t_sprite *sprite);
-void	cub_foe_perform_pursuit(t_game *game, t_sprite *sprite, t_player *player);
+void	cub_foe_perform_pursuit(t_game *game, t_sprite *sprite,
+			t_player *player);
 void	cub_foe_pursuit(t_game *game, t_sprite *sprite, t_player *player);
 	// game_weapons_manager.c
 void	cub_weapons_manager(t_game *game, t_weapons *glock);

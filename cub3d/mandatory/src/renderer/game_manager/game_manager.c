@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:54:00 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 08:38:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:24:32 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	cub_game_running(t_game *game)
 	{
 		cub_movement_update(&game->keys, &game->player, &game->map);
 		cub_automatics_close_door(game, &game->map, &game->minimap.map);
-		cub_render_sky(&game->img, &game->sky, &game->player);
 		cub_raycasting_manager(game, &game->rays, &game->player);
 		cub_render_minimap(game, &game->map, &game->minimap,
 			cub_convert_glrgb(255, 255, 255, 1));

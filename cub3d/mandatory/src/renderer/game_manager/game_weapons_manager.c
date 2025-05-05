@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_weapons_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 08:26:52 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 20:01:59 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:31:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void	cub_render_weapons(t_game *game, t_weapons *glock)
 			glock->rgb.blue = glock->texture[glock->pixel + 2];
 			pos.x *= 8;
 			pos.y *= 5.5;
-			if (cub_convert_glrgb(glock->rgb.red, glock->rgb.green, glock->rgb.blue, 1)
-				!= cub_convert_glrgb(255, 0, 255, 1))
+			if (cub_convert_glrgb(glock->rgb.red, glock->rgb.green, \
+				glock->rgb.blue, 1) != cub_convert_glrgb(255, 0, 255, 1))
 				cub_draw_point(&game->img, pos, 8,
-					cub_convert_glrgb(glock->rgb.red, glock->rgb.green, glock->rgb.blue, 1));
+					cub_convert_glrgb(glock->rgb.red, glock->rgb.green, \
+						glock->rgb.blue, 1));
 			pos.x /= 8;
 			pos.y /= 5.5;
 		}
