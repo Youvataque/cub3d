@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/01 14:44:59 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:26:14 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ static int	check_all(t_cubval *cubval)
 		return (ft_printf("Error: nbExit < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
 	count_item(cubval, 'O', 'A');
-	fill(temp, cubval->spawn, cubval->max_xy, "ADONSWE ");
+	fill(temp, cubval->spawn, cubval->max_xy, "NSWE0DLOA ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)
@@ -131,13 +131,17 @@ t_cubval	*get_map_param(char *path)
 	char		**map;
 
 	temp = open_and_conf(path);
+	if (!temp)
+		return (NULL);
 	result = fix_all(temp);
 	if (!result)
-		return (NULL);
+		return (clean_tcubval(result), NULL);
 	map = result->map;
+	if (!map)
+		return (clean_tcubval(result), NULL);
 	result->max_xy = (t_point){get_x_max(map), get_y_max(map)};
 	result->map_str = inline_map(map);
 	if (check_all(result))
 		return (result);
-	return (NULL);
+	return (clean_tcubval(result), NULL);
 }

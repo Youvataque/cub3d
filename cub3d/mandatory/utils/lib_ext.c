@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:36:36 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/06 13:14:53 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/06 13:32:59 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ int	is_ws(char c)
 // pull and free gnl
 void	pull_gnl(int fd, char *line)
 {
-	char *temp;
+	char	*temp;
 
 	free(line);
 	temp = get_next_line(fd);
-
 	while (temp)
 	{
 		free(temp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:37:34 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/05 14:40:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:27:25 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 /* lib_ext */
 int		contain(char *str, char *to_find);
 int		is_ws(char c);
+void	pull_gnl(int fd, char *line);
 
 /* map manager */
 int		get_y_max(char **map);
