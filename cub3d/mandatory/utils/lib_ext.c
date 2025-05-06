@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_ext.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:36:36 by yseguin           #+#    #+#             */
-/*   Updated: 2025/04/30 23:07:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:14:53 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,20 @@ int	contain(char *str, char *to_find)
 int	is_ws(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n');
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// pull and free gnl
+void	pull_gnl(int fd, char *line)
+{
+	char *temp;
+
+	free(line);
+	temp = get_next_line(fd);
+
+	while (temp)
+	{
+		free(temp);
+		temp = get_next_line(fd);
+	}
 }

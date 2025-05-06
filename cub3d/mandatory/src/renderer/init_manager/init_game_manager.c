@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:09:13 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:02:47 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	cub_init_game_manager(t_game *game, t_cubval *cubval)
 	game->minimap.map = cub_init_map(cubval->map_str, cubval->max_xy, \
 		&game->player, &game->sprite);
 	cub_init_minimap(&game->minimap);
+	cub_print_map(&game->map);
 }
 
 // Function to set game initial values

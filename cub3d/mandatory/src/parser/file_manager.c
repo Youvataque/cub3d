@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:14:01 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/05 15:01:45 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:16:02 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ t_cubval	*open_and_conf(char *path)
 	*predat = (t_cubval){};
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (printf("Error: file can't be open.\n"), NULL);
+		return (printf("Error: file can't be open.\n"), \
+			clean_tcubval(predat), NULL);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (!is_valid_cub(line))
-			return (printf("Error: format is not valid !\n"), NULL);
+			return (printf("Error: format isn't valid !\n"), \
+				pull_gnl(fd, line), clean_tcubval(predat), close(fd), NULL);
 		get_all(line, predat);
 		line = get_next_line(fd);
 	}
