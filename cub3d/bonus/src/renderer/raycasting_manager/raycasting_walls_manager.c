@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_walls_manager.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:49:05 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:39:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			int *texture)
 {
-	int		i;
+	// int		i;
 
-	i = -1;
-	while (++i < 8)
-	{
+	// i = -1;
+	// while (++i < 8)
+	// {
 		rays->draw_index = -1;
 		walls->ty = walls->offset * walls->step;
 		while (++rays->draw_index < rays->line_height)
@@ -29,12 +29,12 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 			walls->rgb.red = texture[walls->pixel + 0];
 			walls->rgb.green = texture[walls->pixel + 1];
 			walls->rgb.blue = texture[walls->pixel + 2];
-			cub_draw_pixel(img, rays->draw.x - 8, \
+			cub_draw_pixel(img, rays->draw.x, \
 				rays->draw_index + rays->draw.y, \
 					cub_convert_glrgb(walls->rgb.red, walls->rgb.green, \
 						walls->rgb.blue, 1));
 			walls->ty += walls->step;
 		}
 		rays->draw.x++;
-	}
+	// }
 }

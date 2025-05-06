@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_draw_manager.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:26:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:51:01 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:39:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	cub_rays_setup_draw(t_game *game, t_rays *rays, t_player *player)
 		rays->line_height = SCALING;
 	}
 	rays->line_offset = (SCALING / 2) - (rays->line_height >> 1);
-	rays->draw.x = rays->index * 8;
+	rays->draw.x = rays->index;
 	rays->draw.y = rays->line_offset;
 	game->depth[rays->index] = rays->dist.dist_t;
 }

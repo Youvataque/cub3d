@@ -6,24 +6,17 @@
 #    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/05/05 16:16:41 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/06 17:05:22 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Argument
-NAME =					../cub3d_bonus
+NAME =					../cub3D_bonus
 
 # Compilation
-CC =					@gcc -g
-CFLAGS =				-Wall -Werror -Wextra -L $(LIBFT_DIR)/
-MFLAGS = 				-L $(MLX_DIR)/ -L /usr/include/X11/ \
-						-L /usr/lib/x86_64-linux-gnu/ \
-						-lmlx -lXext -lX11 -lXrandr -lm -lbsd -lXfixes
-
-INCLUDES = 				-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers/ \
-						-I $(MLX_DIR)/ -I /usr/include/X11/ \
-						-I /usr/include/X11/extensions/ \
-						-I /usr/lib/x86_64-linux-gnu/
+CC =					@cc
+CFLAGS =				-Wall -Werror -Wextra
+MFLAGS = 				-L/usr/X11R6/lib -lX11 -lXext -lm
 
 # Directories
 SRC_DIR =				src
@@ -128,7 +121,7 @@ $(MLX):
 
 $(NAME):				$(LIBFT) $(MLX) $(OBJ_SRC) $(OBJ_UTILS)
 						@echo "$(YELLOW)Building $(NAME)...$(RESET)"
-						$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) -o $(NAME) $(CFLAGS) $(INCLUDES) $(MFLAGS)
+						$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) $(CFLAGS) $(MFLAGS) -o $(NAME)
 						@echo "$(BLACK_ON_GREEN)\t\t\t\t\t*/ $(NAME) \*$(RESET)"
 
 $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
@@ -142,12 +135,12 @@ $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/pixel_manager/
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/raycasting_manager/
 						@mkdir -p $(OBJ_SRC_DIR)/renderer/free_manager/
-						$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
+						$(CC) -c $(CFLAGS) $< -o $@
 
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 						@mkdir -p $(OBJ_DIR)
 						@mkdir -p $(OBJ_UTILS_DIR)
-						$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
+						$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 						@make -s -C $(LIBFT_DIR) clean

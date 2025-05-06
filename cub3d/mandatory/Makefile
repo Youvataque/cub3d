@@ -1,5 +1,5 @@
 NAME = cub3D
-CC = gcc
+CC = cc
 CFLAGS = -g -Wall -Werror -Wextra
 
 SRC = $(wildcard src/*.c) \
