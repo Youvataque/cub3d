@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mapping_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:38:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:21:47 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:34:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	cub_init_player_position(int pos, int width, char orientation,
 		player->angle = 90 + 90;
 	else
 		return ;
-	player->pos.x = ((pos % width) * 64);
-	player->pos.y = ((pos / width) * 64);
+	player->pos.x = (((pos % width) + 0.5) * 64);
+	player->pos.y = (((pos / width) + 0.5) * 64);
 	player->delta.x = cos(cub_degtorad(player->angle));
 	player->delta.y = -sin(cub_degtorad(player->angle));
 }

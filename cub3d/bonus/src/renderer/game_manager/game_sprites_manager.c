@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 01:09:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/03 20:12:06 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:14:13 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	cub_setup_sprites(t_sprite *sprite, t_player *player)
 	sprite->screen.x = sprite->a;
 	sprite->screen.y = sprite->b;
 	sprite->screen.x = (sprite->screen.x * 108.0 / sprite->screen.y)
-		+ (FOV / 2);
+		+ (120 / 2);
 	sprite->screen.y = (sprite->screen.z * 108.0 / sprite->screen.y)
 		+ (80 / 2);
 	sprite->scale = 32 * 80 / sprite->b;
@@ -98,7 +98,7 @@ void	cub_render_sprites(t_game *game, t_sprite *sprite)
 // Function to help render the sprites
 void	cub_render_sprites_loop(t_game *game, t_sprite *sprite)
 {
-	if (sprite->pos2.x > 0 && sprite->pos2.x < FOV \
+	if (sprite->pos2.x > 0 && sprite->pos2.x < 120 \
 		&& sprite->b < game->depth[sprite->pos2.x])
 	{
 		sprite->pixel = ((int)sprite->tex.y * 32 + (int)sprite->tex.x) * 3 \

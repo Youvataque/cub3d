@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_walls_manager.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 04:24:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/06 16:39:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:31:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	cub_rays_draw_walls(t_img_data *img, t_rays *rays, t_walls *walls,
 						walls->rgb.blue, 1));
 			walls->ty += walls->step;
 		}
-		rays->draw.x++;
+	// 	rays->draw.x++;
 	// }
 }

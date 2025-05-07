@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:09:13 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:16:33 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	cub_init_game_zero(t_game *game, t_cubval *cubval)
 		sizeof(t_sprite));
 	if (!game->sprite)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->depth = ft_calloc(FOV, sizeof(int));
+	game->depth = ft_calloc(120, sizeof(int));
 	if (!game->depth)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
 }
