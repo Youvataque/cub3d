@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_horizontal_manager.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 08:08:15 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/04 14:00:19 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:55:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 	else
 	{
 		rays->pos = player->pos;
-		rays->dof = 20;
+		rays->dof = 10000;
 	}
 }
 
@@ -46,18 +46,18 @@ void	cub_rays_cast_horizontal(t_rays *rays, t_player *player)
 void	cub_rays_detect_horizontal(t_rays *rays, t_player *player,
 			t_distance *dist, t_map *map)
 {
-	dist->dist_h = 1000000;
-	while (rays->dof < 20)
+	dist->dist_h = (float)(__LONG_LONG_MAX__);
+	while (rays->dof < 10000)
 	{
 		rays->map.x = (int)(rays->pos.x) >> 6;
 		rays->map.y = (int)(rays->pos.y) >> 6;
 		rays->mp = rays->map.y * map->width + rays->map.x;
 		if (rays->mp > 0 && rays->mp < map->width * map->height
-			&& (map->map[rays->mp] == '1' || map->map[rays->mp] == 'D'))
+			&& (map->map[rays->mp] != '0' && map->map[rays->mp] != 'L'))
 		{
 			dist->pos_h = rays->pos;
 			dist->dist_h = cub_calc_dist(player->pos, dist->pos_h, rays->angle);
-			rays->dof = 20;
+			rays->dof = 10000;
 			rays->tex_index_h = map->map[rays->mp];
 			if (map->map[(int)((rays->map.y + rays->exit_dir) \
 				* map->width + rays->map.x)] == 'L')

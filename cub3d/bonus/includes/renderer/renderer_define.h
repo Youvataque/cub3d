@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer_define.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/08 00:11:14 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:06:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@
 
 // Keycodes
 # define KEY_ESC				65307
-// # define KEY_W					119
-#define KEY_W					122
+# define KEY_W					119
+// # define KEY_W					122
 # define KEY_ARROW_LEFT			65361
 # define KEY_S					115
 # define KEY_ARROW_RIGHT		65363
 # define KEY_E					101
-// # define KEY_A					97
-#define KEY_A					113
+# define KEY_A					97
+// # define KEY_A					113
 # define KEY_D					100
 
 // Textures
