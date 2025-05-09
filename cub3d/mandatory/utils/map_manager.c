@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:08:03 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/06 13:09:51 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/05 14:45:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	*fill_line(char *line, int width)
 		new_line[i] = line[i];
 		i++;
 	}
-	while (i < width)
+	while (i < width - 1)
 	{
 		new_line[i] = ' ';
 		i++;
@@ -88,8 +88,6 @@ char	**square_map(char **map)
 	int		y_max;
 	int		i;
 
-	if (!map)
-		return (NULL);
 	y_max = get_y_max(map);
 	x_max = get_x_max(map);
 	new_map = malloc(sizeof(char *) * (y_max + 1));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manager2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:52:19 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/06 13:03:35 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/04/30 23:07:27 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*inline_map(char **map)
 	while (map[y])
 	{
 		x = 0;
-		while (x < get_x_max(map))
+		while (map[y][x])
 		{
 			result[i] = map[y][x];
 			x++;

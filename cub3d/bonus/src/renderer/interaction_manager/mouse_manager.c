@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 23:12:37 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:26:33 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:40:33 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ int	cub_handle_mouse_clicking(int button, int x, int y, t_game *game)
 	(void)x;
 	(void)y;
 	if (button == 1)
-		cub_fire(&game->glock, &game->sprite);
+		cub_fire(game, &game->glock, &game->sprite);
 	return (0);
 }
 
 // Function to handle the cross
 int	cub_handle_cross(t_game *game)
 {
-	clean_tcubval(game->cubval);
 	cub_free_manager(game);
 	exit(0);
 }

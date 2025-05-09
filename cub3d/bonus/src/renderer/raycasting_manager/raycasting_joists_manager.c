@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_joists_manager.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:22:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:22:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 01:11:55 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	cub_rays_draw_joists(t_game *game, t_rays *rays, t_joists *joists)
 			else
 				cub_rays_draw_floors_rgb(&game->img, rays, \
 					game->joists.rgb_floor);
-			cub_rays_draw_ceilings_rgb(&game->img, rays, \
-				game->joists.rgb_ceiling);
 			joists->ty += joists->step;
 		}
 		rays->draw.x++;

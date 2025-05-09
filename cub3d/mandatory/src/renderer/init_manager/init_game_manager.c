@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:42:09 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/06 13:31:35 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/10 00:22:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ void	cub_init_game_values(t_game *game, t_cubval *cubval)
 	game->fps.fps = 0;
 	game->player.collected = 0;
 	game->fps.frame = cub_get_time_ms();
-	game->cubval = cubval;
 }
 
 // Function to init game to zero
 void	cub_init_game_zero(t_game *game, t_cubval *cubval)
 {
 	ft_memset(game, 0, sizeof(t_game));
+	game->cubval = cubval;
 	game->sprite = ft_calloc((cubval->nb_col + cubval->nb_foe), \
 		sizeof(t_sprite));
 	if (!game->sprite)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
-	game->depth = ft_calloc(FOV, sizeof(int));
+	game->depth = ft_calloc(120, sizeof(int));
 	if (!game->depth)
 		return ((void)write(2, RED"Failed to allocate memory\n"RESET, 27));
 }

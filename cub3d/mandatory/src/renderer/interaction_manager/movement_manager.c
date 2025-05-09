@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:37:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/02 23:15:32 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:25:41 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	cub_move_forward(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
-	sensor.xo = 20;
-	sensor.yo = 20;
+	sensor.xo = 25;
+	sensor.yo = 25;
 	if (player->delta.x < 0)
-		sensor.xo = -20;
+		sensor.xo = -25;
 	if (player->delta.y < 0)
-		sensor.yo = -20;
+		sensor.yo = -25;
 	sensor.ipx = (int)player->pos.x >> 6;
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
@@ -54,12 +54,12 @@ void	cub_move_backward(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
-	sensor.xo = 20;
-	sensor.yo = 20;
+	sensor.xo = 25;
+	sensor.yo = 25;
 	if (player->delta.x < 0)
-		sensor.xo = -20;
+		sensor.xo = -25;
 	if (player->delta.y < 0)
-		sensor.yo = -20;
+		sensor.yo = -25;
 	sensor.ipx = (int)player->pos.x >> 6;
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_minus_xo = ((int)player->pos.x - sensor.xo) >> 6;
@@ -77,16 +77,16 @@ void	cub_move_left(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
-	sensor.xo = player->delta.y * 20;
-	sensor.yo = -player->delta.x * 20;
+	sensor.xo = player->delta.y * 25;
+	sensor.yo = -player->delta.x * 25;
 	if (sensor.xo < 0)
-		sensor.xo = -20;
+		sensor.xo = -25;
 	else
-		sensor.xo = 20;
+		sensor.xo = 25;
 	if (sensor.yo < 0)
-		sensor.yo = -20;
+		sensor.yo = -25;
 	else
-		sensor.yo = 20;
+		sensor.yo = 25;
 	sensor.ipx = (int)player->pos.x >> 6;
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;
@@ -104,16 +104,16 @@ void	cub_move_right(t_player *player, float speed, t_map *map)
 {
 	t_collision	sensor;
 
-	sensor.xo = -player->delta.y * 20;
-	sensor.yo = player->delta.x * 20;
+	sensor.xo = -player->delta.y * 25;
+	sensor.yo = player->delta.x * 25;
 	if (sensor.xo < 0)
-		sensor.xo = -20;
+		sensor.xo = -25;
 	else
-		sensor.xo = 20;
+		sensor.xo = 25;
 	if (sensor.yo < 0)
-		sensor.yo = -20;
+		sensor.yo = -25;
 	else
-		sensor.yo = 20;
+		sensor.yo = 25;
 	sensor.ipx = (int)player->pos.x >> 6;
 	sensor.ipy = (int)player->pos.y >> 6;
 	sensor.ipx_plus_xo = ((int)player->pos.x + sensor.xo) >> 6;

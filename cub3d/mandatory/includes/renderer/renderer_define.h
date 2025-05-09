@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:09:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 11:05:10 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:06:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #  define M_PI					3.14159265358979323846
 # endif
 # define DR						0.01745329 // one degree to radian
-# define FOV					120
+# define FOV					960
 	// Minimap
 # define MINI_BLOCK				12
 # define MINI_PLAYER			6
@@ -28,7 +28,7 @@
 # define SCALING				640
 
 # define RAYS_STARTING_ANGLE	30
-# define RAYS_SPACING			0.5
+# define RAYS_SPACING			0.0625
 
 # define SPEED					0.125
 	// WINDOW DATA
@@ -49,13 +49,13 @@
 // Keycodes
 # define KEY_ESC				65307
 # define KEY_W					119
-// #define KEY_W				122
+// # define KEY_W					122
 # define KEY_ARROW_LEFT			65361
 # define KEY_S					115
 # define KEY_ARROW_RIGHT		65363
 # define KEY_E					101
 # define KEY_A					97
-// #define KEY_A				113
+// # define KEY_A					113
 # define KEY_D					100
 
 // Textures

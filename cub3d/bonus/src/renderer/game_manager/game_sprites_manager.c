@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 01:09:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/07 22:14:13 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:24:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	cub_sprites_manager(t_game *game, t_sprite **sprite, t_player *player)
 	int	i;
 
 	i = 0;
+	if ((game->cubval->nb_col + game->cubval->nb_foe) == 0)
+		return ;
 	while (i < (*sprite)[0].nbr_sprites)
 	{
 		if ((*sprite)[i].status == 1 && (*sprite)[i].lives > 0)

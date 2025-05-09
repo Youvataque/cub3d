@@ -6,7 +6,7 @@
 /*   By: yseguin <youvataque@icloud.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:36:26 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/06 12:48:33 by yseguin          ###   ########.fr       */
+/*   Updated: 2025/05/06 13:26:14 by yseguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,11 @@ static int	check_all(t_cubval *cubval)
 		return (ft_printf("Error: with textures.\n"), 0);
 	if (!check_spawn(cubval))
 		return (ft_printf("Error: nbSpawn < 1 or > 1 !\n"), 0);
+	if (!check_exit(cubval))
+		return (ft_printf("Error: nbExit < 1 or > 1 !\n"), 0);
 	temp = square_map(cubval->map);
 	count_item(cubval, 'O', 'A');
-	fill(temp, cubval->spawn, cubval->max_xy, "NSWE0 ");
+	fill(temp, cubval->spawn, cubval->max_xy, "NSWE0DLOA ");
 	result = checkis_closed(cubval, temp);
 	free_tab(temp);
 	if (!result)

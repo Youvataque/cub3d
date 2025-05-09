@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/23 19:12:12 by nifromon          #+#    #+#              #
-#    Updated: 2025/05/06 17:05:22 by nifromon         ###   ########.fr        #
+#    Updated: 2025/05/09 19:04:51 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,13 @@ NAME =					../cub3D_bonus
 # Compilation
 CC =					@cc
 CFLAGS =				-Wall -Werror -Wextra
-MFLAGS = 				-L/usr/X11R6/lib -lX11 -lXext -lm
+MFLAGS = 				-L $(MLX_DIR)/ -L /usr/include/X11/ \
+						-L /usr/lib/x86_64-linux-gnu/ \
+						-lmlx -lXext -lX11 -lXrandr -lm -lbsd -lXfixes
+
+INCLUDE =				-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers/ -I $(MLX_DIR)/ \
+						-I /usr/include/X11/ -I /usr/include/X11/extensions/ \
+						-I /usr/lib/x86_64-linux-gnu/
 
 # Directories
 SRC_DIR =				src
@@ -121,7 +127,7 @@ $(MLX):
 
 $(NAME):				$(LIBFT) $(MLX) $(OBJ_SRC) $(OBJ_UTILS)
 						@echo "$(YELLOW)Building $(NAME)...$(RESET)"
-						$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) $(CFLAGS) $(MFLAGS) -o $(NAME)
+						$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) $(CFLAGS) $(MFLAGS) $(INCLUDE) -o $(NAME)
 						@echo "$(BLACK_ON_GREEN)\t\t\t\t\t*/ $(NAME) \*$(RESET)"
 
 $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c

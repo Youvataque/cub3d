@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_joists_manager.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:22:59 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:22:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 01:10:53 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

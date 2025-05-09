@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_weapons_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 08:26:52 by nifromon          #+#    #+#             */
-/*   Updated: 2025/05/05 16:31:59 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:41:53 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ void	cub_render_weapons(t_game *game, t_weapons *glock)
 }
 
 // Function to fire with the weapon
-void	cub_fire(t_weapons *glock, t_sprite **sprites)
+void	cub_fire(t_game *game, t_weapons *glock, t_sprite **sprites)
 {
 	int	i;
 
 	i = -1;
 	glock->firing = 1;
+	if ((game->cubval->nb_col + game->cubval->nb_foe) == 0)
+		return ;
 	while (++i < (*sprites)[0].nbr_sprites)
 	{
 		if ((*sprites)[i].type != 'A' || (*sprites)[i].status == 0)

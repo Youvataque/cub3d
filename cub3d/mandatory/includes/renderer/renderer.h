@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:46:08 by yseguin           #+#    #+#             */
-/*   Updated: 2025/05/05 16:18:42 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:52:37 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	cub_foe_pursuit(t_game *game, t_sprite *sprite, t_player *player);
 void	cub_weapons_manager(t_game *game, t_weapons *glock);
 void	cub_render_weapons(t_game *game, t_weapons *glock);
 void	cub_setup_weapons(t_game *game, t_weapons *glock);
-void	cub_fire(t_weapons *glock, t_sprite **sprites);
+void	cub_fire(t_game *game, t_weapons *glock, t_sprite **sprites);
 		// raycasting_manager
 	// raycasting_manager.c
 void	cub_raycasting_manager(t_game *game, t_rays *rays, t_player *player);
@@ -155,7 +155,7 @@ void	cub_rotate_left(t_player *player, float speed);
 	// free_manager.c
 void	cub_free_manager(t_game *game);
 void	cub_free_graphics(t_game *game);
-void	cub_free_sprites(t_sprite **sprites);
+void	cub_free_sprites(t_sprite **sprites, int nbr_sprites);
 		// utils
 	// time_manager.c
 int		cub_get_time_ms(void);
